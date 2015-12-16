@@ -11,4 +11,12 @@ package com.battleforbronze.game.Model;
  */
 public class Card {
     
+    private String name;
+    
+    private int sta;
+    private int atk;
+    private int def;
+    
+    
+    
 }
