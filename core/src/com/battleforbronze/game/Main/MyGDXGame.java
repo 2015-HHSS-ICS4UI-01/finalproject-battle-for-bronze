@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class LibGDXDemo extends Game {
+public class MyGDXGame extends Game {
 
 	@Override
 	public void create () {
