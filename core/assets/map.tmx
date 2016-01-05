@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="27" height="37" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="256">
+  <image source="public_tileset_by_rafa_cac-d48o6ze.png" width="271" height="271"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="27" height="37">
+  <data encoding="base64" compression="zlib">
+   eJytl81ywjAMhE3oUM75aTnQznCheYPm1Cuc2vd/m5qZeNgskrNxOOwAGltfZClC3oQQNqKqqGPUR9Tngn2olwVrf6N+ov4K9iZ14rq3qCbqIPioCmNH1rvDUvOgxmmxcs+/NVjeeravjWuOp7B2Ua+gvcjjuNHXdWRdyHeyJylxW7HtwFdDPlmNwPJqATnfUQN8/wINYXlcOU6fydeZ2P1KDtbGRcx/CWdLrByvE3mJU1M8XPOtGJ/H8s6tMlhYJ8p5Khw+E6yNcwEvx/HWJd85HvaSPe1vw2M/sHpDA76TvSUb95JDuP8fWT2gduyecusTK/3GXjAY9oF8cu/gPtLCuj5M33fMk5UHtHFeb7Wa5gE1/9x3hjGOxOMe1YVpnaoc673j+K7Aqp7A4WdFXksstd94YhbzmFWSHzV/mK8cJ9UKn5n1rltzA9ZGSTxWv8P/De4dTZjWSem5IWtutlibH47LmitOYGeOOqtXYX5uUGfRkjuFFXftsNbcFTpjP8alzsreM83tf8Y8z1xWKcua15WYb+J7JdbB0vOce47j+FlyX/4HK9w1Ug==
+  </data>
+ </layer>
+ <layer name="yeet" width="27" height="37">
+  <data encoding="base64" compression="zlib">
+   eJzt16ERAAAIAzGWhvkxLMDhuMS86gCN2MlpLXcAAADw2eUvN2hGAdc=
+  </data>
+ </layer>
+</map>
