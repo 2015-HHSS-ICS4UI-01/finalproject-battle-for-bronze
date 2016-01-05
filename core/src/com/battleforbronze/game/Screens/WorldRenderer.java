@@ -34,14 +34,14 @@ public class WorldRenderer {
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
     
-    TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
-    TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
-    TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
-    TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
 
     public WorldRenderer(/*World w*/) {
 
         map = new TmxMapLoader().load("map.tmx");
+        TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
+        TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
+        TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
+        TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);

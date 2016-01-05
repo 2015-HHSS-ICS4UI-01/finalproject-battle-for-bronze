@@ -6,6 +6,7 @@
 package com.battleforbronze.game.Main;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,22 +15,26 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.battleforbronze.game.Screens.WorldRenderer;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor{
+public class MainGame implements Screen, InputProcessor, MouseListener{
     
-    //private TiledMap map;
-//    private OrthogonalTiledMapRenderer render;
-    //private OrthographicCamera camera;
     private WorldRenderer renderer;
     public MainGame() {
         
-        //map = new TiledMap();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
+        
+        
+       
+        
+        
+        
     }
     
     @Override
@@ -106,8 +111,32 @@ return false;
 
     @Override
     public boolean scrolled(int amount) {
-        System.out.println(amount);
         renderer.zoom(amount);
         return false;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+    
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
     }
 }

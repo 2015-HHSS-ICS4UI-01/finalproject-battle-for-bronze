@@ -10,40 +10,25 @@ import com.badlogic.gdx.utils.Array;
  *
  * @author valet8115
  */
-public class Deck1 {
-    
+public class Deck1 {  
     private Array<Card> cards;
-    private String name;
-    private int force;
-    private int attack;
-    private int defense;
-    private int cost;
     
     public Deck1(){
         
-        
-        cards.size = 20;
-        
-        for (int i = 0; i < cards.size; i++) {
-            
-            
-        }
+        cards = new Array<Card>();
+       
+        cards.add(new Card("najkna", 10,  5, 2, 100));
     }
     
     public void createDeck(){
         
     }
-   
     public void shuffle(){
         
-    }
-    
+    }   
     public void draw(){
         
-    }
-    
-    public void add(){
-        
-    }
-    
+    }   
+    public void add(){       
+    }   
 }
