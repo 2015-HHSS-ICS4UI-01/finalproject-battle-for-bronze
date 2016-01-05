@@ -17,15 +17,14 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 /**
  *
  * @author Leo Yao
  */
 public class WorldRenderer {
-    
-    public float Z_WIDTH = 0;
-    public float Z_HEIGHT = 0;
+
     public final float PPU = 16;
     public final int V_WIDTH = 700;
     public final int V_HEIGHT = 700;
@@ -34,19 +33,24 @@ public class WorldRenderer {
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
+    
+    TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
+    TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
+    TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
+    TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
 
     public WorldRenderer(/*World w*/) {
 
         map = new TmxMapLoader().load("map.tmx");
 
         camera = new OrthographicCamera();
-        viewport = new FitViewport(V_WIDTH, V_HEIGHT, camera);
+        viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);
         batch = new SpriteBatch();
         render = new OrthogonalTiledMapRenderer(map, batch);
         // move the x position of the camera
-        camera.position.x = 432/2;
+        camera.position.x = 432 / 2;
         // move the y position of the camera
-        camera.position.y = 0+(592/4);
+        camera.position.y = 0 + (592 / 4);
         // update the camera
         camera.update();
 
@@ -62,15 +66,23 @@ public class WorldRenderer {
 
         // update the camera
 
-        
+        if (Gdx.input.isKeyPressed(Keys.A)) {
+            camera.position.x = camera.position.x - 5;
+        }
+        if (Gdx.input.isKeyPressed(Keys.D)) {
+            camera.position.x = camera.position.x + 5;
+        }
+        if (Gdx.input.isKeyPressed(Keys.W)) {
+            camera.position.y = camera.position.y + 5;
+        }
+        if (Gdx.input.isKeyPressed(Keys.S)) {
+            camera.position.y = camera.position.y - 5;
+        }
         camera.update();
-
         // links the renderer to the camera
         batch.setProjectionMatrix(camera.combined);
-
         render.setView(camera);
         render.render();
-
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
@@ -83,13 +95,12 @@ public class WorldRenderer {
     public void resize(int width, int height) {
         viewport.update(width, height);
     }
-    
-    
-    public void zoom(int scale){
-        if(scale == 1){
-            camera.zoom *= 0.8 ;
-        }else if (scale == -1){
-            camera.zoom *= 1.2f;
+
+    public void zoom(int scale) {
+        if (scale == 1) {
+            camera.zoom *= 1.1f;
+        } else if (scale == -1) {
+            camera.zoom *= 0.9;
         }
     }
 }

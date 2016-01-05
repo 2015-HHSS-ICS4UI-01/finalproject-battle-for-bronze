@@ -12,10 +12,38 @@ package com.battleforbronze.game.Model;
 public class Card {
     
     private String name;
+    private int force;
+    private int attack;
+    private int defense;
+    private int cost;
+  
+    public Card(String name, int force, int attack, int defense, int cost){
+        this.name = name;
+        this.attack = attack;
+        this.cost = cost;
+        this.defense = defense;
+        this.force = force;
+    }
+      
+    public int force (){
+        return this.force;      
+    }
     
-    private int sta;
-    private int atk;
-    private int def;
+    public int attack (){
+        return this.attack;      
+    }
+    
+    public int defense (){
+        return this.defense; 
+    }
+    
+    public int cost (){
+        return this.cost;
+    }
+    
+    public String name(){
+        return this.name;
+    }
     
     
     
