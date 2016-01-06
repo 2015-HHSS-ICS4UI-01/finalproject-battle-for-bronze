@@ -47,6 +47,7 @@ public class WorldRenderer {
         viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);
         batch = new SpriteBatch();
         render = new OrthogonalTiledMapRenderer(map, batch);
+        
         // move the x position of the camera
         camera.position.x = 432 / 2;
         // move the y position of the camera
