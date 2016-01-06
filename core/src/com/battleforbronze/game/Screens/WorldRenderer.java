@@ -60,7 +60,7 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
-        Gdx.gl20.glClearColor(0, 0, 0, 1);
+        Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
