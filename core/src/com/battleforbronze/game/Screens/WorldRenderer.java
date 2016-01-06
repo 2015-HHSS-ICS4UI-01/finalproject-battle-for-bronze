@@ -67,16 +67,24 @@ public class WorldRenderer {
         // update the camera
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
+            if(camera.position.x>=100){
             camera.position.x = camera.position.x - 5;
+            }
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
+            if(camera.position.x<=300){
             camera.position.x = camera.position.x + 5;
+            }
         }
         if (Gdx.input.isKeyPressed(Keys.W)) {
+            if(camera.position.y<=500){
             camera.position.y = camera.position.y + 5;
+            }
         }
         if (Gdx.input.isKeyPressed(Keys.S)) {
+            if(camera.position.y>=100){
             camera.position.y = camera.position.y - 5;
+            }
         }
         camera.update();
         // links the renderer to the camera
