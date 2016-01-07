@@ -35,6 +35,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
     private Deck2 deckTwo;
     private WorldRenderer renderer;
     private boolean turn;
+    
     public MainGame() {
         
         deckOne = new Deck1();
@@ -43,41 +44,46 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
         playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-
-    
+        deckOne.shuffle();
+        deckTwo.shuffle();
+        playerOneHand.startingHand();
+        playerTwoHand.startingHand();
+        
     }
     
     @Override
-    public void show(){
-        
+    public void show(){      
         
     }
     
     public void render(float deltaTime){
         // draw the screen
         renderer.render(deltaTime);
-        playerOneHand.startingHand();
-        playerTwoHand.startingHand();
+        //shuffle the deck then create the players hands 
         
-        if (turn == true) {
-            playerOneHand.draw();
-            //end the turn
-            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+        if (turn == true){
+            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+                playerOneHand.draw();
                 System.out.println(playerOneHand.currentHandSize());
+            }
+            if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
                 turn = false;
+                System.out.println("other turn (to 2)");
             }
-            
-            
-        } 
-        if (turn == false) {     
-            playerTwoHand.draw();
-            //end the turn
-            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+        }
+        
+        if (turn == false){
+            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+                playerTwoHand.draw();
                 System.out.println(playerTwoHand.currentHandSize());
+            }
+            if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
                 turn = true;
+                System.out.println("other turn (to 1)");
             }
             
-        } 
+        }
+        
     }
     
     

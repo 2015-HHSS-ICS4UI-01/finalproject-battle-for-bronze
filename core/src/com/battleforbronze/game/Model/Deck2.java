@@ -47,7 +47,7 @@ public class Deck2 {
         deckTwo.shuffle();
     }
     /*
-     * gets the first card
+     * gets the first card in the deck
      */
     public Card firstCard(){
         return deckTwo.first();

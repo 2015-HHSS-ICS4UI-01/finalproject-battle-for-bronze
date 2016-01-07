@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.Array;
 public class Player2Hand {
     
     private int currentHandSize;
-    private Deck2 Player2Hand;
+    private Deck2 player2Deck;
     private Array<Card> hand;
     private boolean canDraw;
     private int cardPlayed;
@@ -22,26 +22,26 @@ public class Player2Hand {
     public Player2Hand() {
         
         hand = new Array<Card>();
-        Player2Hand = new Deck2();
+        player2Deck = new Deck2();
         
     }
   
     public int currentHandSize(){
-        return this.currentHandSize;
+        return hand.size;
     }
     
     public void startingHand(){
-        hand.add(Player2Hand.firstCard());
-        Player2Hand.removeFirst();
-        hand.add(Player2Hand.firstCard());
-        Player2Hand.removeFirst();
-        hand.add(Player2Hand.firstCard());
-        Player2Hand.removeFirst();
+        hand.add(player2Deck.firstCard());
+        player2Deck.removeFirst();
+        hand.add(player2Deck.firstCard());
+        player2Deck.removeFirst();
+        hand.add(player2Deck.firstCard());
+        player2Deck.removeFirst();
     }
     
     public void draw(){
-        hand.add(Player2Hand.firstCard());
-        Player2Hand.removeFirst();
+        hand.add(player2Deck.firstCard());
+        player2Deck.removeFirst();
     }
     
     public boolean canDraw(){
