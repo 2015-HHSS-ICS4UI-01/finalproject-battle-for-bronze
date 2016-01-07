@@ -13,7 +13,9 @@ import com.badlogic.gdx.utils.Array;
 public class Deck2 {
     
     private Array<Card> deckTwo;
-    
+    /**
+     * creates the cards inside of the deck
+     */
     public Deck2(){
         
         deckTwo = new Array<Card>();
@@ -39,18 +41,30 @@ public class Deck2 {
         deckTwo.add(new Card("Name", 9,  4, 4, 9));   
         
     }
-   
+   /**
+    * shuffles the array
+    */
     public void shuffle(){
         deckTwo.shuffle();
-    }   
+    }
+    /*
+     * gets the first card
+     */
     public Card firstCard(){
         return deckTwo.first();
            
     }
+    /**
+     * removes the first card
+     * @return 
+     */
     public Card removeFirst(){
         return deckTwo.removeIndex(0);
     }
-    
+    /**
+     * gets the current deck size
+     * @return 
+     */
     public int deckSize(){
         return deckTwo.size;
     }

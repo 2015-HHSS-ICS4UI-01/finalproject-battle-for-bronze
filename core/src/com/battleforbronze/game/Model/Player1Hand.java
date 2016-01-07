@@ -19,6 +19,9 @@ public class Player1Hand {
     private boolean canDraw;
     private int cardPlayed;
     
+    /**
+     * player 1's hand
+     */
     public Player1Hand() {
         
         hand = new Array<Card>();
@@ -26,31 +29,37 @@ public class Player1Hand {
         
     }
     
-    
+    /*
+     * gets the current hand size
+     */
     public int currentHandSize(){
-        return this.currentHandSize;
+        return hand.size;
     }
-    
+    /*
+     * creates the starting hand
+     */
     public void startingHand(){
         hand.add(player1Deck.firstCard());
         player1Deck.removeFirst();
         hand.add(player1Deck.firstCard());
         player1Deck.removeFirst();
-        hand.add(player1Deck.firstCard());
-        player1Deck.removeFirst();
-        hand.add(player1Deck.firstCard());
-        player1Deck.removeFirst();
     }
-    
+    /*
+     * draws the first card
+     */
     public void draw(){
         hand.add(player1Deck.firstCard());
         player1Deck.removeFirst();
     }
-    
+    /*
+     * checks if you can draw
+     */
     public boolean canDraw(){
         return this.canDraw;
     }
-    
+    /*
+     * removes the card that is played from the array
+     */
     public Card removeFromHand(){
         return hand.removeIndex(cardPlayed);
     }

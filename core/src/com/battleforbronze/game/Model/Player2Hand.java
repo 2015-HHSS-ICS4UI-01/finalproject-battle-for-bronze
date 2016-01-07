@@ -37,8 +37,6 @@ public class Player2Hand {
         Player2Hand.removeFirst();
         hand.add(Player2Hand.firstCard());
         Player2Hand.removeFirst();
-        hand.add(Player2Hand.firstCard());
-        Player2Hand.removeFirst();
     }
     
     public void draw(){

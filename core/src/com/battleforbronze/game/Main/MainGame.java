@@ -7,6 +7,7 @@ package com.battleforbronze.game.Main;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,6 +15,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.battleforbronze.game.Model.Deck1;
+import com.battleforbronze.game.Model.Deck2;
+import com.battleforbronze.game.Model.Player1Hand;
+import com.battleforbronze.game.Model.Player2Hand;
 import com.battleforbronze.game.Screens.WorldRenderer;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -24,17 +29,45 @@ import java.awt.event.MouseListener;
  */
 public class MainGame implements Screen, InputProcessor, MouseListener{
     
+    private Player1Hand playerOneHand;
+    private Player2Hand playerTwoHand;
+    private Deck1 deckOne;
+    private Deck2 deckTwo;
     private WorldRenderer renderer;
     public MainGame() {
         
+        deckOne = new Deck1();
+        deckTwo = new Deck2();
+        playerOneHand = new Player1Hand();
+        playerTwoHand = new Player2Hand();
+        boolean turn = true;
+        
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
+        playerOneHand.startingHand();
+        playerTwoHand.startingHand();
         
         
-       
-        
-        
-        
+        if (turn = true) {
+            playerOneHand.draw();
+            //end the turn
+            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+                System.out.println(playerOneHand.currentHandSize());
+                turn = false;
+            }
+            
+            
+        } 
+        if (turn = false) {     
+            playerTwoHand.draw();
+            //end the turn
+            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+                System.out.println(playerTwoHand.currentHandSize());
+                turn = false;
+            }
+            
+        } 
+    
     }
     
     @Override
@@ -86,6 +119,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
 
     @Override
     public boolean keyTyped(char character) {
+        
         return false;
     }
 
