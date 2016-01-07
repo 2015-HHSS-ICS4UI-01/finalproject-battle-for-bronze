@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="256" columns="16">
   <image source="public_tileset_by_rafa_cac-d48o6ze.png" width="271" height="271"/>
  </tileset>
- <tileset firstgid="257" name="second" tilewidth="16" tileheight="16" spacing="1" tilecount="462" columns="22">
-  <image source="../../../../Profile/Desktop/my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
+ <tileset firstgid="257" name="2" tilewidth="16" tileheight="16" spacing="1" tilecount="66" columns="22">
+  <image source="my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
  </tileset>
  <layer name="base" width="27" height="37">
   <data encoding="base64" compression="zlib">
@@ -28,7 +28,7 @@
  </layer>
  <layer name="Decorations" width="27" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt17kyBEEcx/EeIgRkLAEpiiWVkHoJqXORse7MfWTuI8M6I8cLsF7A8QKOF3BkvopRXV29tntnaqpU9a/qk8z0zK/mqKn5CxFuClCoUaRZ2xawK4ZyjQppTQ8S6EUf+nGGc1zg0rCrGjWSVk3XCEYxhnFM4ArXSOPG7vJ+41+n3DWHeSxgEUu4xR3u8RBi1wY2sYVt7OART3jGS4hdhzjCMU5wile84R0fOXb5z69W2V6MkhzPaZtKVEXUFUdDRF3NaImo67/HvW/B4943F5do475bweO+W5nTjg50ogvdyn5/rtDNEbYZwCCSGMKwsl/3X+p5QuRZyPe+j5vEFKYxg1mDrjqOrTdUhthP1zJWsIo1rBt02aRU6trFHvaRwkGGriaRfQ7M1iWnUbPWZA78K1/3O67p0kWdA33qXBFGPgHeIjp8
+   eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
   </data>
  </layer>
 </map>
