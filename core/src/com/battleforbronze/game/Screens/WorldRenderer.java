@@ -107,9 +107,18 @@ public class WorldRenderer {
 
     public void zoom(int scale) {
         if (scale == 1) {
-            camera.zoom *= 1.1f;
+            if (camera.zoom >= 1.6){
+                
+            } else {
+                camera.zoom *= 1.1f;
+            }            
         } else if (scale == -1) {
-            camera.zoom *= 0.9;
+            if (camera.zoom <= .6){
+                
+            } else {
+               camera.zoom *= 0.9;
+            }            
         }
     }
 }
+

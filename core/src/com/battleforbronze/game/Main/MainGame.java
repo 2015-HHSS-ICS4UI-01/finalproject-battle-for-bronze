@@ -34,39 +34,16 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
     private Deck1 deckOne;
     private Deck2 deckTwo;
     private WorldRenderer renderer;
+    private boolean turn;
     public MainGame() {
         
         deckOne = new Deck1();
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
         playerTwoHand = new Player2Hand();
-        boolean turn = true;
-        
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-        playerOneHand.startingHand();
-        playerTwoHand.startingHand();
-        
-        
-        if (turn = true) {
-            playerOneHand.draw();
-            //end the turn
-            if(Gdx.input.isButtonPressed(Keys.SPACE)){
-                System.out.println(playerOneHand.currentHandSize());
-                turn = false;
-            }
-            
-            
-        } 
-        if (turn = false) {     
-            playerTwoHand.draw();
-            //end the turn
-            if(Gdx.input.isButtonPressed(Keys.SPACE)){
-                System.out.println(playerTwoHand.currentHandSize());
-                turn = false;
-            }
-            
-        } 
+
     
     }
     
@@ -79,6 +56,28 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
     public void render(float deltaTime){
         // draw the screen
         renderer.render(deltaTime);
+        playerOneHand.startingHand();
+        playerTwoHand.startingHand();
+        
+        if (turn == true) {
+            playerOneHand.draw();
+            //end the turn
+            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+                System.out.println(playerOneHand.currentHandSize());
+                turn = false;
+            }
+            
+            
+        } 
+        if (turn == false) {     
+            playerTwoHand.draw();
+            //end the turn
+            if(Gdx.input.isButtonPressed(Keys.SPACE)){
+                System.out.println(playerTwoHand.currentHandSize());
+                turn = true;
+            }
+            
+        } 
     }
     
     

@@ -10,8 +10,7 @@ import com.badlogic.gdx.utils.Array;
  * String name, int force, int attack, int defense, int cost
  * @author valet8115
  */
-public class Deck2 {
-    
+public class Deck2 {   
     private Array<Card> deckTwo;
     /**
      * creates the cards inside of the deck
