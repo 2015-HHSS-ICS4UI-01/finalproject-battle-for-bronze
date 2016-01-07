@@ -10,13 +10,13 @@ package com.battleforbronze.game.Model;
  * @author Leo Yao
  */
 public class Entity {
-    private int posX;
-    private int posY;
+    private int tileX;
+    private int tileY;
     private boolean hasCrashed;
     
     public Entity(int x, int y){
-      posX = x;
-      posY = y;  
+      tileX = x;
+      tileY = y;  
       hasCrashed = false;
     }
     
@@ -28,11 +28,11 @@ public class Entity {
        return hasCrashed;
     }
 
-    public int getPosX(){
-        return posX;
+    public int getTileX(){
+        return tileX;
     }
     
-    public int getPosY(){
-        return posY;
+    public int getTileY(){
+        return tileY;
     }
 }
