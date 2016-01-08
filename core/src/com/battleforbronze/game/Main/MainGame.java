@@ -23,23 +23,24 @@ import com.battleforbronze.game.Screens.WorldRenderer;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Timer;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor, MouseListener{
-    
+public class MainGame implements Screen, InputProcessor, MouseListener {
+
     private Player1Hand playerOneHand;
     private Player2Hand playerTwoHand;
     private Deck1 deckOne;
     private Deck2 deckTwo;
     private WorldRenderer renderer;
     private boolean turn;
-    private Timer timer;
-    
+    private float timer = 0;
+
     public MainGame() {
-        
+
         Timer timer = new Timer();
         deckOne = new Deck1();
         deckTwo = new Deck2();
@@ -52,70 +53,77 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         
-        
-        
-        
+        System.out.println("Player One's turn, go!");
+
+
     }
-    
+
     @Override
-    public void show(){      
-        
+    public void show() {
     }
-    
-    public void render(float deltaTime){
+
+    public void render(float deltaTime) {
         // draw the screen
         renderer.render(deltaTime);
         //shuffle the deck then create the players hands 
         
-        if (turn == true){
-            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+        timer += deltaTime;
+        if(timer >= (60 * 2)){
+            System.out.println("swtiched turns");
+            if (turn == true){ 
                 playerOneHand.draw();
-                System.out.println(playerOneHand.currentHandSize());
-            }
-            if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
-                turn = false;
-                System.out.println("other turn (to 2)");
-            }
-        }
-        
-        if (turn == false){
-            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+                System.out.println("Player ones hand is: " + playerOneHand.currentHandSize());
+                turn = false; 
+                timer = 0;
+                
+            } else {
                 playerTwoHand.draw();
-                System.out.println(playerTwoHand.currentHandSize());
-            }
-            if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
+                System.out.println("Player twos hand is: " + playerTwoHand.currentHandSize());
                 turn = true;
-                System.out.println("other turn (to 1)");
-            }
+                timer = 0;
+            }   
+            
+        }
+        if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
+            System.out.println("switched to player twos turn");
+            playerTwoHand.draw();
+            System.out.println("Players 2 hand is: " + playerTwoHand.currentHandSize());
+            turn = false;
+            timer = 0;
             
         }
         
+        if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
+            System.out.println("switched to player ones turn");
+            playerOneHand.draw();
+            System.out.println("Players 1 hand is: " + playerOneHand.currentHandSize());
+            turn = true;
+            timer = 0;
+            
+        }
+
     }
-    
-    
+
     public void resize(int width, int height) {
         renderer.resize(width, height);
     }
-    
+
     @Override
     public void pause() {
-        
     }
-    
+
     @Override
     public void resume() {
-        
     }
-    
+
     @Override
     public void hide() {
         dispose();
-        
+
     }
-    
+
     @Override
     public void dispose() {
-        
     }
 
     @Override
@@ -130,13 +138,13 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
 
     @Override
     public boolean keyTyped(char character) {
-        
+
         return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-return false;
+        return false;
     }
 
     @Override
@@ -151,7 +159,7 @@ return false;
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-       return false;
+        return false;
     }
 
     @Override
@@ -162,26 +170,21 @@ return false;
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
     }
-    
+
     @Override
     public void mouseExited(MouseEvent e) {
-        
     }
 }
