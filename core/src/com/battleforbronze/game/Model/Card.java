@@ -15,13 +15,23 @@ public class Card {
     private int attack;
     private int defense;
     private int cost;
+    
     public Card(String name, int force, int attack, int defense, int cost){
         this.name = name;
         this.attack = attack;
         this.cost = cost;
         this.defense = defense;
         this.force = force;
-    }    
+    } 
+    
+    public Card(String name){
+        this.name = name;
+        this.attack = (int) Math.ceil(Math.random() * 9);
+        this.cost = (int) Math.ceil(Math.random() * 9);
+        this.defense = (int) Math.ceil(Math.random() * 9);
+        this.force = (int) Math.ceil(Math.random() * 9);
+    }
+    
     public int force (){
         return this.force;      
     }   
