@@ -57,8 +57,6 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand.startingHand();
         
         System.out.println("Player One's turn, go!");
-        playerOneHand.getCard(displayAttk);
-        System.out.println(displayAttk);
     }
 
     @Override
