@@ -7,6 +7,7 @@ package com.battleforbronze.game.Main;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,9 +15,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.battleforbronze.game.Model.Deck1;
+import com.battleforbronze.game.Model.Deck2;
+import com.battleforbronze.game.Model.Player1Hand;
+import com.battleforbronze.game.Model.Player2Hand;
 import com.battleforbronze.game.Screens.WorldRenderer;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Timer;
 
 /**
  *
@@ -24,28 +30,66 @@ import java.awt.event.MouseListener;
  */
 public class MainGame implements Screen, InputProcessor, MouseListener{
     
+    private Player1Hand playerOneHand;
+    private Player2Hand playerTwoHand;
+    private Deck1 deckOne;
+    private Deck2 deckTwo;
     private WorldRenderer renderer;
+    private boolean turn;
+    private Timer timer;
+    
     public MainGame() {
         
+        Timer timer = new Timer();
+        deckOne = new Deck1();
+        deckTwo = new Deck2();
+        playerOneHand = new Player1Hand();
+        playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-
+        deckOne.shuffle();
+        deckTwo.shuffle();
+        playerOneHand.startingHand();
+        playerTwoHand.startingHand();
         
-       
         
         
         
     }
     
     @Override
-    public void show(){
-        
+    public void show(){      
         
     }
     
     public void render(float deltaTime){
         // draw the screen
         renderer.render(deltaTime);
+        //shuffle the deck then create the players hands 
+        
+        if (turn == true){
+            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+                playerOneHand.draw();
+                System.out.println(playerOneHand.currentHandSize());
+            }
+            if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
+                turn = false;
+                System.out.println("other turn (to 2)");
+            }
+        }
+        
+        if (turn == false){
+            if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+                playerTwoHand.draw();
+                System.out.println(playerTwoHand.currentHandSize());
+            }
+            if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
+                turn = true;
+                System.out.println("other turn (to 1)");
+            }
+            
+        }
+        
     }
     
     
@@ -86,6 +130,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
 
     @Override
     public boolean keyTyped(char character) {
+        
         return false;
     }
 

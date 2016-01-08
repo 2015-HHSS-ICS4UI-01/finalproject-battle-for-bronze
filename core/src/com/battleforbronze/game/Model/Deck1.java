@@ -12,11 +12,11 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Deck1 {  
     private Array<Card> deckOne;
-    private Array<Card> garbageOne;
-    
+    /**
+     * creates deck and makes all cards
+     */
     public Deck1(){
         
-        garbageOne = new Array<Card>();
         deckOne = new Array<Card>();
         deckOne.add(new Card("Mr Lamont", 1,  2, 1, 1));
         deckOne.add(new Card("Master Yi", 2,  1, 1, 1));
@@ -39,18 +39,31 @@ public class Deck1 {
         deckOne.add(new Card("PhenoixPhlare", 8,  3, 3, 8));
         deckOne.add(new Card("N@me", 9,  4, 4, 9));
     }
-    
+    /**
+     * shuffles the array
+     */
     public void shuffle(){
         deckOne.shuffle();
     }   
+    /**
+     * gets the first card
+     * @return 
+     */
     public Card firstCard(){
         return deckOne.first();
            
     }
+    /**
+     * removes the first card
+     * @return 
+     */
     public Card removeFirst(){
         return deckOne.removeIndex(0);
     }
-    
+    /**
+     * gets the current deck size
+     * @return 
+     */
     public int deckSize(){
         return deckOne.size;
     }
