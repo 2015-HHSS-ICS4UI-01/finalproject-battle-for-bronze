@@ -110,9 +110,9 @@ public class WorldRenderer {
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
-//        for(Card b: Player1Hand.getCards()){
+        for(Card b: Player1Hand.getCards()){
             batch.draw(card, 425, 200, 100, 150);
-//        }
+        }
 
         // finished listing things to draw
         batch.end();
