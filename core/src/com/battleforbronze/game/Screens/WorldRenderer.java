@@ -17,7 +17,10 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.battleforbronze.game.Model.Card;
+import com.battleforbronze.game.Model.Player1Hand;
 
 /**
  *
@@ -29,29 +32,38 @@ public class WorldRenderer {
     public final int V_WIDTH = 700;
     public final int V_HEIGHT = 700;
     private Viewport viewport;
+    private Viewport guiViewport;
     private OrthographicCamera camera;
+    private OrthographicCamera guiCam;
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
+    private Texture card;
     
 
     public WorldRenderer(/*World w*/) {
 
         map = new TmxMapLoader().load("map.tmx");
+        
         TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
         TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
         TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
+        card = new Texture("Card.png");
 
         camera = new OrthographicCamera();
+        guiCam = new OrthographicCamera();
         viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);
+        guiViewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, guiCam);
         batch = new SpriteBatch();
         render = new OrthogonalTiledMapRenderer(map, batch);
         
         // move the x position of the camera
         camera.position.x = 432 / 2;
+        guiCam.position.x = V_WIDTH/2;
         // move the y position of the camera
         camera.position.y = 0 + (592 / 4);
+        guiCam.position.y = V_HEIGHT/2;
         // update the camera
         camera.update();
 
@@ -88,14 +100,19 @@ public class WorldRenderer {
             }
         }
         camera.update();
+        guiCam.update();
         // links the renderer to the camera
         batch.setProjectionMatrix(camera.combined);
         render.setView(camera);
         render.render();
+        
+        batch.setProjectionMatrix(guiCam.combined);
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
-
+//        for(Card b: Player1Hand.getCards()){
+            batch.draw(card, 425, 200, 100, 150);
+//        }
 
         // finished listing things to draw
         batch.end();
@@ -103,6 +120,7 @@ public class WorldRenderer {
 
     public void resize(int width, int height) {
         viewport.update(width, height);
+        guiViewport.update(width, height);
     }
 
     public void zoom(int scale) {
