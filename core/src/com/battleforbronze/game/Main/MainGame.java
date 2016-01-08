@@ -22,6 +22,7 @@ import com.battleforbronze.game.Model.Player2Hand;
 import com.battleforbronze.game.Screens.WorldRenderer;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Timer;
 
 /**
  *
@@ -35,9 +36,11 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
     private Deck2 deckTwo;
     private WorldRenderer renderer;
     private boolean turn;
+    private Timer timer;
     
     public MainGame() {
         
+        Timer timer = new Timer();
         deckOne = new Deck1();
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
@@ -48,6 +51,9 @@ public class MainGame implements Screen, InputProcessor, MouseListener{
         deckTwo.shuffle();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
+        
+        
+        
         
     }
     

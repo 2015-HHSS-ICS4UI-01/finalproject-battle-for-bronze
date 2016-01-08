@@ -52,4 +52,8 @@ public class Player2Hand {
         return hand.removeIndex(cardPlayed);
     }
     
+    public Array<Card> getCards(){
+        return hand;
+    }
+    
 }
