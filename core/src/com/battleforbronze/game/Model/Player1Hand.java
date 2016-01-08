@@ -68,5 +68,14 @@ public class Player1Hand {
         return hand;
     }
     
+    public Card getCard(int pos){
+        return hand.get(pos);
+    }
+    
+    public int getAttk(Card pos, int attk){
+        return attk;      
+    }
+    
     
 }
+

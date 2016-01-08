@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
 import com.battleforbronze.game.Model.Player1Hand;
@@ -38,9 +39,11 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     private WorldRenderer renderer;
     private boolean turn;
     private float timer = 0;
+    private Card card;
 
     public MainGame() {
-
+        
+        int displayAttk = 2;
         Timer timer = new Timer();
         deckOne = new Deck1();
         deckTwo = new Deck2();
@@ -54,8 +57,8 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand.startingHand();
         
         System.out.println("Player One's turn, go!");
-
-
+        playerOneHand.getCard(displayAttk);
+        System.out.println(displayAttk);
     }
 
     @Override
@@ -66,41 +69,41 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         // draw the screen
         renderer.render(deltaTime);
         //shuffle the deck then create the players hands 
+//        timer += deltaTime;
+//        if(timer >= (60 * 2)){
+//            System.out.println("swtiched turns");
+//            if (turn == true){ 
+//                playerOneHand.draw();
+//                System.out.println("Player ones hand is: " + playerOneHand.currentHandSize());
+//                turn = false; 
+//                timer = 0;
+//                
+//            } else {
+//                playerTwoHand.draw();
+//                System.out.println("Player twos hand is: " + playerTwoHand.currentHandSize());
+//                turn = true;
+//                timer = 0;
+//            }   
+//            
+//        }
+//        if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
+//            System.out.println("switched to player twos turn");
+//            playerTwoHand.draw();
+//            System.out.println("Players 2 hand is: " + playerTwoHand.currentHandSize());
+//            turn = false;
+//            timer = 0;
+//            
+//        }
+//        
+//        if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
+//            System.out.println("switched to player ones turn");
+//            playerOneHand.draw();
+//            System.out.println("Players 1 hand is: " + playerOneHand.currentHandSize());
+//            turn = true;
+//            timer = 0;
+//            
+//        }
         
-        timer += deltaTime;
-        if(timer >= (60 * 2)){
-            System.out.println("swtiched turns");
-            if (turn == true){ 
-                playerOneHand.draw();
-                System.out.println("Player ones hand is: " + playerOneHand.currentHandSize());
-                turn = false; 
-                timer = 0;
-                
-            } else {
-                playerTwoHand.draw();
-                System.out.println("Player twos hand is: " + playerTwoHand.currentHandSize());
-                turn = true;
-                timer = 0;
-            }   
-            
-        }
-        if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
-            System.out.println("switched to player twos turn");
-            playerTwoHand.draw();
-            System.out.println("Players 2 hand is: " + playerTwoHand.currentHandSize());
-            turn = false;
-            timer = 0;
-            
-        }
-        
-        if (Gdx.input.isKeyJustPressed(Keys.SHIFT_RIGHT)){
-            System.out.println("switched to player ones turn");
-            playerOneHand.draw();
-            System.out.println("Players 1 hand is: " + playerOneHand.currentHandSize());
-            turn = true;
-            timer = 0;
-            
-        }
 
     }
 

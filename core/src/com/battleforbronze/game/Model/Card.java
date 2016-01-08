@@ -32,19 +32,20 @@ public class Card {
         this.force = (int) Math.ceil(Math.random() * 9);
     }
     
-    public int force (){
+    public int getForce (){
         return this.force;      
     }   
-    public int attack (){
+    public int getAttack (){
         return this.attack;      
     }  
-    public int defense (){
+    public int getDefense (){
         return this.defense; 
     }   
-    public int cost (){
+    public int getCost (){
         return this.cost;
     }    
-    public String name(){
+    public String getName(){
         return this.name;
     }  
+    
 }
