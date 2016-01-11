@@ -29,8 +29,8 @@ import com.battleforbronze.game.Model.Player1Hand;
 public class WorldRenderer {
 
     public final float PPU = 16;
-    public final int V_WIDTH = 700;
-    public final int V_HEIGHT = 700;
+    public final int V_WIDTH = 1100;
+    public final int V_HEIGHT = 900;
     private Viewport viewport;
     private Viewport guiViewport;
     private OrthographicCamera camera;
@@ -110,8 +110,13 @@ public class WorldRenderer {
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
+
+        //for(Card b: Player1Hand.getCards()){
+            batch.draw(card, 725, 250, 90, 140);
+        //}
+
         batch.draw(card, 425, 200, 100, 150);
-        
+
 
         // finished listing things to draw
         batch.end();
