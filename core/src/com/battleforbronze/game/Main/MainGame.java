@@ -63,6 +63,9 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         deckTwo.shuffle();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
+        playerOneHand.draw();
+        playerOneHand.draw();
+        
         
         for (int i = 0; i < playerOneHand.handSize(); i++) {
             findCard = playerOneHand.getCard(i);
@@ -71,7 +74,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
             defenceFound = playerOneHand.getDfnc(findCard);
             costFound = playerOneHand.getCost(findCard);
             nameFound = playerOneHand.getName(findCard);
-            System.out.println("Card " + i + ": ");
+            System.out.println("Card " + i + "- ");
             System.out.println("Name: " + nameFound);
             System.out.println("Cost: " + costFound);
             System.out.println("Attack: " + attkFound);
@@ -215,19 +218,4 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public int returnAttk(){
-        return attkFound;
-    }
-    public int returnFrc(){
-        return forceFound;
-    }
-    public int returnDfnc(){
-        return defenceFound;
-    }
-    public int returnCost(){
-        return costFound;
-    }
-    public String returnName(){
-        return nameFound;
-    }
 }

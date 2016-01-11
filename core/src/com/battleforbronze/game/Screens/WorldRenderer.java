@@ -21,8 +21,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.battleforbronze.game.Main.MainGame;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Player1Hand;
+import com.battleforbronze.game.Model.Player2Hand;
 
 /**
  *
@@ -46,6 +48,15 @@ public class WorldRenderer {
     private Texture frcNum;
     private Texture picture;
     private BitmapFont font;
+    private Player1Hand hand;
+    private Player2Hand hand2;
+    private Card getCard;
+    private int attk;
+    private int cost;
+    private int frc;
+    private int dfns;
+    private String name;
+
 
     public WorldRenderer(/*World w*/) {
 
@@ -56,14 +67,55 @@ public class WorldRenderer {
         TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
         card = new Texture("Card.png");
-        
         font = new BitmapFont();
         font.setColor(Color.BLACK);
         
+        for (int i = 0; i < hand.handSize(); i++) {
+            getCard = hand.getCard(i);
+            name = getCard.getName();
+            attk = getCard.getAttack();
+            cost = getCard.getCost();
+            frc = getCard.getForce();
+            dfns = getCard.getDefense();
+            
+            if(attk == 1){
+                attkNum = new Texture("Numbers/Attack/A1.png");
+            }
+            if(attk == 2){
+                attkNum = new Texture("Numbers/Attack/A2.png");
+            }
+            if(attk == 3){
+                attkNum = new Texture("Numbers/Attack/A3.png");
+            }
+            if(attk == 4){
+                attkNum = new Texture("Numbers/Attack/A4.png");
+            }
+            if(attk == 5){
+                attkNum = new Texture("Numbers/Attack/A5.png");
+            }
+            if(attk == 6){
+                attkNum = new Texture("Numbers/Attack/A6.png");
+            }
+            if(attk == 7){
+                attkNum = new Texture("Numbers/Attack/A7.png");
+            }
+            if(attk == 8){
+                attkNum = new Texture("Numbers/Attack/A8.png");
+            }
+            if(attk == 9){
+                attkNum = new Texture("Numbers/Attack/A9.png");
+            }
+            
+            
+            
+        }
+        
+        for (int i = 0; i < hand2.handSize(); i++) {
+            
+        }
         
         
         
-        attkNum = new Texture("Numbers/Attack/A1.png");
         defNum = new Texture("Numbers/Defence/D1.png");
         frcNum = new Texture("Numbers/Force/F1.png");
         picture = new Texture("Player1.png");
