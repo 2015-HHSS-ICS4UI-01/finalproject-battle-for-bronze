@@ -26,6 +26,8 @@ import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.concurrent.ScheduledExecutorService;
 
+//String name, int force, int attack, int defense, int cost
+
 /**
  *
  * @author Leo Yao
@@ -42,6 +44,10 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     private Card findCard;
     private int pos;
     private int attkFound;
+    private int forceFound;
+    private int defenceFound;
+    private int costFound;
+    private String nameFound;
 
     public MainGame() {
         
@@ -53,14 +59,11 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-//        deckOne.shuffle();
-//        deckTwo.shuffle();
+        deckOne.shuffle();
+        deckTwo.shuffle();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         
-        findCard = playerOneHand.getCard(pos);
-        attkFound = playerOneHand.getAttk(findCard);
-        System.out.println(attkFound);
         
         
     }
@@ -150,21 +153,6 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
     public boolean mouseMoved(int screenX, int screenY) {
         return false;
     }
@@ -193,5 +181,36 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public int returnAttk(){
+        return attkFound;
+    }
+    public int returnFrc(){
+        return forceFound;
+    }
+    public int returnDfnc(){
+        return defenceFound;
+    }
+    public int returnCost(){
+        return costFound;
+    }
+    public String returnName(){
+        return nameFound;
     }
 }
