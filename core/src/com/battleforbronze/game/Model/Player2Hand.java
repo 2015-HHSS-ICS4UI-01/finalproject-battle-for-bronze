@@ -56,5 +56,25 @@ public class Player2Hand {
         return hand;
     }
     
+    public Card getCard(int pos){
+        return hand.get(pos);
+    }
+    
+    public int getAttk(Card card){
+        return card.getAttack();
+    }
+    public int getFrc(Card card){
+        return card.getForce();
+    }
+    public int getDfnc(Card card){
+        return card.getDefense();
+    }
+    public int getCost(Card card){
+        return card.getCost();
+    }
+    public String getName(Card card){
+        return card.getName();
+    }
+    
     
 }

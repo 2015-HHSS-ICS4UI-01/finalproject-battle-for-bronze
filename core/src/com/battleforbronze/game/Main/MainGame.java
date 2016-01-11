@@ -39,11 +39,13 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     private WorldRenderer renderer;
     private boolean turn;
     private float timer = 0;
-    private Card card;
+    private Card findCard;
+    private int pos;
+    private int attkFound;
 
     public MainGame() {
         
-        int displayAttk = 2;
+        pos = 0;
         Timer timer = new Timer();
         deckOne = new Deck1();
         deckTwo = new Deck2();
@@ -51,12 +53,16 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-        deckOne.shuffle();
-        deckTwo.shuffle();
+//        deckOne.shuffle();
+//        deckTwo.shuffle();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         
-        System.out.println("Player One's turn, go!");
+        findCard = playerOneHand.getCard(pos);
+        attkFound = playerOneHand.getAttk(findCard);
+        System.out.println(attkFound);
+        
+        
     }
 
     @Override
@@ -66,8 +72,8 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     public void render(float deltaTime) {
         // draw the screen
         renderer.render(deltaTime);
-        //shuffle the deck then create the players hands 
-//        timer += deltaTime;
+        
+        timer += deltaTime;
 //        if(timer >= (60 * 2)){
 //            System.out.println("swtiched turns");
 //            if (turn == true){ 
