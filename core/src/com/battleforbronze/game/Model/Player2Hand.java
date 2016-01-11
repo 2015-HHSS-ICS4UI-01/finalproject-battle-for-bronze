@@ -60,6 +60,10 @@ public class Player2Hand {
         return hand.get(pos);
     }
     
+    public int handSize(){
+        return hand.size;
+    }
+    
     public int getAttk(Card card){
         return card.getAttack();
     }
