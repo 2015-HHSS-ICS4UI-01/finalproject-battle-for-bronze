@@ -17,7 +17,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Player1Hand;
@@ -40,7 +42,10 @@ public class WorldRenderer {
     private TiledMap map;
     private Texture card;
     private Texture attkNum;
-    
+    private Texture defNum;
+    private Texture frcNum;
+    private Texture picture;
+    private BitmapFont font;
 
     public WorldRenderer(/*World w*/) {
 
@@ -51,8 +56,18 @@ public class WorldRenderer {
         TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
         card = new Texture("Card.png");
+        
+        font = new BitmapFont();
+        font.setColor(Color.BLACK);
+        
+        
+        
+        
         attkNum = new Texture("Numbers/Attack/A1.png");
-
+        defNum = new Texture("Numbers/Defence/D1.png");
+        frcNum = new Texture("Numbers/Force/F1.png");
+        picture = new Texture("Player1.png");
+        
         camera = new OrthographicCamera();
         guiCam = new OrthographicCamera();
         viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);
@@ -116,7 +131,10 @@ public class WorldRenderer {
         //for(Card b: Player1Hand.getCards()){
             batch.draw(card, 725, 250, 90, 140);
             batch.draw(attkNum, 725, 250, 90, 140);
-            
+            batch.draw(defNum, 725, 250, 90, 140);
+            batch.draw(frcNum, 725, 250, 90, 140);
+            batch.draw(picture, 740, 305, 60, 60);
+            font.draw(batch, "KryptonBronze", 740, 380);
         //}
 
         
