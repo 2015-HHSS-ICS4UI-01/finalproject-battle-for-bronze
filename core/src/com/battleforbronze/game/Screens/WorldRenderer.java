@@ -39,6 +39,7 @@ public class WorldRenderer {
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
     private Texture card;
+    private Texture attkNum;
     
 
     public WorldRenderer(/*World w*/) {
@@ -50,6 +51,7 @@ public class WorldRenderer {
         TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
         card = new Texture("Card.png");
+        attkNum = new Texture("Numbers/Attack/A1.png");
 
         camera = new OrthographicCamera();
         guiCam = new OrthographicCamera();
@@ -113,9 +115,11 @@ public class WorldRenderer {
 
         //for(Card b: Player1Hand.getCards()){
             batch.draw(card, 725, 250, 90, 140);
+            batch.draw(attkNum, 725, 250, 90, 140);
+            
         //}
 
-        batch.draw(card, 425, 200, 100, 150);
+        
 
 
         // finished listing things to draw
