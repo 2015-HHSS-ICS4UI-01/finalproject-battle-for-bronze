@@ -35,7 +35,7 @@ import com.battleforbronze.game.Model.Player2Hand;
 public class WorldRenderer {
 
     public final float PPU = 16;
-    public final int V_WIDTH = 1100;
+    public final int V_WIDTH = 1200;
     public final int V_HEIGHT = 900;
     private Viewport viewport;
     private Viewport guiViewport;
@@ -72,6 +72,7 @@ public class WorldRenderer {
         hand = new Player1Hand();
         hand2 = new Player2Hand();
         hand.draw();
+        hand.draw();
         hand2.draw();
         
         
@@ -83,15 +84,14 @@ public class WorldRenderer {
         font = new BitmapFont();
         font.setColor(Color.BLACK);
         
-        for (int i = 0; i < hand.handSize(); i++) {
-            getCard = hand.getCard(i);
+        
+            getCard = hand.getCard(1);
             name = getCard.getName();
             attk = getCard.getAttack();
             cost = getCard.getCost();
             frc = getCard.getForce();
             dfns = getCard.getDefense();
 
-            
             if(attk == 1){
                 attkNum = new Texture("Numbers/Attack/A1.png");
             }
@@ -151,17 +151,44 @@ public class WorldRenderer {
             }
             
             
-        }
-        
-        for (int i = 0; i < hand2.handSize(); i++) {
+            if(frc == 1){
+                frcNum = new Texture("Numbers/Force/F1.png");
+            }
+            else if(frc == 2){
+                frcNum = new Texture("Numbers/Force/F2.png");
+            }
+            else if(frc == 3){
+                frcNum = new Texture("Numbers/Force/F3.png");
+            }
+            else if(frc == 4){
+                frcNum = new Texture("Numbers/Force/F4.png");
+            }
+            else if(frc == 5){
+                frcNum = new Texture("Numbers/Force/F5.png");
+            }
+            else if(frc == 6){
+                frcNum = new Texture("Numbers/Force/F6.png");
+            }
+            else if(frc == 7){
+                frcNum = new Texture("Numbers/Force/F7.png");
+            }
+            else if(frc == 8){
+                frcNum = new Texture("Numbers/Force/F8.png");
+            }
+            else if(frc == 9){
+                frcNum = new Texture("Numbers/Force/F9.png");
+            }
             
-        }
+            
+            
         
         
         
-        defNum = new Texture("Numbers/Defence/D1.png");
-        frcNum = new Texture("Numbers/Force/F1.png");
-        picture = new Texture("Player1.png");
+        
+        
+        
+
+//        picture = new Texture("Player1.png");
         
         camera = new OrthographicCamera();
         guiCam = new OrthographicCamera();
@@ -228,8 +255,9 @@ public class WorldRenderer {
             batch.draw(attkNum, 725, 250, 90, 140);
             batch.draw(defNum, 725, 250, 90, 140);
             batch.draw(frcNum, 725, 250, 90, 140);
-            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, "KryptonBronze", 740, 380);
+//            batch.draw(picture, 740, 305, 60, 60);
+            font.draw(batch, name, 740, 380);
+            font.draw(batch, "" + cost, 770, 320);
         //}
 
         
