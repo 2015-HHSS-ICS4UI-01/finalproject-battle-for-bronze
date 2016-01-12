@@ -23,6 +23,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.battleforbronze.game.Main.MainGame;
 import com.battleforbronze.game.Model.Card;
+import com.battleforbronze.game.Model.Deck1;
+import com.battleforbronze.game.Model.Deck2;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 
@@ -48,6 +50,9 @@ public class WorldRenderer {
     private Texture frcNum;
     private Texture picture;
     private BitmapFont font;
+    
+    private Deck1 deckOne;
+    private Deck2 deckTwo;
     private Player1Hand hand;
     private Player2Hand hand2;
     private Card getCard;
@@ -61,6 +66,14 @@ public class WorldRenderer {
     public WorldRenderer(/*World w*/) {
 
         map = new TmxMapLoader().load("map.tmx");
+        
+        deckOne = new Deck1();
+        deckTwo = new Deck2();
+        hand = new Player1Hand();
+        hand2 = new Player2Hand();
+        hand.draw();
+        hand2.draw();
+        
         
         TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
         TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
@@ -77,35 +90,65 @@ public class WorldRenderer {
             cost = getCard.getCost();
             frc = getCard.getForce();
             dfns = getCard.getDefense();
+
             
             if(attk == 1){
                 attkNum = new Texture("Numbers/Attack/A1.png");
             }
-            if(attk == 2){
+            else if(attk == 2){
                 attkNum = new Texture("Numbers/Attack/A2.png");
             }
-            if(attk == 3){
+            else if(attk == 3){
                 attkNum = new Texture("Numbers/Attack/A3.png");
             }
-            if(attk == 4){
+            else if(attk == 4){
                 attkNum = new Texture("Numbers/Attack/A4.png");
             }
-            if(attk == 5){
+            else if(attk == 5){
                 attkNum = new Texture("Numbers/Attack/A5.png");
             }
-            if(attk == 6){
+            else if(attk == 6){
                 attkNum = new Texture("Numbers/Attack/A6.png");
             }
-            if(attk == 7){
+            else if(attk == 7){
                 attkNum = new Texture("Numbers/Attack/A7.png");
             }
-            if(attk == 8){
+            else if(attk == 8){
                 attkNum = new Texture("Numbers/Attack/A8.png");
             }
-            if(attk == 9){
+            else if(attk == 9){
                 attkNum = new Texture("Numbers/Attack/A9.png");
             }
             
+            
+            
+            if(dfns == 1){
+                defNum = new Texture("Numbers/Defence/D1.png");
+            }
+            else if(dfns == 2){
+                defNum = new Texture("Numbers/Defence/D2.png");
+            }
+            else if(dfns == 3){
+                defNum = new Texture("Numbers/Defence/D3.png");
+            }
+            else if(dfns == 4){
+                defNum = new Texture("Numbers/Defence/D4.png");
+            }
+            else if(dfns == 5){
+                defNum = new Texture("Numbers/Defence/D5.png");
+            }
+            else if(dfns == 6){
+                defNum = new Texture("Numbers/Defence/D6.png");
+            }
+            else if(dfns == 7){
+                defNum = new Texture("Numbers/Defence/D7.png");
+            }
+            else if(dfns == 8){
+                defNum = new Texture("Numbers/Defence/D8.png");
+            }
+            else if(dfns == 9){
+                defNum = new Texture("Numbers/Defence/D9.png");
+            }
             
             
         }

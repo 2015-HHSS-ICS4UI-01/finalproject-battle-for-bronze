@@ -74,12 +74,12 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
             defenceFound = playerOneHand.getDfnc(findCard);
             costFound = playerOneHand.getCost(findCard);
             nameFound = playerOneHand.getName(findCard);
-            System.out.println("Card " + i + "- ");
-            System.out.println("Name: " + nameFound);
-            System.out.println("Cost: " + costFound);
-            System.out.println("Attack: " + attkFound);
-            System.out.println("Defense: " + defenceFound);
-            System.out.println("Force: " + forceFound);
+//            System.out.println("Card " + i + "- ");
+//            System.out.println("Name: " + nameFound);
+//            System.out.println("Cost: " + costFound);
+//            System.out.println("Attack: " + attkFound);
+//            System.out.println("Defense: " + defenceFound);
+//            System.out.println("Force: " + forceFound);
             
         }
         
