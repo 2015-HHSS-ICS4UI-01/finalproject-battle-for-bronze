@@ -45,7 +45,7 @@ public class Deck2 {
     */
     public void shuffle(){
         deckTwo.shuffle();
-    }
+    }  
     /*
      * gets the first card in the deck
      */
