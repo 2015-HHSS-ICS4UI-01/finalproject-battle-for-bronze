@@ -40,7 +40,37 @@ public class Deck3 {
         deckThree.add(new Card("Zed"));
         deckThree.add(new Card("PhenoixPhlare"));
         deckThree.add(new Card("N@me"));
+        
+        
+        
+
     }
+    /** Random name Method
+//    public Deck3(){ 
+//
+//        deckThree = new Array<Card>();
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//        deckThree.add(new Card());
+//    }
+    
     /**
      * shuffles the array
      */
