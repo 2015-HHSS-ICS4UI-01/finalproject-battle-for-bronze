@@ -5,6 +5,7 @@
 package com.battleforbronze.game.Model;
 
 import com.badlogic.gdx.utils.Array;
+import java.util.Collections;
 
 /**
  * String name, int force, int attack, int defense, int cost
@@ -42,8 +43,8 @@ public class Deck1 {
     /**
      * shuffles the array
      */
-    public void shuffle(){
-        deckOne.shuffle();
+    public void shuffle() {
+        Collections.shuffle(deckOne);
     }   
     /**
      * gets the first card

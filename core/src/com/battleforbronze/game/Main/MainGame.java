@@ -59,7 +59,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-        deckOne.shuffle();
+        deckOne.shuffle(Deck1);
         deckTwo.shuffle();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
