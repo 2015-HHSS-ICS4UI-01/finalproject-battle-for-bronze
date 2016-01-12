@@ -35,7 +35,7 @@ import com.battleforbronze.game.Model.Player2Hand;
 public class WorldRenderer {
 
     public final float PPU = 16;
-    public final int V_WIDTH = 1100;
+    public final int V_WIDTH = 1200;
     public final int V_HEIGHT = 900;
     private Viewport viewport;
     private Viewport guiViewport;
@@ -188,7 +188,7 @@ public class WorldRenderer {
         
         
 
-        picture = new Texture("Player1.png");
+//        picture = new Texture("Player1.png");
         
         camera = new OrthographicCamera();
         guiCam = new OrthographicCamera();
@@ -255,8 +255,9 @@ public class WorldRenderer {
             batch.draw(attkNum, 725, 250, 90, 140);
             batch.draw(defNum, 725, 250, 90, 140);
             batch.draw(frcNum, 725, 250, 90, 140);
-            batch.draw(picture, 740, 305, 60, 60);
+//            batch.draw(picture, 740, 305, 60, 60);
             font.draw(batch, name, 740, 380);
+            font.draw(batch, "" + cost, 770, 320);
         //}
 
         
