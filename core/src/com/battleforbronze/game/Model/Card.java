@@ -71,19 +71,19 @@ public class Card {
         //
         
         if(numRoot == 1){
-            pre = "act";
+            pre = "techno";
         }
         else if(numRoot == 2){
             pre = "acro";
         }
         else if(numRoot == 3){
-            pre = "ana";
+            pre = "meta";
         }
         else if(numRoot == 4){
-            pre = "anim";
+            pre = "para";
         }
         else if(numRoot == 5){
-            pre = "anti";
+            pre = "struck";
         }
         else if(numRoot == 6){
             pre = "bene";
