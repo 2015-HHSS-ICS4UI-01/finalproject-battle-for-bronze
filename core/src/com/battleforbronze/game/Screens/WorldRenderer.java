@@ -45,9 +45,40 @@ public class WorldRenderer {
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
     private Texture card;
-    private Texture attkNum;
-    private Texture defNum;
-    private Texture frcNum;
+    private Texture attkNum1;
+    private Texture attkNum2;
+    private Texture attkNum3;
+    private Texture attkNum4;
+    private Texture attkNum5;
+    private Texture attkNum6;
+    private Texture attkNum7;
+    private Texture attkNum8;
+    private Texture attkNum9;
+    
+    private Texture defNum1;
+    private Texture defNum2;
+    private Texture defNum3;
+    private Texture defNum4;
+    private Texture defNum5;
+    private Texture defNum6;
+    private Texture defNum7;
+    private Texture defNum8;
+    private Texture defNum9;
+    
+    private Texture frcNum1;
+    private Texture frcNum2;
+    private Texture frcNum3;
+    private Texture frcNum4;
+    private Texture frcNum5;
+    private Texture frcNum6;
+    private Texture frcNum7;
+    private Texture frcNum8;
+    private Texture frcNum9;
+    
+    private Texture attkNumFinal;
+    private Texture defNumFinal;
+    private Texture frcNumFinal;
+    
     private Texture picture;
     private BitmapFont font;
     
@@ -83,6 +114,37 @@ public class WorldRenderer {
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
         card = new Texture("Card.png");
         font = new BitmapFont();
+        
+        attkNum1 = new Texture("Numbers/Attack/A1.png");
+        attkNum2 = new Texture("Numbers/Attack/A2.png");
+        attkNum3 = new Texture("Numbers/Attack/A3.png");
+        attkNum4 = new Texture("Numbers/Attack/A4.png");
+        attkNum5 = new Texture("Numbers/Attack/A5.png");
+        attkNum6 = new Texture("Numbers/Attack/A6.png");
+        attkNum7 = new Texture("Numbers/Attack/A7.png");
+        attkNum8 = new Texture("Numbers/Attack/A8.png");
+        attkNum9 = new Texture("Numbers/Attack/A9.png");
+
+        defNum1 = new Texture("Numbers/Defence/D1.png");
+        defNum2 = new Texture("Numbers/Defence/D2.png");
+        defNum3 = new Texture("Numbers/Defence/D3.png");
+        defNum4 = new Texture("Numbers/Defence/D4.png");
+        defNum5 = new Texture("Numbers/Defence/D5.png");
+        defNum6 = new Texture("Numbers/Defence/D6.png");
+        defNum7 = new Texture("Numbers/Defence/D7.png");
+        defNum8 = new Texture("Numbers/Defence/D8.png");
+        defNum9 = new Texture("Numbers/Defence/D9.png");
+
+        frcNum1 = new Texture("Numbers/Force/F1.png");
+        frcNum2 = new Texture("Numbers/Force/F2.png");
+        frcNum3 = new Texture("Numbers/Force/F3.png");
+        frcNum4 = new Texture("Numbers/Force/F4.png");
+        frcNum5 = new Texture("Numbers/Force/F5.png");
+        frcNum6 = new Texture("Numbers/Force/F6.png");
+        frcNum7 = new Texture("Numbers/Force/F7.png");
+        frcNum8 = new Texture("Numbers/Force/F8.png");
+        frcNum9 = new Texture("Numbers/Force/F9.png");
+        
         font.setColor(Color.BLACK);
         
         
@@ -156,6 +218,7 @@ public class WorldRenderer {
         batch.begin();
         // list of things to draw
 
+        int cards = 0;
         for(Card c: hand.getCards()){
             attk = c.getAttack();
             dfns = c.getDefense();
@@ -167,100 +230,99 @@ public class WorldRenderer {
 //            cost = getCard.getCost();
 //            frc = getCard.getForce();
 //            dfns = getCard.getDefense();
-
             if(attk == 1){
-                attkNum = new Texture("Numbers/Attack/A1.png");
+                attkNumFinal = attkNum1;
             }
-            else if(attk == 2){
-                attkNum = new Texture("Numbers/Attack/A2.png");
+            if(attk == 2){
+                attkNumFinal = attkNum2;
             }
-            else if(attk == 3){
-                attkNum = new Texture("Numbers/Attack/A3.png");
+            if(attk == 3){
+                attkNumFinal = attkNum3;
             }
-            else if(attk == 4){
-                attkNum = new Texture("Numbers/Attack/A4.png");
+            if(attk == 4){
+                attkNumFinal = attkNum4;
             }
-            else if(attk == 5){
-                attkNum = new Texture("Numbers/Attack/A5.png");
+            if(attk == 5){
+                attkNumFinal = attkNum5;
             }
-            else if(attk == 6){
-                attkNum = new Texture("Numbers/Attack/A6.png");
+            if(attk == 6){
+                attkNumFinal = attkNum6;
             }
-            else if(attk == 7){
-                attkNum = new Texture("Numbers/Attack/A7.png");
+            if(attk == 7){
+                attkNumFinal = attkNum7;
             }
-            else if(attk == 8){
-                attkNum = new Texture("Numbers/Attack/A8.png");
+            if(attk == 8){
+                attkNumFinal = attkNum8;
             }
-            else if(attk == 9){
-                attkNum = new Texture("Numbers/Attack/A9.png");
+            if(attk == 9){
+                attkNumFinal = attkNum9;
             }
-            
-            
             
             if(dfns == 1){
-                defNum = new Texture("Numbers/Defence/D1.png");
+                defNumFinal = defNum1;
             }
-            else if(dfns == 2){
-                defNum = new Texture("Numbers/Defence/D2.png");
+            if(dfns == 2){
+                defNumFinal = defNum2;
             }
-            else if(dfns == 3){
-                defNum = new Texture("Numbers/Defence/D3.png");
+            if(dfns == 3){
+                defNumFinal = defNum3;
             }
-            else if(dfns == 4){
-                defNum = new Texture("Numbers/Defence/D4.png");
+            if(dfns == 4){
+                defNumFinal = defNum4;
             }
-            else if(dfns == 5){
-                defNum = new Texture("Numbers/Defence/D5.png");
+            if(dfns == 5){
+                defNumFinal = defNum5;
             }
-            else if(dfns == 6){
-                defNum = new Texture("Numbers/Defence/D6.png");
+            if(dfns == 6){
+                defNumFinal = defNum6;
             }
-            else if(dfns == 7){
-                defNum = new Texture("Numbers/Defence/D7.png");
+            if(dfns == 7){
+                defNumFinal = defNum7;
             }
-            else if(dfns == 8){
-                defNum = new Texture("Numbers/Defence/D8.png");
+            if(dfns == 8){
+                defNumFinal = defNum8;
             }
-            else if(dfns == 9){
-                defNum = new Texture("Numbers/Defence/D9.png");
+            if(dfns == 9){
+                defNumFinal = defNum9;
             }
-            
             
             if(frc == 1){
-                frcNum = new Texture("Numbers/Force/F1.png");
+                frcNumFinal = frcNum1;
             }
-            else if(frc == 2){
-                frcNum = new Texture("Numbers/Force/F2.png");
+            if(frc == 2){
+                frcNumFinal = frcNum2;
             }
-            else if(frc == 3){
-                frcNum = new Texture("Numbers/Force/F3.png");
+            if(frc == 3){
+                frcNumFinal = frcNum3;
             }
-            else if(frc == 4){
-                frcNum = new Texture("Numbers/Force/F4.png");
+            if(frc == 4){
+                frcNumFinal = frcNum4;
             }
-            else if(frc == 5){
-                frcNum = new Texture("Numbers/Force/F5.png");
+            if(frc == 5){
+                frcNumFinal = frcNum5;
             }
-            else if(frc == 6){
-                frcNum = new Texture("Numbers/Force/F6.png");
+            if(frc == 6){
+                frcNumFinal = frcNum6;
             }
-            else if(frc == 7){
-                frcNum = new Texture("Numbers/Force/F7.png");
+            if(frc == 7){
+                frcNumFinal = frcNum7;
             }
-            else if(frc == 8){
-                frcNum = new Texture("Numbers/Force/F8.png");
+            if(frc == 8){
+                frcNumFinal = frcNum8;
             }
-            else if(frc == 9){
-                frcNum = new Texture("Numbers/Force/F9.png");
+            if(frc == 9){
+                frcNumFinal = frcNum9;
             }
-            batch.draw(card, 725, 250, 90, 140);
-            batch.draw(attkNum, 725, 250, 90, 140);
-            batch.draw(defNum, 725, 250, 90, 140);
-            batch.draw(frcNum, 725, 250, 90, 140);
+            
+            
+            batch.draw(card, 725 - cards*90, 250, 90, 140);
+            batch.draw(attkNumFinal, 725 - cards*90, 250, 90, 140);
+            batch.draw(defNumFinal, 725 - cards*90, 250, 90, 140);
+            batch.draw(frcNumFinal, 725 - cards*90, 250, 90, 140);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name, 740, 380);
-            font.draw(batch, "" + cost, 770, 320);
+            font.draw(batch, name , 740 - cards*90, 380);
+            font.draw(batch, "" + cost, 770 - cards*90, 320);
+            cards++;
         }
 
         
