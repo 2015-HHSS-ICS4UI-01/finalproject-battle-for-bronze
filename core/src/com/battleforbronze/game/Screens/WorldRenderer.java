@@ -25,6 +25,7 @@ import com.battleforbronze.game.Main.MainGame;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
+import com.battleforbronze.game.Model.Deck3;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 
@@ -84,6 +85,7 @@ public class WorldRenderer {
     
     private Deck1 deckOne;
     private Deck2 deckTwo;
+    private Deck3 deckThree;
     private Player1Hand hand;
     private Player2Hand hand2;
     private Card getCard;
@@ -100,11 +102,12 @@ public class WorldRenderer {
         
         deckOne = new Deck1();
         deckTwo = new Deck2();
+        deckThree = new Deck3();
         hand = new Player1Hand();
         hand2 = new Player2Hand();
         hand.draw();
-        hand.draw();
-        hand.draw();
+//        hand.draw();
+//        hand.draw();
         hand2.draw();
         
         
@@ -206,6 +209,17 @@ public class WorldRenderer {
             camera.position.y = camera.position.y - 5;
             }
         }
+        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+//            if(hand.canDraw()){
+                hand.draw();
+//            }
+        }
+        if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
+            if(hand.currentHandSize()>0){
+                hand.removeFromHand();
+            }
+        }
+        
         camera.update();
         guiCam.update();
         // links the renderer to the camera
