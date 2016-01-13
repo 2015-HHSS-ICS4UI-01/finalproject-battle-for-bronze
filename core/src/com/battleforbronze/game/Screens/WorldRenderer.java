@@ -329,13 +329,13 @@ public class WorldRenderer {
             }
             
             
-            batch.draw(card, 725 - cards*90, 250, 90, 140);
-            batch.draw(attkNumFinal, 725 - cards*90, 250, 90, 140);
-            batch.draw(defNumFinal, 725 - cards*90, 250, 90, 140);
-            batch.draw(frcNumFinal, 725 - cards*90, 250, 90, 140);
+            batch.draw(card, 725 - cards*60, 250, 90, 140);
+            batch.draw(attkNumFinal, 725 - cards*60, 250, 90, 140);
+            batch.draw(defNumFinal, 725 - cards*60, 250, 90, 140);
+            batch.draw(frcNumFinal, 725 - cards*60, 250, 90, 140);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name , 740 - cards*90, 380);
-            font.draw(batch, "" + cost, 770 - cards*90, 320);
+            font.draw(batch, name , 740 - cards*60, 380);
+            font.draw(batch, "" + cost, 770 - cards*60, 320);
             cards++;
         }
 
