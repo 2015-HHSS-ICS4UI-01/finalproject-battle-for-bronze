@@ -39,17 +39,14 @@ public class Player1Hand {
      * creates the starting hand
      */
     public void startingHand(){
-        hand.add(player1Deck.firstCard());
-        player1Deck.removeFirst();
-        hand.add(player1Deck.firstCard());
-        player1Deck.removeFirst();
+        hand.add(player1Deck.draw());
+        hand.add(player1Deck.draw());
     }
     /*
      * draws the first card
      */
     public void draw(){
-        hand.add(player1Deck.firstCard());
-        player1Deck.removeFirst();
+        hand.add(player1Deck.draw());  
     }
     /*
      * checks if you can draw

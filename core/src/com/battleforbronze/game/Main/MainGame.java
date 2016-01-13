@@ -63,27 +63,34 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         Gdx.input.setInputProcessor(this);
         deckOne.shuffle();
         deckTwo.shuffle();
-        playerOneHand.startingHand();
-        playerTwoHand.startingHand();
-        playerOneHand.draw();
-        playerOneHand.draw();
         
-        
-        for (int i = 0; i < playerOneHand.handSize(); i++) {
+        for (int i = 0; i < deckOne.deckSize(); i++) {
+            playerOneHand.draw();
             findCard = playerOneHand.getCard(i);
-            attkFound = playerOneHand.getAttk(findCard);
-            forceFound = playerOneHand.getFrc(findCard);
-            defenceFound = playerOneHand.getDfnc(findCard);
-            costFound = playerOneHand.getCost(findCard);
-            nameFound = playerOneHand.getName(findCard);
-            System.out.println("Card " + i + "- ");
-            System.out.println("Name: " + nameFound);
-            System.out.println("Cost: " + costFound);
-            System.out.println("Attack: " + attkFound);
-            System.out.println("Defense: " + defenceFound);
-            System.out.println("Force: " + forceFound);
+            System.out.println(playerOneHand.getName(findCard));
             
         }
+//        playerOneHand.startingHand();
+//        playerTwoHand.startingHand();
+//        playerOneHand.draw();
+//        playerOneHand.draw();
+//        
+//        
+//        for (int i = 0; i < playerOneHand.handSize(); i++) {
+//            findCard = playerOneHand.getCard(i);
+//            attkFound = playerOneHand.getAttk(findCard);
+//            forceFound = playerOneHand.getFrc(findCard);
+//            defenceFound = playerOneHand.getDfnc(findCard);
+//            costFound = playerOneHand.getCost(findCard);
+//            nameFound = playerOneHand.getName(findCard);
+//            System.out.println("Card " + i + "- ");
+//            System.out.println("Name: " + nameFound);
+//            System.out.println("Cost: " + costFound);
+//            System.out.println("Attack: " + attkFound);
+//            System.out.println("Defense: " + defenceFound);
+//            System.out.println("Force: " + forceFound);
+//            
+//        }
         
         
         

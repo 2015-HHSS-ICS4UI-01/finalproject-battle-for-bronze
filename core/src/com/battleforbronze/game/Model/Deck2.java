@@ -79,4 +79,10 @@ public class Deck2 {
         return deckTwo.size;
     }
     
+    public Card draw(){
+        Card draw = deckTwo.get(0);
+        deckTwo.removeIndex(0);
+        return draw;
+    }
+    
 }

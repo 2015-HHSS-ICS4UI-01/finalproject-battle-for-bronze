@@ -31,17 +31,13 @@ public class Player2Hand {
     }
     
     public void startingHand(){
-        hand.add(player2Deck.firstCard());
-        player2Deck.removeFirst();
-        hand.add(player2Deck.firstCard());
-        player2Deck.removeFirst();
-        hand.add(player2Deck.firstCard());
-        player2Deck.removeFirst();
+        hand.add(player2Deck.draw());
+        hand.add(player2Deck.draw());
+        hand.add(player2Deck.draw());
     }
     
     public void draw(){
-        hand.add(player2Deck.firstCard());
-        player2Deck.removeFirst();
+        hand.add(player2Deck.draw());
     }
     
     public boolean canDraw(){

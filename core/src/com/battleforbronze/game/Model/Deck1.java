@@ -57,6 +57,7 @@ public class Deck1 {
             
             deckOne.swap(i, random);
         }
+       
         return deckOne;
   
     } 
@@ -101,4 +102,12 @@ public class Deck1 {
     public int deckSize() {
         return deckOne.size;
     }
+    
+    public Card draw(){
+        Card draw = deckOne.get(0);
+        deckOne.removeIndex(0);
+        return draw;
+    }
+    
+    
 }
