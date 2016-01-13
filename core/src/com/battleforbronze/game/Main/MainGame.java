@@ -26,6 +26,7 @@ import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.Collections;
+import java.util.List;
 
 //String name, int force, int attack, int defense, int cost
 

@@ -5,6 +5,9 @@
 package com.battleforbronze.game.Model;
 
 import com.badlogic.gdx.utils.Array;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  * String name, int force, int attack, int defense, int cost
@@ -12,6 +15,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Deck2 {   
     private Array<Card> deckTwo;
+    private static final Random RAND = new Random();
     /**
      * creates the cards inside of the deck
      */
@@ -43,8 +47,15 @@ public class Deck2 {
    /**
     * shuffles the array
     */
-    public void shuffle(){
-        deckTwo.shuffle();
+    public Array<Card> shuffle(){    
+        for (int i = 0; i < deckTwo.size; i++) {
+            int length = deckTwo.size - i;
+            int random = (int)Math.floor(i + Math.random() * (length));
+            
+            deckTwo.swap(i, random);
+        }
+        return deckTwo;
+  
     }  
     /*
      * gets the first card in the deck
