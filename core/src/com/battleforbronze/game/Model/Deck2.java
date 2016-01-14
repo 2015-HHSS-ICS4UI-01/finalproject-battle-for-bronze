@@ -85,4 +85,13 @@ public class Deck2 {
         return draw;
     }
     
+        public String getName(int pos){
+        Card temp = deckTwo.get(pos);
+        String name = temp.getName();
+        return name;
+
+
+
+    }
+    
 }

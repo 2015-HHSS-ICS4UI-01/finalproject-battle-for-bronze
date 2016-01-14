@@ -117,5 +117,14 @@ public class Deck1 {
         }
     }
     
+        public String getName(int pos){
+        Card temp = deckOne.get(pos);
+        String name = temp.getName();
+        return name;
+
+
+
+    }
+    
     
 }
