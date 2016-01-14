@@ -56,7 +56,12 @@ public class Player1Hand {
      * checks if you can draw
      */
     public boolean canDraw(){
-        return this.canDraw;
+        if(player1Deck.hasNext()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     /*
      * removes the card that is played from the array

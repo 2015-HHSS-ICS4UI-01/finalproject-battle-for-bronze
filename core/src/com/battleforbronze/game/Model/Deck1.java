@@ -108,10 +108,13 @@ public class Deck1 {
         return draw;
     }
     
-    public String getName(int pos){
-        Card temp = deckOne.get(pos);
-        String name = temp.getName();
-        return name;
+    public boolean hasNext(){
+        if(this.deckSize()==1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
     
     
