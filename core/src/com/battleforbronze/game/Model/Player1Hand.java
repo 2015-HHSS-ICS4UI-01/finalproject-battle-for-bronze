@@ -18,6 +18,7 @@ public class Player1Hand {
     private Array<Card> hand;
     private boolean canDraw;
     private int cardPlayed;
+    private Card mostRecent;
     
     /**
      * player 1's hand
@@ -51,7 +52,12 @@ public class Player1Hand {
      */
     public void draw(){
         player1Deck.shuffle();
+        mostRecent = hand.first();
         hand.add(player1Deck.draw());  
+    }
+    
+    public Card cardDrawn(){
+        return mostRecent;
     }
     /*
      * checks if you can draw

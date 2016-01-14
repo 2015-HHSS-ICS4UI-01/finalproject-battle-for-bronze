@@ -21,7 +21,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.battleforbronze.game.Main.MainGame;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
@@ -369,5 +368,6 @@ public class WorldRenderer {
             }            
         }
     }
+    
 }
 

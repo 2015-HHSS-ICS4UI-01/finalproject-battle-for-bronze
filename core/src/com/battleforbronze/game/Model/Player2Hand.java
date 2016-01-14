@@ -18,6 +18,7 @@ public class Player2Hand {
     private Array<Card> hand;
     private boolean canDraw;
     private int cardPlayed;
+    private Card mostRecent;
     
     public Player2Hand() {
         
@@ -41,7 +42,12 @@ public class Player2Hand {
     }
     
     public void draw(){
+        player2Deck.shuffle();
+        mostRecent = hand.first();
         hand.add(player2Deck.draw());
+    }
+    public Card cardDrawn(){
+        return mostRecent;
     }
     
     public boolean canDraw(){
@@ -79,6 +85,5 @@ public class Player2Hand {
     public String getName(Card card){
         return card.getName();
     }
-    
-    
+   
 }
