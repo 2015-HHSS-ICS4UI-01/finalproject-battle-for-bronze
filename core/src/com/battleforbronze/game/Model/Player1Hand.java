@@ -50,6 +50,7 @@ public class Player1Hand {
      * draws the first card
      */
     public void draw(){
+        player1Deck.shuffle();
         hand.add(player1Deck.draw());  
     }
     /*

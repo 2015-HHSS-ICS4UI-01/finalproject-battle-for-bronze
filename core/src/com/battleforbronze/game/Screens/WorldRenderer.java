@@ -209,9 +209,12 @@ public class WorldRenderer {
             camera.position.y = camera.position.y - 5;
             }
         }
+        
         if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             if(hand.canDraw()){
-                hand.draw();
+                if(hand.currentHandSize()<5){
+                    hand.draw();
+                }
             }
         }
         if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
