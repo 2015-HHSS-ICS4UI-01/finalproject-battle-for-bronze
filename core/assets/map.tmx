@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="27" height="37" tilewidth="15" tileheight="15" nextobjectid="1">
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="256" columns="16">
-  <image source="public_tileset_by_rafa_cac-d48o6ze.png" width="271" height="271"/>
- </tileset>
- <tileset firstgid="257" name="2" tilewidth="16" tileheight="16" spacing="1" tilecount="66" columns="22">
-  <image source="my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
- </tileset>
- <layer name="base" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJy1l8FuwyAQRIlTpfkAiHxIe0z9B82pV+fUqv//M8VSkMbTBQacHEatEPBYdj1Zds65nagh6hz1FvXesA710jD3O+or6qdjbVIQ552ifqNGYY+hM3aFpeZBjdNilc6/N1i5+Ty+Na4aT2Edol5BR5HHceNetztrpr3TeJIStxXbwdirphIrVwvI+Yy6wv8foGsDS+FMhXxdiD1t5GBtzGL+ezh7YpV4QeTl4uGa92J8OVaOMxgsrBPlPtV4gsFaauPSwavdmzUv7V3ioZccab13//2g5A0zjHsa4/mjW9fVM8Us9IJ0Lx7G2RvYO9hHPMyb3Pp7xzxZecAxzutSq6kfUPPPvsM89qjg1nWqcqzvjnk3YA0P4PBZkeeJ1cqx/Ix/Y5DHrF6Omr9R4KRa4TuzvnWrb8Da6InH8jv2BvaCuYPDavWRLflhVq6vSOPMUXv1wdX7BrUX7XlT5OK2WFveCsFYjyy1V86dqbb+Ef08c1m9LKtfV2JexO9KrIPW+6yd43z/2/Ne/gO1nlJK
-  </data>
- </layer>
- <layer name="path" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJztll0KwCAMg72C97/sngYi1qVNWhg0UBCrflLizxitV7NZzXKy5hIKBhos59S29qLg3FisTutmsL5qlc1Zcyq/oXmlD5AxER46h/WLh2N5w+rba54dFhvZJ1Nvz9gMjjUn4tUoz3P+WB5ypyh080XVnVz1zrA+QGuleO8r/hU7y8pXqVnN+rMe9psIcA==
-  </data>
- </layer>
- <layer name="base power ups" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJzt1EENAAAIAzG84N8jKsgCaRXsc6sCruj0AGBNqm+/An/pG24ZVZgAjQ==
-  </data>
- </layer>
- <layer name="mega power up" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7Bpwb9IROwgJK2CJgDAZ3MdAABqCxlLACM=
-  </data>
- </layer>
- <layer name="Decorations" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
-  </data>
- </layer>
+    <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="256" columns="16">
+        <image source="public_tileset_by_rafa_cac-d48o6ze.png" width="271" height="271"/>
+    </tileset>
+    <tileset firstgid="257" name="2" tilewidth="16" tileheight="16" spacing="1" tilecount="66" columns="22">
+        <image source="my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
+    </tileset>
+    <layer name="base" width="27" height="37">
+        <data encoding="base64" compression="zlib">
+            eJy1l8FuwyAQRIlTpfkAiHxIe0z9B82pV+fUqv//M8VSkMbTBQacHEatEPBYdj1Zds65nagh6hz1FvXesA710jD3O+or6qdjbVIQ552ifqNGYY+hM3aFpeZBjdNilc6/N1i5+Ty+Na4aT2Edol5BR5HHceNetztrpr3TeJIStxXbwdirphIrVwvI+Yy6wv8foGsDS+FMhXxdiD1t5GBtzGL+ezh7YpV4QeTl4uGa92J8OVaOMxgsrBPlPtV4gsFaauPSwavdmzUv7V3ioZccab13//2g5A0zjHsa4/mjW9fVM8Us9IJ0Lx7G2RvYO9hHPMyb3Pp7xzxZecAxzutSq6kfUPPPvsM89qjg1nWqcqzvjnk3YA0P4PBZkeeJ1cqx/Ix/Y5DHrF6Omr9R4KRa4TuzvnWrb8Da6InH8jv2BvaCuYPDavWRLflhVq6vSOPMUXv1wdX7BrUX7XlT5OK2WFveCsFYjyy1V86dqbb+Ef08c1m9LKtfV2JexO9KrIPW+6yd43z/2/Ne/gO1nlJK
+        </data>
+    </layer>
+    <layer name="path" width="27" height="37">
+        <data encoding="base64" compression="zlib">
+            eJztll0KwCAMg72C97/sngYi1qVNWhg0UBCrflLizxitV7NZzXKy5hIKBhos59S29qLg3FisTutmsL5qlc1Zcyq/oXmlD5AxER46h/WLh2N5w+rba54dFhvZJ1Nvz9gMjjUn4tUoz3P+WB5ypyh080XVnVz1zrA+QGuleO8r/hU7y8pXqVnN+rMe9psIcA==
+        </data>
+    </layer>
+    <layer name="base power ups" width="27" height="37">
+        <data encoding="base64" compression="zlib">
+            eJzt1EENAAAIAzG84N8jKsgCaRXsc6sCruj0AGBNqm+/An/pG24ZVZgAjQ==
+        </data>
+    </layer>
+    <layer name="mega power up" width="27" height="37">
+        <data encoding="base64" compression="zlib">
+            eJztzjENAAAIA7Bpwb9IROwgJK2CJgDAZ3MdAABqCxlLACM=
+        </data>
+    </layer>
+    <layer name="Decorations" width="27" height="37">
+        <data encoding="base64" compression="zlib">
+            eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
+        </data>
+    </layer>
 </map>

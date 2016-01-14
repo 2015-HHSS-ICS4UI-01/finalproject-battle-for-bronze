@@ -10,5 +10,4 @@ package com.battleforbronze.game.Model;
  * @author Leo Yao
  */
 public class World {
-    
 }

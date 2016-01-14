@@ -12,100 +12,103 @@ import com.badlogic.gdx.utils.Array;
  * @author Tim Valeriote
  */
 public class Player1Hand {
-    
+
     private int currentHandSize;
     private Deck1 player1Deck;
     private Array<Card> hand;
     private boolean canDraw;
     private int cardPlayed;
     private Card mostRecent;
-    
+
     /**
      * player 1's hand
      */
     public Player1Hand() {
-        
+
         hand = new Array<Card>();
         player1Deck = new Deck1();
-        
+
     }
-    
-    public Array<Card> shuffleDeck(){
+
+    public Array<Card> shuffleDeck() {
         return player1Deck.shuffle();
     }
-    
+
     /*
      * gets the current hand size
      */
-    public int currentHandSize(){
+    public int currentHandSize() {
         return hand.size;
     }
     /*
      * creates the starting hand
      */
-    public void startingHand(){
+
+    public void startingHand() {
         hand.add(player1Deck.draw());
         hand.add(player1Deck.draw());
     }
     /*
      * draws the first card
      */
-    public void draw(){
+
+    public void draw() {
         player1Deck.shuffle();
-        mostRecent = hand.first();
-        hand.add(player1Deck.draw());  
+        mostRecent = player1Deck.firstCard();
+        hand.add(player1Deck.draw());
     }
-    
-    public Card cardDrawn(){
+
+    public Card cardDrawn() {
         return mostRecent;
     }
     /*
      * checks if you can draw
      */
-    public boolean canDraw(){
-        if(player1Deck.hasNext()){
+
+    public boolean canDraw() {
+        if (player1Deck.hasNext()) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
     /*
      * removes the card that is played from the array
      */
-    public Card removeFromHand(){
+
+    public Card removeFromHand() {
         return hand.removeIndex(cardPlayed);
     }
-    
-    public Array<Card> getCards(){
+
+    public Array<Card> getCards() {
         return hand;
     }
-    
-    public Card getCard(int pos){
+
+    public Card getCard(int pos) {
         return hand.get(pos);
     }
-    
-    public int handSize(){
+
+    public int handSize() {
         return hand.size;
     }
-    
-    public int getAttk(Card card){
+
+    public int getAttk(Card card) {
         return card.getAttack();
     }
-    public int getFrc(Card card){
+
+    public int getFrc(Card card) {
         return card.getForce();
     }
-    public int getDfnc(Card card){
+
+    public int getDfnc(Card card) {
         return card.getDefense();
     }
-    public int getCost(Card card){
+
+    public int getCost(Card card) {
         return card.getCost();
     }
-    public String getName(Card card){
+
+    public String getName(Card card) {
         return card.getName();
     }
-    
-    
-    
 }
-

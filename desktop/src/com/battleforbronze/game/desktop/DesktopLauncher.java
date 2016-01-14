@@ -5,8 +5,9 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.battleforbronze.game.Main.MyGDXGame;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new MyGDXGame(), config);
-	}
+
+    public static void main(String[] arg) {
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        new LwjglApplication(new MyGDXGame(), config);
+    }
 }

@@ -50,30 +50,23 @@ public class Deck1 {
     /**
      * shuffles the array
      */
-    public Array<Card> shuffle(){    
+    public Array<Card> shuffle() {
         for (int i = 0; i < deckOne.size; i++) {
             int length = deckOne.size - i;
-            int random = (int)Math.floor(i + Math.random() * (length));
-            
+            int random = (int) Math.floor(i + Math.random() * (length));
+
             deckOne.swap(i, random);
         }
         return deckOne;
-  
-    } 
-    
-   
-    
-    /**
-     * for length of array
-     * get size of array
-     * get a random in from the size of the array
-     * remove the card at random
-     * remove the card at the current spot (i)
-     * place the randomly removed card at i
-     * place the card at spot i in the random spot
-     */
 
-      
+    }
+
+    /**
+     * for length of array get size of array get a random in from the size of
+     * the array remove the card at random remove the card at the current spot
+     * (i) place the randomly removed card at i place the card at spot i in the
+     * random spot
+     */
     /**
      * gets the first card
      *
@@ -101,23 +94,22 @@ public class Deck1 {
     public int deckSize() {
         return deckOne.size;
     }
-    
-    public Card draw(){
+
+    public Card draw() {
         Card draw = deckOne.get(0);
         deckOne.removeIndex(0);
         return draw;
     }
-    
-    public boolean hasNext(){
-        if(this.deckSize()==1){
+
+    public boolean hasNext() {
+        if (this.deckSize() == 1) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
-    
-        public String getName(int pos){
+
+    public String getName(int pos) {
         Card temp = deckOne.get(pos);
         String name = temp.getName();
         return name;
@@ -125,6 +117,4 @@ public class Deck1 {
 
 
     }
-    
-    
 }

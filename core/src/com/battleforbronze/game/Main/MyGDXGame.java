@@ -9,9 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGDXGame extends Game {
 
-	@Override
-	public void create () {
-		setScreen(new MainGame());
-	}
-
+    @Override
+    public void create() {
+        setScreen(new MainGame());
+    }
 }

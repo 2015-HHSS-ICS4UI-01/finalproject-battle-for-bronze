@@ -10,5 +10,4 @@ package com.battleforbronze.game.Screens;
  * @author Leo Yao
  */
 public class AssetManager {
-    
 }

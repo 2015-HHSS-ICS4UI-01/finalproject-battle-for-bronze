@@ -54,7 +54,6 @@ public class WorldRenderer {
     private Texture attkNum7;
     private Texture attkNum8;
     private Texture attkNum9;
-    
     private Texture defNum1;
     private Texture defNum2;
     private Texture defNum3;
@@ -64,7 +63,6 @@ public class WorldRenderer {
     private Texture defNum7;
     private Texture defNum8;
     private Texture defNum9;
-    
     private Texture frcNum1;
     private Texture frcNum2;
     private Texture frcNum3;
@@ -74,14 +72,11 @@ public class WorldRenderer {
     private Texture frcNum7;
     private Texture frcNum8;
     private Texture frcNum9;
-    
     private Texture attkNumFinal;
     private Texture defNumFinal;
     private Texture frcNumFinal;
-    
     private Texture picture;
     private BitmapFont font;
-    
     private Deck1 deckOne;
     private Deck2 deckTwo;
     private Deck3 deckThree;
@@ -94,11 +89,10 @@ public class WorldRenderer {
     private int dfns;
     private String name;
 
-
     public WorldRenderer(/*World w*/) {
 
         map = new TmxMapLoader().load("map.tmx");
-        
+
         deckOne = new Deck1();
         deckTwo = new Deck2();
         deckThree = new Deck3();
@@ -108,15 +102,15 @@ public class WorldRenderer {
 //        hand.draw();
 //        hand.draw();
         hand2.draw();
-        
-        
-        TiledMapTileLayer path = (TiledMapTileLayer)map.getLayers().get("path");
-        TiledMapTileLayer base = (TiledMapTileLayer)map.getLayers().get("base");
-        TiledMapTileLayer powerUp = (TiledMapTileLayer)map.getLayers().get("base power ups");
-        TiledMapTileLayer megaPowerUp = (TiledMapTileLayer)map.getLayers().get("mega power up");
+
+
+        TiledMapTileLayer path = (TiledMapTileLayer) map.getLayers().get("path");
+        TiledMapTileLayer base = (TiledMapTileLayer) map.getLayers().get("base");
+        TiledMapTileLayer powerUp = (TiledMapTileLayer) map.getLayers().get("base power ups");
+        TiledMapTileLayer megaPowerUp = (TiledMapTileLayer) map.getLayers().get("mega power up");
         card = new Texture("Card.png");
         font = new BitmapFont();
-        
+
         attkNum1 = new Texture("Numbers/Attack/A1.png");
         attkNum2 = new Texture("Numbers/Attack/A2.png");
         attkNum3 = new Texture("Numbers/Attack/A3.png");
@@ -146,33 +140,33 @@ public class WorldRenderer {
         frcNum7 = new Texture("Numbers/Force/F7.png");
         frcNum8 = new Texture("Numbers/Force/F8.png");
         frcNum9 = new Texture("Numbers/Force/F9.png");
-        
+
         font.setColor(Color.BLACK);
-        
-        
-            
-            
-            
-            
-            
-        
-        
+
+
+
+
+
+
+
+
+
 
 //        picture = new Texture("Player1.png");
-        
+
         camera = new OrthographicCamera();
         guiCam = new OrthographicCamera();
         viewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, camera);
         guiViewport = new FitViewport(V_WIDTH * 0.5f, V_HEIGHT * 0.5f, guiCam);
         batch = new SpriteBatch();
         render = new OrthogonalTiledMapRenderer(map, batch);
-        
+
         // move the x position of the camera
         camera.position.x = 432 / 2;
-        guiCam.position.x = V_WIDTH/2;
+        guiCam.position.x = V_WIDTH / 2;
         // move the y position of the camera
         camera.position.y = 0 + (592 / 4);
-        guiCam.position.y = V_HEIGHT/2;
+        guiCam.position.y = V_HEIGHT / 2;
         // update the camera
         camera.update();
 
@@ -189,53 +183,53 @@ public class WorldRenderer {
         // update the camera
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
-            if(camera.position.x>=100){
-            camera.position.x = camera.position.x - 5;
+            if (camera.position.x >= 100) {
+                camera.position.x = camera.position.x - 5;
             }
         }
         if (Gdx.input.isKeyPressed(Keys.D)) {
-            if(camera.position.x<=300){
-            camera.position.x = camera.position.x + 5;
+            if (camera.position.x <= 300) {
+                camera.position.x = camera.position.x + 5;
             }
         }
         if (Gdx.input.isKeyPressed(Keys.W)) {
-            if(camera.position.y<=500){
-            camera.position.y = camera.position.y + 5;
+            if (camera.position.y <= 500) {
+                camera.position.y = camera.position.y + 5;
             }
         }
         if (Gdx.input.isKeyPressed(Keys.S)) {
-            if(camera.position.y>=100){
-            camera.position.y = camera.position.y - 5;
+            if (camera.position.y >= 100) {
+                camera.position.y = camera.position.y - 5;
             }
         }
-        
+
         if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
-            if(hand.canDraw()){
-                if(hand.currentHandSize()<5){
+            if (hand.canDraw()) {
+                if (hand.currentHandSize() < 5) {
                     hand.draw();
                 }
             }
         }
         if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
-            if(hand.currentHandSize()>0){
+            if (hand.currentHandSize() > 0) {
                 hand.removeFromHand();
             }
         }
-        
+
         camera.update();
         guiCam.update();
         // links the renderer to the camera
         batch.setProjectionMatrix(camera.combined);
         render.setView(camera);
         render.render();
-        
+
         batch.setProjectionMatrix(guiCam.combined);
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
 
         int cards = 0;
-        for(Card c: hand.getCards()){
+        for (Card c : hand.getCards()) {
             attk = c.getAttack();
             dfns = c.getDefense();
             frc = c.getForce();
@@ -246,102 +240,102 @@ public class WorldRenderer {
 //            cost = getCard.getCost();
 //            frc = getCard.getForce();
 //            dfns = getCard.getDefense();
-            if(attk == 1){
+            if (attk == 1) {
                 attkNumFinal = attkNum1;
             }
-            if(attk == 2){
+            if (attk == 2) {
                 attkNumFinal = attkNum2;
             }
-            if(attk == 3){
+            if (attk == 3) {
                 attkNumFinal = attkNum3;
             }
-            if(attk == 4){
+            if (attk == 4) {
                 attkNumFinal = attkNum4;
             }
-            if(attk == 5){
+            if (attk == 5) {
                 attkNumFinal = attkNum5;
             }
-            if(attk == 6){
+            if (attk == 6) {
                 attkNumFinal = attkNum6;
             }
-            if(attk == 7){
+            if (attk == 7) {
                 attkNumFinal = attkNum7;
             }
-            if(attk == 8){
+            if (attk == 8) {
                 attkNumFinal = attkNum8;
             }
-            if(attk == 9){
+            if (attk == 9) {
                 attkNumFinal = attkNum9;
             }
-            
-            if(dfns == 1){
+
+            if (dfns == 1) {
                 defNumFinal = defNum1;
             }
-            if(dfns == 2){
+            if (dfns == 2) {
                 defNumFinal = defNum2;
             }
-            if(dfns == 3){
+            if (dfns == 3) {
                 defNumFinal = defNum3;
             }
-            if(dfns == 4){
+            if (dfns == 4) {
                 defNumFinal = defNum4;
             }
-            if(dfns == 5){
+            if (dfns == 5) {
                 defNumFinal = defNum5;
             }
-            if(dfns == 6){
+            if (dfns == 6) {
                 defNumFinal = defNum6;
             }
-            if(dfns == 7){
+            if (dfns == 7) {
                 defNumFinal = defNum7;
             }
-            if(dfns == 8){
+            if (dfns == 8) {
                 defNumFinal = defNum8;
             }
-            if(dfns == 9){
+            if (dfns == 9) {
                 defNumFinal = defNum9;
             }
-            
-            if(frc == 1){
+
+            if (frc == 1) {
                 frcNumFinal = frcNum1;
             }
-            if(frc == 2){
+            if (frc == 2) {
                 frcNumFinal = frcNum2;
             }
-            if(frc == 3){
+            if (frc == 3) {
                 frcNumFinal = frcNum3;
             }
-            if(frc == 4){
+            if (frc == 4) {
                 frcNumFinal = frcNum4;
             }
-            if(frc == 5){
+            if (frc == 5) {
                 frcNumFinal = frcNum5;
             }
-            if(frc == 6){
+            if (frc == 6) {
                 frcNumFinal = frcNum6;
             }
-            if(frc == 7){
+            if (frc == 7) {
                 frcNumFinal = frcNum7;
             }
-            if(frc == 8){
+            if (frc == 8) {
                 frcNumFinal = frcNum8;
             }
-            if(frc == 9){
+            if (frc == 9) {
                 frcNumFinal = frcNum9;
             }
-            
-            
-            batch.draw(card, 725 - cards*60, 250, 90, 140);
-            batch.draw(attkNumFinal, 725 - cards*60, 250, 90, 140);
-            batch.draw(defNumFinal, 725 - cards*60, 250, 90, 140);
-            batch.draw(frcNumFinal, 725 - cards*60, 250, 90, 140);
+
+
+            batch.draw(card, 725 - cards * 60, 250, 90, 140);
+            batch.draw(attkNumFinal, 725 - cards * 60, 250, 90, 140);
+            batch.draw(defNumFinal, 725 - cards * 60, 250, 90, 140);
+            batch.draw(frcNumFinal, 725 - cards * 60, 250, 90, 140);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name , 740 - cards*60, 380);
-            font.draw(batch, "" + cost, 770 - cards*60, 320);
+            font.draw(batch, name, 740 - cards * 60, 380);
+            font.draw(batch, "" + cost, 770 - cards * 60, 320);
             cards++;
         }
 
-        
+
 
 
         // finished listing things to draw
@@ -355,19 +349,15 @@ public class WorldRenderer {
 
     public void zoom(int scale) {
         if (scale == 1) {
-            if (camera.zoom >= 1.6){
-                
+            if (camera.zoom >= 1.6) {
             } else {
                 camera.zoom *= 1.1f;
-            }            
+            }
         } else if (scale == -1) {
-            if (camera.zoom <= .6){
-                
+            if (camera.zoom <= .6) {
             } else {
-               camera.zoom *= 0.9;
-            }            
+                camera.zoom *= 0.9;
+            }
         }
     }
-    
 }
-

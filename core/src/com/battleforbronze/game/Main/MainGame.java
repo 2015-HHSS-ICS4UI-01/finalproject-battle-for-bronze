@@ -29,7 +29,6 @@ import java.util.Collections;
 import java.util.List;
 
 //String name, int force, int attack, int defense, int cost
-
 /**
  *
  * @author Leo Yao
@@ -54,7 +53,6 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     private Card drawn2;
 
     public MainGame() {
-        
         pos = 0;
         turn = true;
         Timer timer = new Timer();
@@ -64,12 +62,11 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         playerTwoHand = new Player2Hand();
         renderer = new WorldRenderer();
         Gdx.input.setInputProcessor(this);
-//        playerOneHand.shuffleDeck();
-        playerTwoHand.shuffleDeck();       
+        playerTwoHand.shuffleDeck();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         playerOneHand.draw();
-        playerTwoHand.draw();   
+        playerTwoHand.draw();
     }
 
     @Override
@@ -79,37 +76,60 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     public void render(float deltaTime) {
         // draw the screen
         renderer.render(deltaTime);
-        
+
         timer += deltaTime;
-        
-        if(timer >= (4)){
-            if (turn == true){
+
+        if (turn == true) {
+            //code for players turns (playing cards etc....)
+        } else {
+            //for player 2
+        }
+        /* TRUE = PLAYER ONE
+         * FALSE = PLAYER TWO
+         * if the timer hits 1 minute
+         * check what turn it is
+         * draws for the player then re-sets the timer and changes the turn
+         */
+        if (timer >= (60)) {
+            if (turn == true) {
                 playerOneHand.draw();
                 drawn1 = playerOneHand.cardDrawn();
                 System.out.println("switched to player two");
                 timer = 0;
                 turn = false;
-                
-            } else if (turn == false){
+
+            } else if (turn == false) {
                 playerTwoHand.draw();
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println(playerTwoHand.currentHandSize());
                 System.out.println("switched to player one");
                 timer = 0;
                 turn = true;
-                
+
+            }
+            /* when it is player ones turn and the player hits 1 it starts player ones turn by
+             * drawing for player two and getting that drawn card
+             * changes the turn value to switch the current turn
+             * re-setting the timer
+             */
+            if (turn == true && Gdx.input.isKeyJustPressed(Keys.NUM_2)) {
+                playerTwoHand.draw();
+                drawn2 = playerTwoHand.cardDrawn();
+                turn = false;
+                timer = 0;
+            }
+            /* when it is player twos turn and the player hits 1 it starts player ones turn by
+             * drawing for player one and getting that drawn card
+             * changes the turn value
+             * re-setting the timer
+             */
+            if (turn == false && Gdx.input.isKeyJustPressed(Keys.NUM_1)) {
+                playerOneHand.draw();
+                drawn1 = playerOneHand.cardDrawn();
+                turn = true;
+                timer = 0;
             }
         }
-        
-        if (turn == true){
-            //code for players turns (playing cards etc....
-        } else {
-            //for player 2
-        }
-        
-        
-        
-
     }
 
     public void resize(int width, int height) {
@@ -195,5 +215,4 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
