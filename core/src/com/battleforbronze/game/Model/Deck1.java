@@ -109,5 +109,14 @@ public class Deck1 {
         return draw;
     }
     
+    public boolean hasNext(){
+        if(this.deckSize()==1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
     
 }

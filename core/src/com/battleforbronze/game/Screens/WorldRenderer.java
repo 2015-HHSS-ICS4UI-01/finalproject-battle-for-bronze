@@ -210,9 +210,9 @@ public class WorldRenderer {
             }
         }
         if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
-//            if(hand.canDraw()){
+            if(hand.canDraw()){
                 hand.draw();
-//            }
+            }
         }
         if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
             if(hand.currentHandSize()>0){
