@@ -25,6 +25,10 @@ public class Player2Hand {
         player2Deck = new Deck2();
         
     }
+    
+    public Array<Card> shuffleDeck(){
+        return player2Deck.shuffle();
+    }
   
     public int currentHandSize(){
         return hand.size;

@@ -57,7 +57,6 @@ public class Deck1 {
             
             deckOne.swap(i, random);
         }
-       
         return deckOne;
   
     } 
@@ -107,6 +106,12 @@ public class Deck1 {
         Card draw = deckOne.get(0);
         deckOne.removeIndex(0);
         return draw;
+    }
+    
+    public String getName(int pos){
+        Card temp = deckOne.get(pos);
+        String name = temp.getName();
+        return name;
     }
     
     

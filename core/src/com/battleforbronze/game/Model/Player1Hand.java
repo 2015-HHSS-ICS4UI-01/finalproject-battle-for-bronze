@@ -29,6 +29,10 @@ public class Player1Hand {
         
     }
     
+    public Array<Card> shuffleDeck(){
+        return player1Deck.shuffle();
+    }
+    
     /*
      * gets the current hand size
      */
