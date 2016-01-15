@@ -49,7 +49,15 @@ public class Deck2 {
     }
 
     /**
-     * shuffles the array
+     * for length of array get size of array get a random in from the size of
+     * the array remove the card at random remove the card at the current spot
+     * (i) place the randomly removed card at i place the card at spot i in the
+     * random spot
+     */
+    /**
+     * gets the first card
+     *
+     * @return
      */
     public Array<Card> shuffle() {
         for (int i = 0; i < deckTwo.size; i++) {
@@ -94,6 +102,14 @@ public class Deck2 {
         return draw;
     }
 
+    public boolean hasNext() {
+        if (this.deckSize() == 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
     public String getName(int pos) {
         Card temp = deckTwo.get(pos);
         String name = temp.getName();
