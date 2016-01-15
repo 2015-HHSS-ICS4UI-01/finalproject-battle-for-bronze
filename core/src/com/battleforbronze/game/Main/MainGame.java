@@ -60,13 +60,14 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
         playerTwoHand = new Player2Hand();
-        renderer = new WorldRenderer();
+        renderer = new WorldRenderer(playerOneHand);
         Gdx.input.setInputProcessor(this);
         playerTwoHand.shuffleDeck();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         playerOneHand.draw();
         playerTwoHand.draw();
+        renderer = new WorldRenderer(playerOneHand);
     }
 
     @Override
@@ -75,10 +76,10 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
 
     public void render(float deltaTime) {
         // draw the screen
-        renderer.render(deltaTime);
+//        renderer.render(deltaTime);
 
         timer += deltaTime;
-
+        
         if (turn == true) {
             //code for players turns (playing cards etc....)
         } else {
@@ -90,16 +91,20 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
          * check what turn it is
          * draws for the player then re-sets the timer and changes the turn
          */
-        if (timer >= (60)) {
+        if (timer >= (10)) {
             if (turn == true) {
-                playerOneHand.draw();
+                if(playerOneHand.handSize()<5){
+                    playerOneHand.draw();
+                }
                 drawn1 = playerOneHand.cardDrawn();
                 System.out.println("switched to player two");
                 timer = 0;
                 turn = false;
 
             } else if (turn == false) {
-                playerTwoHand.draw();
+                if(playerTwoHand.handSize()<5){
+                    playerTwoHand.draw();
+                }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println(playerTwoHand.currentHandSize());
                 System.out.println("switched to player one");
@@ -124,12 +129,15 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
              * re-setting the timer
              */
             if (turn == false && Gdx.input.isKeyJustPressed(Keys.NUM_1)) {
-                playerOneHand.draw();
-                drawn1 = playerOneHand.cardDrawn();
+//                playerOneHand.draw();
+//                drawn1 = playerOneHand.cardDrawn();
+                playerOneHand.removeFromHand();
                 turn = true;
                 timer = 0;
             }
         }
+        playerOneHand.update(deltaTime);
+        renderer.render(deltaTime);
     }
 
     public void resize(int width, int height) {

@@ -89,15 +89,18 @@ public class WorldRenderer {
     private int dfns;
     private String name;
 
-    public WorldRenderer(/*World w*/) {
+    public WorldRenderer(Player1Hand h) {
 
         map = new TmxMapLoader().load("map.tmx");
 
         deckOne = new Deck1();
         deckTwo = new Deck2();
         deckThree = new Deck3();
-        hand = new Player1Hand();
+        hand = h;
         hand2 = new Player2Hand();
+        
+        
+        
         hand.draw();
 //        hand.draw();
 //        hand.draw();
@@ -206,6 +209,7 @@ public class WorldRenderer {
         if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             if (hand.canDraw()) {
                 if (hand.currentHandSize() < 5) {
+                    
                     hand.draw();
                 }
             }
