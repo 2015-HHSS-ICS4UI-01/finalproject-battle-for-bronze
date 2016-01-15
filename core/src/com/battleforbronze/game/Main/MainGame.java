@@ -91,7 +91,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
          * check what turn it is
          * draws for the player then re-sets the timer and changes the turn
          */
-        if (timer >= (10)) {
+        if (timer >= (3)) {
             if (turn == true) {
                 if(playerOneHand.handSize()<5){
                     playerOneHand.draw();
@@ -117,25 +117,29 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
              * changes the turn value to switch the current turn
              * re-setting the timer
              */
-            if (turn == true && Gdx.input.isKeyJustPressed(Keys.NUM_2)) {
-                playerTwoHand.draw();
-                drawn2 = playerTwoHand.cardDrawn();
+            
+        }
+        if (turn == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
+                System.out.println("2 pressed");
+//                playerTwoHand.draw();
+//                drawn2 = playerTwoHand.cardDrawn();
                 turn = false;
-                timer = 0;
+                timer = 3;
             }
             /* when it is player twos turn and the player hits 1 it starts player ones turn by
              * drawing for player one and getting that drawn card
              * changes the turn value
              * re-setting the timer
              */
-            if (turn == false && Gdx.input.isKeyJustPressed(Keys.NUM_1)) {
+            if (turn == true && Gdx.input.isKeyJustPressed(Keys.E)) {
 //                playerOneHand.draw();
 //                drawn1 = playerOneHand.cardDrawn();
+                System.out.println("1 pressed");
                 playerOneHand.removeFromHand();
                 turn = true;
-                timer = 0;
+                timer = 3;
             }
-        }
+            
         playerOneHand.update(deltaTime);
         renderer.render(deltaTime);
     }
