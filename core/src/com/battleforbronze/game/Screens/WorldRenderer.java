@@ -255,6 +255,8 @@ public class WorldRenderer {
         // list of things to draw
 
         int cards = 0;
+        int cards2 = 0;
+        
         for (Card c : hand.getCards()) {
             attk = c.getAttack();
             dfns = c.getDefense();
@@ -359,6 +361,112 @@ public class WorldRenderer {
             font.draw(batch, name, 740 - cards * 60, 380);
             font.draw(batch, "" + cost, 770 - cards * 60, 320);
             cards++;
+        }
+        
+        for (Card c : hand2.getCards()) {
+            attk = c.getAttack();
+            dfns = c.getDefense();
+            frc = c.getForce();
+            name = c.getName();
+            cost = c.getCost();
+//            name = getCard.getName();
+//            attk = getCard.getAttack();
+//            cost = getCard.getCost();
+//            frc = getCard.getForce();
+//            dfns = getCard.getDefense();
+            if (attk == 1) {
+                attkNumFinal = attkNum1;
+            }
+            if (attk == 2) {
+                attkNumFinal = attkNum2;
+            }
+            if (attk == 3) {
+                attkNumFinal = attkNum3;
+            }
+            if (attk == 4) {
+                attkNumFinal = attkNum4;
+            }
+            if (attk == 5) {
+                attkNumFinal = attkNum5;
+            }
+            if (attk == 6) {
+                attkNumFinal = attkNum6;
+            }
+            if (attk == 7) {
+                attkNumFinal = attkNum7;
+            }
+            if (attk == 8) {
+                attkNumFinal = attkNum8;
+            }
+            if (attk == 9) {
+                attkNumFinal = attkNum9;
+            }
+
+            if (dfns == 1) {
+                defNumFinal = defNum1;
+            }
+            if (dfns == 2) {
+                defNumFinal = defNum2;
+            }
+            if (dfns == 3) {
+                defNumFinal = defNum3;
+            }
+            if (dfns == 4) {
+                defNumFinal = defNum4;
+            }
+            if (dfns == 5) {
+                defNumFinal = defNum5;
+            }
+            if (dfns == 6) {
+                defNumFinal = defNum6;
+            }
+            if (dfns == 7) {
+                defNumFinal = defNum7;
+            }
+            if (dfns == 8) {
+                defNumFinal = defNum8;
+            }
+            if (dfns == 9) {
+                defNumFinal = defNum9;
+            }
+
+            if (frc == 1) {
+                frcNumFinal = frcNum1;
+            }
+            if (frc == 2) {
+                frcNumFinal = frcNum2;
+            }
+            if (frc == 3) {
+                frcNumFinal = frcNum3;
+            }
+            if (frc == 4) {
+                frcNumFinal = frcNum4;
+            }
+            if (frc == 5) {
+                frcNumFinal = frcNum5;
+            }
+            if (frc == 6) {
+                frcNumFinal = frcNum6;
+            }
+            if (frc == 7) {
+                frcNumFinal = frcNum7;
+            }
+            if (frc == 8) {
+                frcNumFinal = frcNum8;
+            }
+            if (frc == 9) {
+                frcNumFinal = frcNum9;
+            }
+
+
+            batch.draw(card, 725 + cards2 * 60, 530, 90, 140);
+            batch.draw(attkNumFinal, 725 + cards2 * 60, 530, 90, 140);
+            batch.draw(defNumFinal, 725 + cards2 * 60, 530, 90, 140);
+            batch.draw(frcNumFinal, 725 + cards2 * 60, 530, 90, 140);
+//            batch.draw(picture, 740, 305, 60, 60);
+            font.draw(batch, name, 740 - cards2 * 60, 660);
+            font.draw(batch, "" + cost, 770 - cards2 * 60, 600);
+            cards2++;
         }
 
 
