@@ -13,6 +13,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.battleforbronze.game.Model.Card;
@@ -53,6 +54,9 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
     private Card drawn2;
 
     public MainGame() {
+    
+    
+        
         pos = 0;
         turn = true;
         Timer timer = new Timer();
@@ -63,10 +67,9 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         renderer = new WorldRenderer(playerOneHand);
         Gdx.input.setInputProcessor(this);
         playerTwoHand.shuffleDeck();
+        playerOneHand.shuffleDeck();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
-        playerOneHand.draw();
-        playerTwoHand.draw();
         renderer = new WorldRenderer(playerOneHand);
     }
 
@@ -91,22 +94,22 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
          * check what turn it is
          * draws for the player then re-sets the timer and changes the turn
          */
-        if (timer >= (3)) {
+        if (timer >= (60)) {
             if (turn == true) {
-                if(playerOneHand.handSize()<5){
-                    playerOneHand.draw();
+                if(playerTwoHand.handSize()<5){
+                    playerTwoHand.draw();
                 }
-                drawn1 = playerOneHand.cardDrawn();
+                drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("switched to player two");
                 timer = 0;
                 turn = false;
 
             } else if (turn == false) {
-                if(playerTwoHand.handSize()<5){
-                    playerTwoHand.draw();
+                if(playerOneHand.handSize()<5){
+                    playerOneHand.draw();
                 }
-                drawn2 = playerTwoHand.cardDrawn();
-                System.out.println(playerTwoHand.currentHandSize());
+                drawn1 = playerOneHand.cardDrawn();
+                System.out.println(playerOneHand.currentHandSize());
                 System.out.println("switched to player one");
                 timer = 0;
                 turn = true;
@@ -120,11 +123,13 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
             
         }
         if (turn == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
-                System.out.println("2 pressed");
-//                playerTwoHand.draw();
-//                drawn2 = playerTwoHand.cardDrawn();
-                turn = false;
-                timer = 3;
+                System.out.println("player two ended turn");
+                if(playerOneHand.handSize()<5){
+                    playerOneHand.draw();
+                }
+                drawn1 = playerOneHand.cardDrawn();
+                turn = true;
+                timer = 0;
             }
             /* when it is player twos turn and the player hits 1 it starts player ones turn by
              * drawing for player one and getting that drawn card
@@ -132,12 +137,13 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
              * re-setting the timer
              */
             if (turn == true && Gdx.input.isKeyJustPressed(Keys.E)) {
-//                playerOneHand.draw();
-//                drawn1 = playerOneHand.cardDrawn();
-                System.out.println("1 pressed");
-                playerOneHand.removeFromHand();
-                turn = true;
-                timer = 3;
+                if(playerTwoHand.handSize()<5){
+                    playerTwoHand.draw();
+                }
+                drawn2 = playerTwoHand.cardDrawn();
+                System.out.println("player one ended turn");
+                turn = false;
+                timer = 0;
             }
             
         playerOneHand.update(deltaTime);
