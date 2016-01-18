@@ -21,6 +21,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.utils.Array;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
@@ -88,6 +90,11 @@ public class WorldRenderer {
     private int frc;
     private int dfns;
     private String name;
+    private Array<Cell> pathList;
+    private Array<Cell> powerUps;
+    private int mapWidth;
+    private int mapHeight;
+    
 
     public WorldRenderer(Player1Hand h) {
 
@@ -99,7 +106,8 @@ public class WorldRenderer {
         hand = h;
         hand2 = new Player2Hand();
         
-        
+        pathList = new Array<Cell>();
+        powerUps = new Array<Cell>();
         
         hand.draw();
 //        hand.draw();
@@ -113,7 +121,30 @@ public class WorldRenderer {
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer) map.getLayers().get("mega power up");
         card = new Texture("Card.png");
         font = new BitmapFont();
-
+        int mapWidth = map.getProperties().get("width", Integer.class);
+        int mapHeight = map.getProperties().get("height", Integer.class);
+        
+        
+        
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = 0; y < mapHeight; y++) {
+                if(path.getCell(x, y) != null){
+                    Cell r = path.getCell(x, y);
+                    pathList.add(r);
+                }  
+            }
+        }
+        
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = 0; y < mapHeight; y++) {
+                if(path.getCell(x, y) != null){
+                    Cell r = path.getCell(x, y);
+                    powerUps.add(r);
+                }    
+            }
+        }
+        
+        
         attkNum1 = new Texture("Numbers/Attack/A1.png");
         attkNum2 = new Texture("Numbers/Attack/A2.png");
         attkNum3 = new Texture("Numbers/Attack/A3.png");
