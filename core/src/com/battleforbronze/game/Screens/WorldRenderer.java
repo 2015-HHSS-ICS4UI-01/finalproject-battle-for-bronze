@@ -146,15 +146,6 @@ public class WorldRenderer {
 
         font.setColor(Color.BLACK);
 
-
-
-
-
-
-
-
-
-
 //        picture = new Texture("Player1.png");
 
         camera = new OrthographicCamera();
