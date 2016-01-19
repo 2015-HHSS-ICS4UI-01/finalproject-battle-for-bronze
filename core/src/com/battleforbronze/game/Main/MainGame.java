@@ -151,6 +151,7 @@ public class MainGame implements Screen, InputProcessor {
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 renderer.guiConvert(click);
                 System.out.println("x: " + click.x + "  Y: " + click.y);
+                
             }
             
         playerOneHand.update(deltaTime);
