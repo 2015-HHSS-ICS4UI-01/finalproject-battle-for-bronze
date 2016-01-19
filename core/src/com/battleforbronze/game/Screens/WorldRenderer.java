@@ -267,19 +267,19 @@ public class WorldRenderer {
                 
                 
                 if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && hand2.handSize()>=1){
-                    System.out.println("p2card[0]");
+                    cardSelect = 6;
                 }
                 if(click.x>390 && click.x<470 && click.y>550 && click.y<670 && hand2.handSize()>=2){
-                    System.out.println("p2card[1]");
+                    cardSelect = 7;
                 }
                 if(click.x>470 && click.x<550 && click.y>550 && click.y<670 && hand2.handSize()>=3){
-                    System.out.println("p2card[2]");
+                    cardSelect = 8;
                 }
                 if(click.x>550 && click.x<630 && click.y>550 && click.y<670 && hand2.handSize()>=4){
-                    System.out.println("p2card[3]");
+                    cardSelect = 9;
                 }
                 if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
-                    System.out.println("p2card[4]");
+                    cardSelect = 10;
                 }
                 
                 
@@ -533,6 +533,22 @@ public class WorldRenderer {
         }
         else if(cardSelect == 5){
              batch.draw(border, 483, 225, 94, 133);
+        }
+        
+        if(cardSelect == 6){
+            batch.draw(border, 303, 545, 94, 133);
+        }
+        else if(cardSelect == 7){
+            batch.draw(border, 383, 545, 94, 133);
+        }
+        else if(cardSelect == 8){
+            batch.draw(border, 463, 545, 94, 133);
+        }
+        else if(cardSelect == 9){
+            batch.draw(border, 543, 545, 94, 133);
+        }
+        else if(cardSelect == 10){
+            batch.draw(border, 623, 545, 94, 133);
         }
 
 
