@@ -150,7 +150,44 @@ public class MainGame implements Screen, InputProcessor {
             if(Gdx.input.isTouched()){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 renderer.guiConvert(click);
-                System.out.println("x: " + click.x + "  Y: " + click.y);
+                //System.out.println("x: " + click.x + "  Y: " + click.y);
+                if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && playerOneHand.handSize()>=1){
+                    System.out.println("card[0]");
+                }
+                if(click.x>730 && click.x<810 && click.y>230 && click.y<350 && playerOneHand.handSize()>=2){
+                    System.out.println("card[1]");
+                }
+                if(click.x>650 && click.x<730 && click.y>230 && click.y<350 && playerOneHand.handSize()>=3){
+                    System.out.println("card[2]");
+                }
+                if(click.x>570 && click.x<650 && click.y>230 && click.y<350 && playerOneHand.handSize()>=4){
+                    System.out.println("card[3]");
+                }
+                if(click.x>490 && click.x<570 && click.y>230 && click.y<350 && playerOneHand.handSize()>=5){
+                    System.out.println("card[4]");
+                }
+                
+                
+                
+                
+                if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && playerTwoHand.handSize()>=1){
+                    System.out.println("p2card[0]");
+                }
+                if(click.x>390 && click.x<470 && click.y>550 && click.y<670 && playerTwoHand.handSize()>=2){
+                    System.out.println("p2card[1]");
+                }
+                if(click.x>470 && click.x<550 && click.y>550 && click.y<670 && playerTwoHand.handSize()>=3){
+                    System.out.println("p2card[2]");
+                }
+                if(click.x>550 && click.x<630 && click.y>550 && click.y<670 && playerTwoHand.handSize()>=4){
+                    System.out.println("p2card[3]");
+                }
+                if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && playerTwoHand.handSize()>=5){
+                    System.out.println("p2card[4]");
+                }
+                
+                
+                
                 
             }
             
