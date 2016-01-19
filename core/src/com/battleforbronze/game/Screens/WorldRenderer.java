@@ -130,7 +130,7 @@ public class WorldRenderer {
             for (int y = 0; y < mapHeight; y++) {
                 if(path.getCell(x, y) != null){
                     Cell r = path.getCell(x, y);
-                    pathList.add(r);
+                    pathList.add(r); 
                 }  
             }
         }
