@@ -53,6 +53,8 @@ public class MainGame implements Screen, InputProcessor {
     private String nameFound;
     private Card drawn1;
     private Card drawn2;
+    private int cardSelect;
+
 
     public MainGame() {
     
@@ -72,6 +74,7 @@ public class MainGame implements Screen, InputProcessor {
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
         renderer = new WorldRenderer(playerOneHand, playerTwoHand);
+        
     }
 
     @Override
@@ -152,19 +155,19 @@ public class MainGame implements Screen, InputProcessor {
                 renderer.guiConvert(click);
                 //System.out.println("x: " + click.x + "  Y: " + click.y);
                 if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && playerOneHand.handSize()>=1){
-                    System.out.println("card[0]");
+                    cardSelect = 1;
                 }
                 if(click.x>730 && click.x<810 && click.y>230 && click.y<350 && playerOneHand.handSize()>=2){
-                    System.out.println("card[1]");
+                    cardSelect = 2;
                 }
                 if(click.x>650 && click.x<730 && click.y>230 && click.y<350 && playerOneHand.handSize()>=3){
-                    System.out.println("card[2]");
+                    cardSelect = 3;
                 }
                 if(click.x>570 && click.x<650 && click.y>230 && click.y<350 && playerOneHand.handSize()>=4){
-                    System.out.println("card[3]");
+                    cardSelect = 4;
                 }
                 if(click.x>490 && click.x<570 && click.y>230 && click.y<350 && playerOneHand.handSize()>=5){
-                    System.out.println("card[4]");
+                    cardSelect = 5;
                 }
                 
                 
