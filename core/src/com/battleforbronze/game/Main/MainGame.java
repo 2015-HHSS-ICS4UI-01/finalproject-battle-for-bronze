@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
@@ -34,7 +35,7 @@ import java.util.List;
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor, MouseListener {
+public class MainGame implements Screen, InputProcessor {
 
     private Player1Hand playerOneHand;
     private Player2Hand playerTwoHand;
@@ -146,6 +147,12 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
                 timer = 0;
             }
             
+            if(Gdx.input.isTouched()){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                renderer.guiConvert(click);
+                System.out.println("x: " + click.x + "  Y: " + click.y);
+            }
+            
         playerOneHand.update(deltaTime);
         playerTwoHand.update(deltaTime);
         renderer.render(deltaTime);
@@ -200,38 +207,22 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         return false;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
+   
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
+
+
 }

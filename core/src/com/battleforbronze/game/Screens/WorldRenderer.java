@@ -22,6 +22,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
@@ -239,6 +240,8 @@ public class WorldRenderer {
             }
         }
 
+       
+        
         camera.update();
         guiCam.update();
         // links the renderer to the camera
@@ -490,5 +493,9 @@ public class WorldRenderer {
                 camera.zoom *= 0.9;
             }
         }
+    }
+    
+    public void guiConvert(Vector3 v){
+        guiCam.unproject(v);
     }
 }
