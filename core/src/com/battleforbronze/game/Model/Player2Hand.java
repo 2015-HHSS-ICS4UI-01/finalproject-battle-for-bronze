@@ -62,6 +62,10 @@ public class Player2Hand {
     public Array<Card> getCards() {
         return hand;
     }
+    
+    public void update(float delta){
+        
+    }
 
     public Card getCard(int pos) {
         return hand.get(pos);

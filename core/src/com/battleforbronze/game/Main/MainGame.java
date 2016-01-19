@@ -64,13 +64,13 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
         playerTwoHand = new Player2Hand();
-        renderer = new WorldRenderer(playerOneHand);
+        renderer = new WorldRenderer(playerOneHand, playerTwoHand);
         Gdx.input.setInputProcessor(this);
         playerTwoHand.shuffleDeck();
         playerOneHand.shuffleDeck();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
-        renderer = new WorldRenderer(playerOneHand);
+        renderer = new WorldRenderer(playerOneHand, playerTwoHand);
     }
 
     @Override
@@ -147,6 +147,7 @@ public class MainGame implements Screen, InputProcessor, MouseListener {
             }
             
         playerOneHand.update(deltaTime);
+        playerTwoHand.update(deltaTime);
         renderer.render(deltaTime);
     }
 

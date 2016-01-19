@@ -96,7 +96,7 @@ public class WorldRenderer {
     private int mapHeight;
     
 
-    public WorldRenderer(Player1Hand h) {
+    public WorldRenderer(Player1Hand h, Player2Hand h2) {
 
         map = new TmxMapLoader().load("map.tmx");
 
@@ -104,15 +104,12 @@ public class WorldRenderer {
         deckTwo = new Deck2();
         deckThree = new Deck3();
         hand = h;
-        hand2 = new Player2Hand();
+        hand2 = h2;
         
         pathList = new Array<Cell>();
         powerUps = new Array<Cell>();
         
-        hand.draw();
-//        hand.draw();
-//        hand.draw();
-        hand2.draw();
+
 
 
         TiledMapTileLayer path = (TiledMapTileLayer) map.getLayers().get("path");
@@ -353,22 +350,22 @@ public class WorldRenderer {
             }
 
 
-            batch.draw(card, 725 - cards * 60, 250, 90, 140);
-            batch.draw(attkNumFinal, 725 - cards * 60, 250, 90, 140);
-            batch.draw(defNumFinal, 725 - cards * 60, 250, 90, 140);
-            batch.draw(frcNumFinal, 725 - cards * 60, 250, 90, 140);
+            batch.draw(card, 810 - cards * 60, 230, 80, 120);
+            batch.draw(attkNumFinal, 810 - cards * 60, 230, 80, 120);
+            batch.draw(defNumFinal, 810 - cards * 60, 230, 80, 120);
+            batch.draw(frcNumFinal, 810 - cards * 60, 230, 80, 120);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name, 740 - cards * 60, 380);
-            font.draw(batch, "" + cost, 770 - cards * 60, 320);
+            font.draw(batch, name, 820 - cards * 60, 343);
+            font.draw(batch, "" + cost, 850 - cards * 60, 290);
             cards++;
         }
         
-        for (Card c : hand2.getCards()) {
-            attk = c.getAttack();
-            dfns = c.getDefense();
-            frc = c.getForce();
-            name = c.getName();
-            cost = c.getCost();
+        for (Card b : hand2.getCards()) {
+            attk = b.getAttack();
+            dfns = b.getDefense();
+            frc = b.getForce();
+            name = b.getName();
+            cost = b.getCost();
 //            name = getCard.getName();
 //            attk = getCard.getAttack();
 //            cost = getCard.getCost();
@@ -459,13 +456,13 @@ public class WorldRenderer {
             }
 
 
-            batch.draw(card, 725 + cards2 * 60, 530, 90, 140);
-            batch.draw(attkNumFinal, 725 + cards2 * 60, 530, 90, 140);
-            batch.draw(defNumFinal, 725 + cards2 * 60, 530, 90, 140);
-            batch.draw(frcNumFinal, 725 + cards2 * 60, 530, 90, 140);
+            batch.draw(card, 190 + cards * 60, 550, 80, 120);
+            batch.draw(attkNumFinal, 190 + cards * 60, 550, 80, 120);
+            batch.draw(defNumFinal, 190 + cards * 60, 550, 80, 120);
+            batch.draw(frcNumFinal, 190 + cards * 60, 550, 80, 120);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name, 740 - cards2 * 60, 660);
-            font.draw(batch, "" + cost, 770 - cards2 * 60, 600);
+            font.draw(batch, name, 200 + cards * 60, 663);
+            font.draw(batch, "" + cost, 850 + cards * 60, 610);
             cards2++;
         }
 
