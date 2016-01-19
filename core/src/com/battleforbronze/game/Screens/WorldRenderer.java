@@ -237,6 +237,8 @@ public class WorldRenderer {
             }
         }
 
+       
+        
         camera.update();
         guiCam.update();
         // links the renderer to the camera
@@ -488,5 +490,9 @@ public class WorldRenderer {
                 camera.zoom *= 0.9;
             }
         }
+    }
+    
+    public void guiConvert(Vector3 v){
+        guiCam.unproject(v);
     }
 }
