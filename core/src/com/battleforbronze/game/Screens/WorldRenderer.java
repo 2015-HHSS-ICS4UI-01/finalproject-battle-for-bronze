@@ -217,7 +217,7 @@ public class WorldRenderer {
                 camera.unproject(click);
                 System.out.println("x: " + (int)(click.x/PPU) + "y " + (int)(click.y/PPU));
                 System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
-                clicked = path.getCell((int)(click.x/PPU) + 1, (int)(click.y/PPU)+1);
+                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 if(clicked!=null){
                     clicked.setTile(testSet.getTile(194));
                 }
