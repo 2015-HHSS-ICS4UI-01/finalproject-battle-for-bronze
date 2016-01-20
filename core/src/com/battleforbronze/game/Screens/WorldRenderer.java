@@ -49,6 +49,7 @@ public class WorldRenderer {
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
+    private Texture border;
     private Texture card;
     private Texture attkNum1;
     private Texture attkNum2;
@@ -102,8 +103,13 @@ public class WorldRenderer {
     private TiledMapTileLayer path;
     private TiledMapTileLayer base;
     private TiledMapTileSet testSet;
+    private int cardSelect;
+    
+    
     public WorldRenderer(Player1Hand h, Player2Hand h2) {
 
+        
+        border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
         clicked = new Cell();
         deckOne = new Deck1();
@@ -371,14 +377,14 @@ public class WorldRenderer {
             }
 
 
-            batch.draw(card, 810 - cards * 60, 230, 80, 120);
-            batch.draw(attkNumFinal, 810 - cards * 60, 230, 80, 120);
-            batch.draw(defNumFinal, 810 - cards * 60, 230, 80, 120);
-            batch.draw(frcNumFinal, 810 - cards * 60, 230, 80, 120);
+            batch.draw(card, 810 - cards * 80, 230, 80, 120);
+             batch.draw(attkNumFinal, 810 - cards * 80, 230, 80, 120);
+             batch.draw(defNumFinal, 810 - cards * 80, 230, 80, 120);
+             batch.draw(frcNumFinal, 810 - cards * 80, 230, 80, 120);
             
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name, 820 - cards * 60, 343);
-            font.draw(batch, "" + cost, 850 - cards * 60, 290);
+            font.draw(batch, name, 820 - cards * 80, 343);
+             font.draw(batch, "" + cost, 850 - cards * 80, 290);
             cards++;
         }
         
@@ -478,15 +484,79 @@ public class WorldRenderer {
             }
 
 
-            batch.draw(card, 190 + cards * 60, 550, 80, 120);
-            batch.draw(attkNumFinal, 190 + cards * 60, 550, 80, 120);
-            batch.draw(defNumFinal, 190 + cards * 60, 550, 80, 120);
-            batch.draw(frcNumFinal, 190 + cards * 60, 550, 80, 120);
+            batch.draw(card, 310 + cards2 * 80, 550, 80, 120);
+             batch.draw(attkNumFinal, 310 + cards2 * 80, 550, 80, 120);
+             batch.draw(defNumFinal, 310 + cards2 * 80, 550, 80, 120);
+             batch.draw(frcNumFinal, 310 + cards2 * 80, 550, 80, 120);
 //            batch.draw(picture, 740, 305, 60, 60);
-            font.draw(batch, name, 200 + cards * 60, 663);
-            font.draw(batch, "" + cost, 850 + cards * 60, 610);
+            font.draw(batch, name, 320 + cards2 * 80, 663);
+             font.draw(batch, "" + cost, 360 + cards2 * 80, 610);
             cards2++;
         }
+        
+        
+                         
+                 if(Gdx.input.isTouched()){
+                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                 guiCam.unproject(click);
+                 //System.out.println("x: " + click.x + "  Y: " + click.y);
+                 if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && hand.handSize()>=1){
+                     cardSelect = 1;
+                 }
+                 if(click.x>730 && click.x<810 && click.y>230 && click.y<350 && hand.handSize()>=2){
+                     cardSelect = 2;
+                 }
+                 if(click.x>650 && click.x<730 && click.y>230 && click.y<350 && hand.handSize()>=3){
+                     cardSelect = 3;
+                 }
+                 if(click.x>570 && click.x<650 && click.y>230 && click.y<350 && hand.handSize()>=4){
+                     cardSelect = 4;
+                 }
+                 if(click.x>490 && click.x<570 && click.y>230 && click.y<350 && hand.handSize()>=5){
+                     cardSelect = 5;
+                 }
+                 
+                 
+                 
+                 
+                 if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && hand2.handSize()>=1){
+                     System.out.println("p2card[0]");
+                 }
+                 if(click.x>390 && click.x<470 && click.y>550 && click.y<670 && hand2.handSize()>=2){
+                     System.out.println("p2card[1]");
+                 }
+                 if(click.x>470 && click.x<550 && click.y>550 && click.y<670 && hand2.handSize()>=3){
+                     System.out.println("p2card[2]");
+                 }
+                 if(click.x>550 && click.x<630 && click.y>550 && click.y<670 && hand2.handSize()>=4){
+                     System.out.println("p2card[3]");
+                 }
+                 if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
+                     System.out.println("p2card[4]");
+                 }
+                 
+                 
+                 
+                 
+             }
+                
+                
+                if(cardSelect == 1){
+              batch.draw(border, 803, 225, 94, 133);
+         }
+         else if(cardSelect == 2){
+              batch.draw(border, 723, 225, 94, 133);
+         }
+         else if(cardSelect == 3){
+              batch.draw(border, 643, 225, 94, 133);
+         }
+         else if(cardSelect == 4){
+              batch.draw(border, 563, 225, 94, 133);
+         }
+         else if(cardSelect == 5){
+              batch.draw(border, 483, 225, 94, 133);
+         }
+  
         
 
 
