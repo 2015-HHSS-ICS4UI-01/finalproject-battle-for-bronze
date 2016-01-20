@@ -30,6 +30,7 @@ import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
 import com.battleforbronze.game.Model.Deck3;
+import com.battleforbronze.game.Model.HUD;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 
@@ -49,6 +50,7 @@ public class WorldRenderer {
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer render;
     private TiledMap map;
+    private Texture mana;
     private Texture border;
     private Texture card;
     private Texture attkNum1;
@@ -105,12 +107,17 @@ public class WorldRenderer {
     private TiledMapTileLayer base;
     private TiledMapTileSet testSet;
     private int cardSelect;
+    private HUD playerOneHUD;
+    private HUD playerTwoHUD;
     
     
-    public WorldRenderer(Player1Hand h, Player2Hand h2) {
-
+    public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
+        
+        playerOneHUD = p1HUD;
+        playerTwoHUD = p2HUD; 
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
+        mana = new Texture("mana.png");
         clicked = new Cell();
         deckOne = new Deck1();
         deckTwo = new Deck2();
@@ -575,8 +582,29 @@ public class WorldRenderer {
              batch.draw(border, 623, 545, 94, 133);
          }
         
-
-
+         for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
+            if (playerOneHUD.getTurnNumberP1() < 10){
+            batch.draw(mana, 310+15*i, 230, 20,20);
+            } else {
+                for (int j = 0; j < 10; j++) {
+                    batch.draw(mana, 310+15*j, 230, 20,20);
+                }
+            }
+         }
+         
+         for(int i = 0; i < playerTwoHUD.getTurnNumberP2(); i++){
+            if (playerTwoHUD.getTurnNumberP2() < 10){
+            batch.draw(mana, 870-15*i, 645, 20,20);
+            } else {
+                for (int j = 0; j < 10; j++) {
+                    batch.draw(mana, 870-15*i, 645, 20,20);
+                }
+                
+            }
+            
+         }
+         
+         
 
 
         // finished listing things to draw

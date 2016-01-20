@@ -20,6 +20,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
+import com.battleforbronze.game.Model.HUD;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 import com.battleforbronze.game.Screens.WorldRenderer;
@@ -53,13 +54,12 @@ public class MainGame implements Screen, InputProcessor {
     private String nameFound;
     private Card drawn1;
     private Card drawn2;
-    public int turnNumberP1;
-    public int turnNumberP2;
+    private HUD playerOneHUD;
+    private HUD playerTwoHUD;
 
     public MainGame() {
-        
-        turnNumberP1 = 0;
-        turnNumberP2 = 0;
+        playerTwoHUD = new HUD();
+        playerOneHUD = new HUD();
         pos = 0;
         turn = true;
         Timer timer = new Timer();
@@ -67,7 +67,7 @@ public class MainGame implements Screen, InputProcessor {
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
         playerTwoHand = new Player2Hand();
-        renderer = new WorldRenderer(playerOneHand, playerTwoHand);
+        renderer = new WorldRenderer(playerOneHand, playerTwoHand, playerOneHUD, playerTwoHUD);
         Gdx.input.setInputProcessor(this);
         playerTwoHand.shuffleDeck();
         playerOneHand.shuffleDeck();
@@ -85,11 +85,6 @@ public class MainGame implements Screen, InputProcessor {
 
         timer += deltaTime;
         
-        if (turn == true) {
-            //code for players turns (playing cards etc....)
-        } else {
-            //for player 2
-        }
         /* TRUE = PLAYER ONE
          * FALSE = PLAYER TWO
          * if the timer hits 1 minute
@@ -103,7 +98,7 @@ public class MainGame implements Screen, InputProcessor {
                 }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("switched to player two");
-                turnNumberP2++;
+                playerTwoHUD.addOneP2();
                 timer = 0;
                 turn = false;
 
@@ -114,7 +109,7 @@ public class MainGame implements Screen, InputProcessor {
                 drawn1 = playerOneHand.cardDrawn();
                 System.out.println(playerOneHand.currentHandSize());
                 System.out.println("switched to player one");
-                turnNumberP1++;
+                playerOneHUD.addOneP1();
                 timer = 0;
                 turn = true;
 
@@ -132,7 +127,8 @@ public class MainGame implements Screen, InputProcessor {
                     playerOneHand.draw();
                 }
                 drawn1 = playerOneHand.cardDrawn();
-                turnNumberP1++;
+                playerOneHUD.addOneP1();
+                System.out.println("added one p1");
                 turn = true;
                 timer = 0;
             }
@@ -148,7 +144,8 @@ public class MainGame implements Screen, InputProcessor {
                 }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("player one ended turn");
-                turnNumberP2++;
+                playerTwoHUD.addOneP2();
+                System.out.println("added one p2");
                 turn = false;
                 timer = 0;
             }
@@ -242,6 +239,5 @@ public class MainGame implements Screen, InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         return false;
     }
-
-
+    
 }
