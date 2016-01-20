@@ -120,6 +120,7 @@ public class WorldRenderer {
         testSet = new TiledMapTileSet(); 
         hand = h;
         hand2 = h2;
+        minion = new Texture("superminionteamone.png");
         testSet = map.getTileSets().getTileSet("tiles");
         pathList = new Array<Cell>();
         powerUps = new Array<Cell>();
@@ -222,11 +223,12 @@ public class WorldRenderer {
         if(Gdx.input.isTouched()){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
-                System.out.println("x: " + (int)(click.x/PPU) + "y " + (int)(click.y/PPU));
-                System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
+//                System.out.println("x: " + (int)(click.x/PPU) + "y " + (int)(click.y/PPU));
+//                System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 if(clicked!=null){
                     clicked.setTile(testSet.getTile(194));
+                    
                 }
         }
         // update the camera
@@ -577,7 +579,7 @@ public class WorldRenderer {
          }
         
 
-
+        
 
 
         // finished listing things to draw
