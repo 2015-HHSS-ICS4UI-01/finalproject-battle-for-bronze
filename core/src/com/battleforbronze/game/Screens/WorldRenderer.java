@@ -487,11 +487,6 @@ public class WorldRenderer {
             font.draw(batch, "" + cost, 850 + cards * 60, 610);
             cards2++;
         }
-        
-
-
-
-
         // finished listing things to draw
         batch.end();
     }

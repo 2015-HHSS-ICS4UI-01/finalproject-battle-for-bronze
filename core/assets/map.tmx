@@ -9,7 +9,7 @@
  <tileset firstgid="323" name="testTile" tilewidth="15" tileheight="15" spacing="1" tilecount="1">
   <image source="testTile.png" width="16" height="16"/>
  </tileset>
- <layer name="base" width="27" height="37" visible="0">
+ <layer name="base" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJy1l8FuwyAQRLFTpfkAXPmQ9pj6D5pTLzk4p1b5/58ploI0ni4w4OQwaoWAx7LrydI55zpRfdAx6D3oo2Id6qVi7k/Qd9Bvw9qoQZz3FnQLGoU9+sbYFZaaBzVOi5U7/85gpebz+Na4SjyFtQ96BR1EHseNe13vrJn2juNRStxWbHtjr5JyrFQtIOcr6Az/f4LOFSyFM2XydSL2tJGDtTGL+W/h7IiV4w0iLxUP17wX40uxUpzeYGGdKPepxjMYrKU2Tg280r1Z8+LeOR56yYHWe/ffD3LeMMO4pzGeP7p1XT1TzEIviPfiYZy9gb2DfcTDvMmtv3fMk5UHHOO8LrUa+wE1/+w7zGOPGty6TlWO9d0x7wqs/gEcPivyPLFqOZaf8W8M8pjVylHzNwqcWCt8Z9a3bvUNWBst8Vh+x96AXnDp1nXSem+Kjyys20aOxUr1FXGcOWqv3rty36D2oi1vilTcFmvLW2Ew1iNL7ZVTZyqtf0Q/z1xWK8vq15WYF/G7Euug9j5L5zje/7a8l/8AUrBSMA==
   </data>
@@ -19,17 +19,17 @@
    eJztll0KwCAMg72C97/sngYi1qVNWhg0UBCrflLizxitV7NZzXKy5hIKBhos59S29qLg3FisTutmsL5qlc1Zcyq/oXmlD5AxER46h/WLh2N5w+rba54dFhvZJ1Nvz9gMjjUn4tUoz3P+WB5ypyh080XVnVz1zrA+QGuleO8r/hU7y8pXqVnN+rMe9psIcA==
   </data>
  </layer>
- <layer name="base power ups" width="27" height="37" visible="0">
+ <layer name="base power ups" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJzt1EENAAAIAzG84N8jKsgCaRXsc6sCruj0AGBNqm+/An/pG24ZVZgAjQ==
   </data>
  </layer>
- <layer name="mega power up" width="27" height="37" visible="0">
+ <layer name="mega power up" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJztzjENAAAIA7Bpwb9IROwgJK2CJgDAZ3MdAABqCxlLACM=
   </data>
  </layer>
- <layer name="Decorations" width="27" height="37" visible="0">
+ <layer name="Decorations" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
   </data>
