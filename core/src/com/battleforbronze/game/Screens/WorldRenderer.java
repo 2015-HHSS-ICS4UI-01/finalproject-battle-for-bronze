@@ -202,6 +202,7 @@ public class WorldRenderer {
         guiCam.position.y = V_HEIGHT / 2;
         // update the camera
         camera.update();
+        //leo is a bronze legend
 
         // loads in the images
         //AssetManager.load();
