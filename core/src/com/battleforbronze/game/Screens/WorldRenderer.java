@@ -110,7 +110,6 @@ public class WorldRenderer {
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
     
-    
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
         
         playerOneHUD = p1HUD;
@@ -138,33 +137,7 @@ public class WorldRenderer {
         int mapWidth = map.getProperties().get("width", Integer.class);
         
         int mapHeight = map.getProperties().get("height", Integer.class);
- 
-        for (int x = 0; x < mapWidth; x++) {
-            for (int y = 0; y < mapHeight; y++) {
-                if(path.getCell(x, y) != null){
-                    Cell r = path.getCell(x, y);
-                    pathList.add(r); 
-                }  
-            }
-        }
-        
-        for (int x = 0; x < mapWidth; x++) {
-            for (int y = 0; y < mapHeight; y++) {
-                if(path.getCell(x, y) != null){
-                    Cell r = path.getCell(x, y);
-                    powerUps.add(r);
-                }    
-            }
-        }
-        for (int x = 0; x < mapWidth; x++) {
-            for (int y = 0; y < mapHeight; y++) {
-                if(path.getCell(x,y) != null){
-                    System.out.println(path.getCell(x,y));
-                    System.out.println("x: " + x + "   y: " + y);
-                }
-            }
-        }
-        
+    
         attkNum1 = new Texture("Numbers/Attack/A1.png");
         attkNum2 = new Texture("Numbers/Attack/A2.png");
         attkNum3 = new Texture("Numbers/Attack/A3.png");
@@ -490,7 +463,6 @@ public class WorldRenderer {
                 frcNumFinal = frcNum9;
             }
 
-
             batch.draw(card, 310 + cards2 * 80, 550, 80, 120);
              batch.draw(attkNumFinal, 310 + cards2 * 80, 550, 80, 120);
              batch.draw(defNumFinal, 310 + cards2 * 80, 550, 80, 120);
@@ -500,10 +472,8 @@ public class WorldRenderer {
              font.draw(batch, "" + cost, 360 + cards2 * 80, 610);
             cards2++;
         }
-        
-        
-                         
-                 if(Gdx.input.isTouched()){
+              
+             if(Gdx.input.isTouched()){
                  Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                  guiCam.unproject(click);
                  //System.out.println("x: " + click.x + "  Y: " + click.y);
@@ -541,14 +511,9 @@ public class WorldRenderer {
                  if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
                      cardSelect = 10;
                  }
-                 
-                 
-                 
-                 
-             }
-                
-                
-                if(cardSelect == 1){
+         }
+                      
+         if(cardSelect == 1){
               batch.draw(border, 803, 225, 94, 133);
          }
          else if(cardSelect == 2){
@@ -563,9 +528,7 @@ public class WorldRenderer {
          else if(cardSelect == 5){
               batch.draw(border, 483, 225, 94, 133);
          }
-  
-                
-                
+       
          if(cardSelect == 6){
              batch.draw(border, 303, 545, 94, 133);
          }
@@ -603,10 +566,6 @@ public class WorldRenderer {
             }
             
          }
-         
-         
-
-
         // finished listing things to draw
         batch.end();
     }
