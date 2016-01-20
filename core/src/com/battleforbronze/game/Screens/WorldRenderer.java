@@ -20,8 +20,10 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.battleforbronze.game.Model.Card;
@@ -95,40 +97,39 @@ public class WorldRenderer {
     private Array<Cell> powerUps;
     private int mapWidth;
     private int mapHeight;
-    
-
+    private Cell clicked;
+    private Vector3 click;
+    private TiledMapTileLayer path;
+    private TiledMapTileLayer base;
+    private TiledMapTileSet testSet;
     public WorldRenderer(Player1Hand h, Player2Hand h2) {
 
         map = new TmxMapLoader().load("map.tmx");
-
+        clicked = new Cell();
         deckOne = new Deck1();
         deckTwo = new Deck2();
+        click = new Vector3();
         deckThree = new Deck3();
+        testSet = new TiledMapTileSet(); 
         hand = h;
         hand2 = h2;
-        
+        testSet = map.getTileSets().getTileSet("tiles");
         pathList = new Array<Cell>();
         powerUps = new Array<Cell>();
-        
-
-
-
-        TiledMapTileLayer path = (TiledMapTileLayer) map.getLayers().get("path");
-        TiledMapTileLayer base = (TiledMapTileLayer) map.getLayers().get("base");
+        path = (TiledMapTileLayer) map.getLayers().get("path");
+        base = (TiledMapTileLayer) map.getLayers().get("base");
         TiledMapTileLayer powerUp = (TiledMapTileLayer) map.getLayers().get("base power ups");
         TiledMapTileLayer megaPowerUp = (TiledMapTileLayer) map.getLayers().get("mega power up");
         card = new Texture("Card.png");
         font = new BitmapFont();
         int mapWidth = map.getProperties().get("width", Integer.class);
         int mapHeight = map.getProperties().get("height", Integer.class);
-        
-        
-        
+ 
         for (int x = 0; x < mapWidth; x++) {
             for (int y = 0; y < mapHeight; y++) {
                 if(path.getCell(x, y) != null){
                     Cell r = path.getCell(x, y);
-                    pathList.add(r);
+                    pathList.add(r); 
                 }  
             }
         }
@@ -172,6 +173,7 @@ public class WorldRenderer {
         frcNum7 = new Texture("Numbers/Force/F7.png");
         frcNum8 = new Texture("Numbers/Force/F8.png");
         frcNum9 = new Texture("Numbers/Force/F9.png");
+        
 
         font.setColor(Color.BLACK);
 
@@ -202,7 +204,13 @@ public class WorldRenderer {
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-
+        if(Gdx.input.isTouched()){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(click);
+                System.out.println(path.getCell((int)click.x, (int)click.y));
+                clicked = path.getCell((int)click.x, (int)click.y);
+                clicked.setTile(testSet.getTile(194));
+        }
         // update the camera
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
@@ -253,7 +261,6 @@ public class WorldRenderer {
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
-
         int cards = 0;
         int cards2 = 0;
         
@@ -357,6 +364,7 @@ public class WorldRenderer {
             batch.draw(attkNumFinal, 810 - cards * 60, 230, 80, 120);
             batch.draw(defNumFinal, 810 - cards * 60, 230, 80, 120);
             batch.draw(frcNumFinal, 810 - cards * 60, 230, 80, 120);
+            
 //            batch.draw(picture, 740, 305, 60, 60);
             font.draw(batch, name, 820 - cards * 60, 343);
             font.draw(batch, "" + cost, 850 - cards * 60, 290);
@@ -468,6 +476,7 @@ public class WorldRenderer {
             font.draw(batch, "" + cost, 850 + cards * 60, 610);
             cards2++;
         }
+        
 
 
 
@@ -498,4 +507,9 @@ public class WorldRenderer {
     public void guiConvert(Vector3 v){
         guiCam.unproject(v);
     }
+    
+    public void camConvert(Vector3 v){
+        camera.unproject(v);
+    }
+    
 }

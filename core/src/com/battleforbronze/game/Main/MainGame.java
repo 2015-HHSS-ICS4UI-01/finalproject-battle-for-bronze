@@ -55,8 +55,6 @@ public class MainGame implements Screen, InputProcessor {
     private Card drawn2;
 
     public MainGame() {
-    
-    
         
         pos = 0;
         turn = true;
@@ -71,7 +69,6 @@ public class MainGame implements Screen, InputProcessor {
         playerOneHand.shuffleDeck();
         playerOneHand.startingHand();
         playerTwoHand.startingHand();
-        renderer = new WorldRenderer(playerOneHand, playerTwoHand);
     }
 
     @Override
@@ -150,9 +147,21 @@ public class MainGame implements Screen, InputProcessor {
             if(Gdx.input.isTouched()){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 renderer.guiConvert(click);
-                System.out.println("x: " + click.x + "  Y: " + click.y);
-                
+//                System.out.println("x: " + click.x + "  Y: " + click.y);
             }
+            
+            if(Gdx.input.isTouched()){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                renderer.guiConvert(click);;
+            }
+            
+            if(Gdx.input.isTouched()){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                renderer.camConvert(click);
+//                System.out.println("x: " + click.x + "  Y: " + click.y);
+            }
+            
+            
             
         playerOneHand.update(deltaTime);
         playerTwoHand.update(deltaTime);
