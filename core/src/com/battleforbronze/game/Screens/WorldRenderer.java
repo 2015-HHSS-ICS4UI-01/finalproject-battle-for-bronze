@@ -109,7 +109,6 @@ public class WorldRenderer {
     
     public WorldRenderer(Player1Hand h, Player2Hand h2) {
 
-        
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
         clicked = new Cell();

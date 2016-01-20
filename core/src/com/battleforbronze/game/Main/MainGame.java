@@ -53,9 +53,13 @@ public class MainGame implements Screen, InputProcessor {
     private String nameFound;
     private Card drawn1;
     private Card drawn2;
+    public int turnNumberP1;
+    public int turnNumberP2;
 
     public MainGame() {
         
+        turnNumberP1 = 0;
+        turnNumberP2 = 0;
         pos = 0;
         turn = true;
         Timer timer = new Timer();
@@ -99,6 +103,7 @@ public class MainGame implements Screen, InputProcessor {
                 }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("switched to player two");
+                turnNumberP2++;
                 timer = 0;
                 turn = false;
 
@@ -109,6 +114,7 @@ public class MainGame implements Screen, InputProcessor {
                 drawn1 = playerOneHand.cardDrawn();
                 System.out.println(playerOneHand.currentHandSize());
                 System.out.println("switched to player one");
+                turnNumberP1++;
                 timer = 0;
                 turn = true;
 
@@ -126,6 +132,7 @@ public class MainGame implements Screen, InputProcessor {
                     playerOneHand.draw();
                 }
                 drawn1 = playerOneHand.cardDrawn();
+                turnNumberP1++;
                 turn = true;
                 timer = 0;
             }
@@ -137,9 +144,11 @@ public class MainGame implements Screen, InputProcessor {
             if (turn == true && Gdx.input.isKeyJustPressed(Keys.E)) {
                 if(playerTwoHand.handSize()<5){
                     playerTwoHand.draw();
+                    
                 }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("player one ended turn");
+                turnNumberP2++;
                 turn = false;
                 timer = 0;
             }
