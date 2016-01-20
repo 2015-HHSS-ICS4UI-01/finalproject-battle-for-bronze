@@ -123,6 +123,7 @@ public class WorldRenderer {
         card = new Texture("Card.png");
         font = new BitmapFont();
         int mapWidth = map.getProperties().get("width", Integer.class);
+        
         int mapHeight = map.getProperties().get("height", Integer.class);
  
         for (int x = 0; x < mapWidth; x++) {
@@ -142,7 +143,14 @@ public class WorldRenderer {
                 }    
             }
         }
-        
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = 0; y < mapHeight; y++) {
+                if(path.getCell(x,y) != null){
+                    System.out.println(path.getCell(x,y));
+                    System.out.println("x: " + x + "   y: " + y);
+                }
+            }
+        }
         
         attkNum1 = new Texture("Numbers/Attack/A1.png");
         attkNum2 = new Texture("Numbers/Attack/A2.png");
@@ -207,9 +215,12 @@ public class WorldRenderer {
         if(Gdx.input.isTouched()){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
-                System.out.println(path.getCell((int)click.x, (int)click.y));
-                clicked = path.getCell((int)click.x, (int)click.y);
-                clicked.setTile(testSet.getTile(194));
+                System.out.println("x: " + (int)(click.x/PPU) + "y " + (int)(click.y/PPU));
+                System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
+                clicked = path.getCell((int)(click.x/PPU) + 1, (int)(click.y/PPU)+1);
+                if(clicked!=null){
+                    clicked.setTile(testSet.getTile(194));
+                }
         }
         // update the camera
 
