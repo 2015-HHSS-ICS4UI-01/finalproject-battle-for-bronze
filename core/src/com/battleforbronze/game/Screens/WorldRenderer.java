@@ -111,6 +111,7 @@ public class WorldRenderer {
     private int cardSelect;
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
+    private boolean lockin;
     
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
         
@@ -129,6 +130,7 @@ public class WorldRenderer {
         testSet = new TiledMapTileSet(); 
         hand = h;
         hand2 = h2;
+        lockin = false;
         testSet = map.getTileSets().getTileSet("tiles");
         pathList = new Array<Cell>();
         powerUps = new Array<Cell>();
@@ -516,11 +518,18 @@ public class WorldRenderer {
                      cardSelect = 10;
                  }
                  
-                 
+                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
+                     lockin = true;
+                 }
                 
          }
-             
-             batch.draw(buttonNotPressed,325,400,80,80);
+             if(lockin == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                lockin = false;
+             }
+             else if(lockin == false){
+                 batch.draw(buttonNotPressed,325,400,80,80);
+             }
                       
          if(cardSelect == 1){
               batch.draw(border, 803, 225, 94, 133);
