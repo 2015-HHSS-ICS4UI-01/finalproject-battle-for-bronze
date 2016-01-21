@@ -211,6 +211,7 @@ public class WorldRenderer {
                 System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 if(clicked!=null){
+                    System.out.println(clicked.getTile());
                     clicked.setTile(testSet.getTile(194));
                 }
         }
