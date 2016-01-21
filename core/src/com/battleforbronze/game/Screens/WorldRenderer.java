@@ -100,9 +100,10 @@ public class WorldRenderer {
     private int mapWidth;
     private int mapHeight;
     private Cell clicked;
+    private Cell afterClick;
     private Vector3 click;
     private TiledMapTileLayer path;
-    private TiledMapTileLayer base;
+    private TiledMapTileLayer base; 
     private TiledMapTileSet gameSet;
     private int cardSelect;
     private HUD playerOneHUD;
@@ -116,14 +117,14 @@ public class WorldRenderer {
         map = new TmxMapLoader().load("map.tmx");
         mana = new Texture("mana.png");
         clicked = new Cell();
+        afterClick = new Cell();
         deckOne = new Deck1();
         deckTwo = new Deck2();
         click = new Vector3();
         deckThree = new Deck3();
-        gameSet = new TiledMapTileSet(); 
         hand = h;
         hand2 = h2;
-        gameSet = map.getTileSets().getTileSet("gameTiles");
+        gameSet = map.getTileSets().getTileSet("tiles");
         path = (TiledMapTileLayer) map.getLayers().get("path");
         base = (TiledMapTileLayer) map.getLayers().get("base");
         TiledMapTileLayer powerUp = (TiledMapTileLayer) map.getLayers().get("base power ups");
@@ -192,15 +193,13 @@ public class WorldRenderer {
         // clear the screen with black
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+        
         if(Gdx.input.isTouched()){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
-                System.out.println("x: " + (int)(click.x/PPU) + "y " + (int)(click.y/PPU));
-                System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
-                if(clicked!=null){
-                    clicked.setTile(gameSet.getTile(0));
+                if(clicked != null){
+                    clicked.setTile(gameSet.getTile(188));
                 }
         }
         // update the camera

@@ -6,25 +6,9 @@
  <tileset firstgid="257" name="2" tilewidth="16" tileheight="16" spacing="1" tilecount="66">
   <image source="my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
  </tileset>
- <tileset firstgid="323" name="gameTiles" tilewidth="16" tileheight="16" tilecount="3">
-  <tile id="0">
-   <image width="16" height="16" source="superminionteamone.png"/>
-  </tile>
-  <tile id="1">
-   <image width="16" height="16" source="superminionteamtwo.png"/>
-  </tile>
-  <tile id="2">
-   <image width="16" height="16" source="highLight.png"/>
-  </tile>
- </tileset>
  <layer name="base" width="27" height="37">
   <data encoding="base64" compression="zlib">
-   eJy1l8FuwyAQRIlTpfkAiHxIe0z9B82pV+fUqv//M8VSkMbTBQacHEatEPBYdj1Zds65nagh6hz1FvXesA710jD3O+or6qdjbVIQ552ifqNGYY+hM3aFpeZBjdNilc6/N1i5+Ty+Na4aT2Edol5BR5HHceNetztrpr3TeJIStxXbwdirphIrVwvI+Yy6wv8foGsDS+FMhXxdiD1t5GBtzGL+ezh7YpV4QeTl4uGa92J8OVaOMxgsrBPlPtV4gsFaauPSwavdmzUv7V3ioZccab13//2g5A0zjHsa4/mjW9fVM8Us9IJ0Lx7G2RvYO9hHPMyb3Pp7xzxZecAxzutSq6kfUPPPvsM89qjg1nWqcqzvjnk3YA0P4PBZkeeJ1cqx/Ix/Y5DHrF6Omr9R4KRa4TuzvnWrb8Da6InH8jv2BvaCuYPDavWRLflhVq6vSOPMUXv1wdX7BrUX7XlT5OK2WFveCsFYjyy1V86dqbb+Ef08c1m9LKtfV2JexO9KrIPW+6yd43z/2/Ne/gO1nlJK
-  </data>
- </layer>
- <layer name="path" width="27" height="37">
-  <data encoding="base64" compression="zlib">
-   eJztll0KwCAMg72C97/sngYi1qVNWhg0UBCrflLizxitV7NZzXKy5hIKBhos59S29qLg3FisTutmsL5qlc1Zcyq/oXmlD5AxER46h/WLh2N5w+rba54dFhvZJ1Nvz9gMjjUn4tUoz3P+WB5ypyh080XVnVz1zrA+QGuleO8r/hU7y8pXqVnN+rMe9psIcA==
+   eJy1l8FuwyAQRIlTpblWgsqHtMfUf5CcenVO7f//TbEUpPF0gQEnh1ErBDyWXU+WnXNuJ2qIOkV9RH02rEO9NMz9ifqO+u1YmxTEee9Rb1GjsMfQGbvCUvOgxmmxSuffG6zcfB7fGleNp7AOUa+go8jjuHGv2501095pPEmJ24rtYOxVU4mVqwXkXKKu8P8X6NrAUjhTIV9nYk8bOVgbs5j/Hs6eWCVeEHm5eLjmvRhfjpXjDAYL60S5TzWeYLCW2jh38Gr3Zs1Le5d46CVHWu/dfz8oecMM457GeP7o1nX1TDELvSDdi4dx9gb2DvYRD/Mmt/7eMU9WHnCM87rUauoH1Pyz7zCPPSq4dZ2qHOu7Y94NWMMDOHxW5HlitXIsP+PfGOQxq5ej5m8UOKlW+M6sb93qG7A2euKx/I69gb1g7uCwWn1kS36Ylesr0jhz1F59cPW+Qe1Fe94Uubgt1pa3QjDWI0vtlXNnqq1/RD/PXFYvy+rXlZgX8bsS66D1PmvnON3/9ryX/wCbFjKK
   </data>
  </layer>
  <layer name="base power ups" width="27" height="37">
@@ -42,9 +26,9 @@
    eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
   </data>
  </layer>
- <layer name="minions" width="27" height="37">
+ <layer name="path" width="27" height="37">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20MH6AAAACApwEPnAAB
+   eJztll0KwCAMg72C97/sngYi1qVNWhg0UBCrflLizxitV7NZzXKy5hIKBhos59S29qLg3FisTutmsL5qlc1Zcyq/oXmlD5AxER46h/WLh2N5w+rba54dFhvZJ1Nvz9gMjjUn4tUoz3P+WB5ypyh080XVnVz1zrA+QGuleO8r/hU7y8pXqVnN+rMe9psIcA==
   </data>
  </layer>
 </map>
