@@ -43,7 +43,6 @@ public class MainGame implements Screen, InputProcessor {
     private Deck1 deckOne;
     private Deck2 deckTwo;
     private WorldRenderer renderer;
-    private boolean turn;
     private float timer = 0;
     private Card findCard;
     private int pos;
@@ -56,12 +55,13 @@ public class MainGame implements Screen, InputProcessor {
     private Card drawn2;
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
+    private HUD turnNew;
 
     public MainGame() {
         playerTwoHUD = new HUD();
         playerOneHUD = new HUD();
         pos = 0;
-        turn = true;
+        turnNew = new HUD();
         Timer timer = new Timer();
         deckOne = new Deck1();
         deckTwo = new Deck2();
@@ -92,7 +92,7 @@ public class MainGame implements Screen, InputProcessor {
          * draws for the player then re-sets the timer and changes the turn
          */
         if (timer >= (60)) {
-            if (turn == true) {
+            if (turnNew.getTurnValue() == true) {
                 if(playerTwoHand.handSize()<5){
                     playerTwoHand.draw();
                 }
@@ -100,9 +100,9 @@ public class MainGame implements Screen, InputProcessor {
                 System.out.println("switched to player two");
                 playerTwoHUD.addOneP2();
                 timer = 0;
-                turn = false;
+                turnNew.changeTurn();
 
-            } else if (turn == false) {
+            } else if (turnNew.getTurnValue() == false) {
                 if(playerOneHand.handSize()<5){
                     playerOneHand.draw();
                 }
@@ -111,7 +111,7 @@ public class MainGame implements Screen, InputProcessor {
                 System.out.println("switched to player one");
                 playerOneHUD.addOneP1();
                 timer = 0;
-                turn = true;
+                turnNew.changeTurn();
 
             }
             /* when it is player ones turn and the player hits 1 it starts player ones turn by
@@ -121,7 +121,7 @@ public class MainGame implements Screen, InputProcessor {
              */
             
         }
-        if (turn == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
+        if (turnNew.getTurnValue() == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
                 System.out.println("player two ended turn");
                 if(playerOneHand.handSize()<5){
                     playerOneHand.draw();
@@ -129,7 +129,7 @@ public class MainGame implements Screen, InputProcessor {
                 drawn1 = playerOneHand.cardDrawn();
                 playerOneHUD.addOneP1();
                 System.out.println("added one p1");
-                turn = true;
+                turnNew.changeTurn();
                 timer = 0;
             }
             /* when it is player twos turn and the player hits 1 it starts player ones turn by
@@ -137,7 +137,7 @@ public class MainGame implements Screen, InputProcessor {
              * changes the turn value
              * re-setting the timer
              */
-            if (turn == true && Gdx.input.isKeyJustPressed(Keys.E)) {
+            if (turnNew.getTurnValue() == true && Gdx.input.isKeyJustPressed(Keys.E)) {
                 if(playerTwoHand.handSize()<5){
                     playerTwoHand.draw();
                     
@@ -146,7 +146,7 @@ public class MainGame implements Screen, InputProcessor {
                 System.out.println("player one ended turn");
                 playerTwoHUD.addOneP2();
                 System.out.println("added one p2");
-                turn = false;
+                turnNew.changeTurn();
                 timer = 0;
             }
             

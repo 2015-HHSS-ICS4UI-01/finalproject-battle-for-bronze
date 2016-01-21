@@ -12,10 +12,12 @@ public class HUD {
     
     private int turnNumberP1;
     private int turnNumberP2;
+    private boolean turn;
         
     public HUD() {
         turnNumberP1 = 1;
         turnNumberP2 = 1;
+        turn = true;
     }
     
     public int addOneP1(){
@@ -43,6 +45,19 @@ public class HUD {
     
     public int getTurnNumberP2(){
         return turnNumberP2;
+    }
+    
+    public boolean getTurnValue(){
+        return turn;
+    }
+    
+    public boolean changeTurn(){
+        if (turn == true){
+            turn = false;
+        } else if (turn == false){
+            turn = true;
+        }
+        return turn;
     }
     
     

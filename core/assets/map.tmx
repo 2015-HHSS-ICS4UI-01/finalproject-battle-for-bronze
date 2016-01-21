@@ -6,8 +6,16 @@
  <tileset firstgid="257" name="2" tilewidth="16" tileheight="16" spacing="1" tilecount="66">
   <image source="my_scratch_tiles_by_sylver1984-d41apey.png" trans="ffffff" width="373" height="50"/>
  </tileset>
- <tileset firstgid="323" name="testTile" tilewidth="15" tileheight="15" spacing="1" tilecount="1">
-  <image source="testTile.png" width="16" height="16"/>
+ <tileset firstgid="323" name="gameTiles" tilewidth="16" tileheight="16" tilecount="3">
+  <tile id="0">
+   <image width="16" height="16" source="superminionteamone.png"/>
+  </tile>
+  <tile id="1">
+   <image width="16" height="16" source="superminionteamtwo.png"/>
+  </tile>
+  <tile id="2">
+   <image width="16" height="16" source="highLight.png"/>
+  </tile>
  </tileset>
  <layer name="base" width="27" height="37">
   <data encoding="base64" compression="zlib">
@@ -32,6 +40,11 @@
  <layer name="Decorations" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJzt17dOw1AUxnEHJmCADQIDrIAgsLLAykuwIHpd6HWhQ2Cjl41eJsoLUF6A8gKUF6Bs/E18kXV1Euw4soTkI/0U5+Y6n61rWfcYRmorA5mCLGFuncesMPIFBbY57ehAJ7rQjXNc4BJXDrOKUWJTK2QNYwSjGMM4rnGDW9y5u73fUvdpz5rHAqJYxBLu8YBHPKUwawOb2MI2dvCMF7ziLYVZRzjGCU5xhnd84BNfSWap9SvVxrORk+R/uq1CFPmUFUGFT1nVqPEp679X8Lx5r+B5Cyoofyt4b3mv4L0lVwhNaEYLWtGmzVF9hdRHuK0+9GMAgxjSfpf2pT/XyYWmCdQe39zfq7H0UOycKUxjBrOYc5hVxvnlAjNL9RLm9zyEraxlrGAVa1h3mOW0cq2sBo53sYd9HOAQjUJWlfF3H5goq0cbr7Q+e4WsRH2gk6wJjusFk0Zs7c011ftARe8r4lW8ddVF8A3RkUTx
+  </data>
+ </layer>
+ <layer name="minions" width="27" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAACApwEPnAAB
   </data>
  </layer>
 </map>

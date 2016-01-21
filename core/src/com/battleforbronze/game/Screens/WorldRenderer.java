@@ -97,15 +97,13 @@ public class WorldRenderer {
     private int frc;
     private int dfns;
     private String name;
-    private Array<Cell> pathList;
-    private Array<Cell> powerUps;
     private int mapWidth;
     private int mapHeight;
     private Cell clicked;
     private Vector3 click;
     private TiledMapTileLayer path;
     private TiledMapTileLayer base;
-    private TiledMapTileSet testSet;
+    private TiledMapTileSet gameSet;
     private int cardSelect;
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
@@ -122,12 +120,10 @@ public class WorldRenderer {
         deckTwo = new Deck2();
         click = new Vector3();
         deckThree = new Deck3();
-        testSet = new TiledMapTileSet(); 
+        gameSet = new TiledMapTileSet(); 
         hand = h;
         hand2 = h2;
-        testSet = map.getTileSets().getTileSet("tiles");
-        pathList = new Array<Cell>();
-        powerUps = new Array<Cell>();
+        gameSet = map.getTileSets().getTileSet("gameTiles");
         path = (TiledMapTileLayer) map.getLayers().get("path");
         base = (TiledMapTileLayer) map.getLayers().get("base");
         TiledMapTileLayer powerUp = (TiledMapTileLayer) map.getLayers().get("base power ups");
@@ -135,9 +131,8 @@ public class WorldRenderer {
         card = new Texture("Card.png");
         font = new BitmapFont();
         int mapWidth = map.getProperties().get("width", Integer.class);
-        
         int mapHeight = map.getProperties().get("height", Integer.class);
-    
+        
         attkNum1 = new Texture("Numbers/Attack/A1.png");
         attkNum2 = new Texture("Numbers/Attack/A2.png");
         attkNum3 = new Texture("Numbers/Attack/A3.png");
@@ -205,7 +200,7 @@ public class WorldRenderer {
                 System.out.println(path.getCell((int)(click.x/PPU), (int)(click.y/PPU)));
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 if(clicked!=null){
-                    clicked.setTile(testSet.getTile(194));
+                    clicked.setTile(gameSet.getTile(0));
                 }
         }
         // update the camera
