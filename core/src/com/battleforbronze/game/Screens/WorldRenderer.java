@@ -115,11 +115,14 @@ public class WorldRenderer {
     private Texture buttonNotPressed;
     private Texture buttonPressed;
     private boolean lockin;
+    private Cell checkCell;
+    private Cell placeTile;
     
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
         
         playerOneHUD = p1HUD;
         playerTwoHUD = p2HUD; 
+        cardSelected = false;
         playCard = new Card();
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
@@ -128,6 +131,8 @@ public class WorldRenderer {
         mana = new Texture("mana.png");
         clicked = new Cell();
         afterClick = new Cell();
+        checkCell = new Cell();
+        placeTile = new Cell();
         deckOne = new Deck1();
         deckTwo = new Deck2();
         click = new Vector3();
@@ -484,22 +489,27 @@ public class WorldRenderer {
                  //System.out.println("x: " + click.x + "  Y: " + click.y);
                  if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && hand.handSize()>=1){
                      cardSelect = 1;
+                     playCard = hand.getCard(0);
                      cardSelected = true;
                  }
                  if(click.x>730 && click.x<810 && click.y>230 && click.y<350 && hand.handSize()>=2){
                      cardSelect = 2;
+                     playCard = hand.getCard(1);
                      cardSelected = true;
                  }
                  if(click.x>650 && click.x<730 && click.y>230 && click.y<350 && hand.handSize()>=3){
                      cardSelect = 3;
+                     playCard = hand.getCard(2);
                      cardSelected = true;
                  }
                  if(click.x>570 && click.x<650 && click.y>230 && click.y<350 && hand.handSize()>=4){
                      cardSelect = 4;
+                     playCard = hand.getCard(3);
                      cardSelected = true;
                  }
                  if(click.x>490 && click.x<570 && click.y>230 && click.y<350 && hand.handSize()>=5){
                      cardSelect = 5;
+                     playCard = hand.getCard(4);
                      cardSelected = true;
                  }
                  
@@ -526,36 +536,34 @@ public class WorldRenderer {
                      cardSelect = 10;
                      cardSelected = true;
                  }
-                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
-                     lockin = true;
-                     cardSelected = true;
-                 }
-                 else{
-                     cardSelected = false;
-                 }
+//                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
+//                     lockin = true;
+//                     cardSelected = true;
+//                 }
+                 
                 
              }
              
          
                       
          if(cardSelect == 1){
-             playCard = hand.getCard(0);
+             
               batch.draw(border, 803, 225, 94, 133);
          }
          else if(cardSelect == 2){
-             playCard = hand.getCard(1);
+
               batch.draw(border, 723, 225, 94, 133);
          }
          else if(cardSelect == 3){
-             playCard = hand.getCard(2);
+         
               batch.draw(border, 643, 225, 94, 133);
          }
          else if(cardSelect == 4){
-             playCard = hand.getCard(3);
+           
               batch.draw(border, 563, 225, 94, 133);
          }
          else if(cardSelect == 5){
-             playCard = hand.getCard(4);
+            
               batch.draw(border, 483, 225, 94, 133);
          }
        
@@ -576,17 +584,7 @@ public class WorldRenderer {
          }
          
          
-         
-         if(lockin == true){
-                batch.draw(buttonPressed,325,400,80,80);
-                if(cardSelected = true&&playCard.getCost()>=playerOneHUD.getTurnNumberP1()){
-                    hand.played(cardSelect-1);
-                }
-                lockin = false;
-             }
-             else if(lockin == false){
-                 batch.draw(buttonNotPressed,325,400,80,80);
-             }
+        
          
         
          for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
@@ -610,6 +608,33 @@ public class WorldRenderer {
             }
             
          }
+         if (playerOneHUD.getTurnValue() == true){
+         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
+                    hand.played(cardSelect-1);
+                    cardSelected = false;
+                    cardSelect = 0;
+                    checkCell = path.getCell(13, 2);
+                    checkCell.setTile(gameSet.getTile(186));
+                   //14,3 p1 first spot
+                }
+          }
+         }
+         if (playerOneHUD.getTurnValue() == false){
+         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
+                    hand.played(cardSelect-1);
+                    cardSelected = false;
+                    cardSelect = 0;
+                    checkCell = path.getCell(13, 34);
+                    checkCell.setTile(gameSet.getTile(187));
+                   //14,3 p1 first spot
+                }
+          }
+         }
+         
         // finished listing things to draw
         batch.end();
     }

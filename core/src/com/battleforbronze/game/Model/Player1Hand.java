@@ -84,8 +84,9 @@ public class Player1Hand {
         return hand.removeIndex(cardPlayed);
     }
     
-    public Card played(int index){
-        return hand.removeIndex(index);
+    public void played(int index){
+        hand.removeIndex(index);
+        System.out.println(hand.size);
     }
 
     public Array<Card> getCards() {
