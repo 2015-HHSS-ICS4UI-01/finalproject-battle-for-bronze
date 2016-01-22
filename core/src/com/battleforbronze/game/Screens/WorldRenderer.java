@@ -108,6 +108,9 @@ public class WorldRenderer {
     private int cardSelect;
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
+    private Texture buttonNotPressed;
+    private Texture buttonPressed;
+    private boolean lockin;
     
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
         
@@ -115,6 +118,8 @@ public class WorldRenderer {
         playerTwoHUD = p2HUD; 
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
+        buttonNotPressed = new Texture("button_notpressed.png");
+        buttonPressed = new Texture("button_pressed.png");
         mana = new Texture("mana.png");
         clicked = new Cell();
         afterClick = new Cell();
@@ -506,7 +511,19 @@ public class WorldRenderer {
                  if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
                      cardSelect = 10;
                  }
-         }
+                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
+                     lockin = true;
+                 }
+                
+             }
+             if(lockin == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                lockin = false;
+             }
+             else if(lockin == false){
+                 batch.draw(buttonNotPressed,325,400,80,80);
+             }
+         
                       
          if(cardSelect == 1){
               batch.draw(border, 803, 225, 94, 133);
@@ -539,6 +556,7 @@ public class WorldRenderer {
          else if(cardSelect == 10){
              batch.draw(border, 623, 545, 94, 133);
          }
+         
         
          for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
             if (playerOneHUD.getTurnNumberP1() < 10){
