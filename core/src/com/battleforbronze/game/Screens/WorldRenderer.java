@@ -202,6 +202,7 @@ public class WorldRenderer {
                     clicked.setTile(gameSet.getTile(188));
                 }
         }
+        //gggg
         // update the camera
 
         if (Gdx.input.isKeyPressed(Keys.A)) {
