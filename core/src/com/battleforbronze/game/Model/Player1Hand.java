@@ -83,6 +83,10 @@ public class Player1Hand {
     public Card removeFromHand() {
         return hand.removeIndex(cardPlayed);
     }
+    
+    public Card played(int index){
+        return hand.removeIndex(index);
+    }
 
     public Array<Card> getCards() {
         return hand;

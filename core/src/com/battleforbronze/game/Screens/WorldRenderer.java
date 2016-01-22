@@ -49,8 +49,11 @@ public class WorldRenderer {
     private OrthographicCamera guiCam;
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer render;
+    private boolean cardSelected;
     private TiledMap map;
     private Texture mana;
+    private int p1cMana;
+    private int p2cMana;
     private Texture border;
     private Texture card;
     private Texture attkNum1;
@@ -83,6 +86,7 @@ public class WorldRenderer {
     private Texture attkNumFinal;
     private Texture defNumFinal;
     private Texture frcNumFinal;
+    private Card playCard;
     private Texture picture;
     private Texture minion;
     private BitmapFont font;
@@ -116,6 +120,7 @@ public class WorldRenderer {
         
         playerOneHUD = p1HUD;
         playerTwoHUD = p2HUD; 
+        playCard = new Card();
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
         buttonNotPressed = new Texture("button_notpressed.png");
@@ -479,18 +484,23 @@ public class WorldRenderer {
                  //System.out.println("x: " + click.x + "  Y: " + click.y);
                  if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && hand.handSize()>=1){
                      cardSelect = 1;
+                     cardSelected = true;
                  }
                  if(click.x>730 && click.x<810 && click.y>230 && click.y<350 && hand.handSize()>=2){
                      cardSelect = 2;
+                     cardSelected = true;
                  }
                  if(click.x>650 && click.x<730 && click.y>230 && click.y<350 && hand.handSize()>=3){
                      cardSelect = 3;
+                     cardSelected = true;
                  }
                  if(click.x>570 && click.x<650 && click.y>230 && click.y<350 && hand.handSize()>=4){
                      cardSelect = 4;
+                     cardSelected = true;
                  }
                  if(click.x>490 && click.x<570 && click.y>230 && click.y<350 && hand.handSize()>=5){
                      cardSelect = 5;
+                     cardSelected = true;
                  }
                  
                  
@@ -498,46 +508,54 @@ public class WorldRenderer {
                  
                  if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && hand2.handSize()>=1){
                      cardSelect = 6;
+                     cardSelected = true;
                  }
                  if(click.x>390 && click.x<470 && click.y>550 && click.y<670 && hand2.handSize()>=2){
                      cardSelect = 7;
+                     cardSelected = true;
                  }
                  if(click.x>470 && click.x<550 && click.y>550 && click.y<670 && hand2.handSize()>=3){
                      cardSelect = 8;
+                     cardSelected = true;
                  }
                  if(click.x>550 && click.x<630 && click.y>550 && click.y<670 && hand2.handSize()>=4){
                      cardSelect = 9;
+                     cardSelected = true;
                  }
                  if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
                      cardSelect = 10;
+                     cardSelected = true;
                  }
                  if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
                      lockin = true;
+                     cardSelected = true;
+                 }
+                 else{
+                     cardSelected = false;
                  }
                 
              }
-             if(lockin == true){
-                batch.draw(buttonPressed,325,400,80,80);
-                lockin = false;
-             }
-             else if(lockin == false){
-                 batch.draw(buttonNotPressed,325,400,80,80);
-             }
+             
          
                       
          if(cardSelect == 1){
+             playCard = hand.getCard(0);
               batch.draw(border, 803, 225, 94, 133);
          }
          else if(cardSelect == 2){
+             playCard = hand.getCard(1);
               batch.draw(border, 723, 225, 94, 133);
          }
          else if(cardSelect == 3){
+             playCard = hand.getCard(2);
               batch.draw(border, 643, 225, 94, 133);
          }
          else if(cardSelect == 4){
+             playCard = hand.getCard(3);
               batch.draw(border, 563, 225, 94, 133);
          }
          else if(cardSelect == 5){
+             playCard = hand.getCard(4);
               batch.draw(border, 483, 225, 94, 133);
          }
        
@@ -556,6 +574,19 @@ public class WorldRenderer {
          else if(cardSelect == 10){
              batch.draw(border, 623, 545, 94, 133);
          }
+         
+         
+         
+         if(lockin == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                if(cardSelected = true&&playCard.getCost()>=playerOneHUD.getTurnNumberP1()){
+                    hand.played(cardSelect-1);
+                }
+                lockin = false;
+             }
+             else if(lockin == false){
+                 batch.draw(buttonNotPressed,325,400,80,80);
+             }
          
         
          for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
