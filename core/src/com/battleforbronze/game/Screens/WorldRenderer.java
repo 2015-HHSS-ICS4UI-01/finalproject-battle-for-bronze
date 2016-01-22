@@ -31,6 +31,7 @@ import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
 import com.battleforbronze.game.Model.Deck3;
 import com.battleforbronze.game.Model.HUD;
+import com.battleforbronze.game.Model.Minion;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 
@@ -117,8 +118,10 @@ public class WorldRenderer {
     private boolean lockin;
     private Cell checkCell;
     private Cell placeTile;
-    
+    private Minion p1Played;
+    private Minion p2Played;
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
+        
         
         playerOneHUD = p1HUD;
         playerTwoHUD = p2HUD; 
