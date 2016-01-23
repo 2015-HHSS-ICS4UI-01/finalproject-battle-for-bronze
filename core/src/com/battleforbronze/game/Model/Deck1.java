@@ -20,7 +20,7 @@ public class Deck1 {
     private static final Random RAND = new Random();
 
     /**
-     * creates deck and makes all cards
+     * 1creates deck and makes all cards
      */
     public Deck1() {
 
