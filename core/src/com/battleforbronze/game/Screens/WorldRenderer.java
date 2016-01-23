@@ -674,6 +674,67 @@ public class WorldRenderer {
                
                 
         }
+         if (playerOneHUD.getTurnValue() == true){
+             batch.draw(buttonNotPressed,325,400,80,80);
+         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
+                    p2OnFieldCards.add(playCard);
+                    p1OnFieldXY.add(new OnField (14,3));
+                    hand.played(cardSelect-1);
+                    cardSelected = false;
+                    cardSelect = 0;
+                    checkCell = path.getCell(13, 2);
+                    checkCell.setTile(gameSet.getTile(186));
+                   //14,3 p1 first spot
+                }
+          }
+         }
+         if (playerTwoHUD.getTurnValue() == false){
+             batch.draw(buttonNotPressed,325,400,80,80);
+         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
+                batch.draw(buttonPressed,325,400,80,80);
+                if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
+                    p2OnFieldCards.add(playCard);
+                    p2OnFieldXY.add(new OnField (13,34));
+                    hand.played(cardSelect-1);
+                    cardSelected = false;
+                    cardSelect = 0;
+                    checkCell = path.getCell(13, 34);
+                    checkCell.setTile(gameSet.getTile(187));
+                   //14,3 p1 first spot
+                }
+          }
+         }
+         if(Gdx.input.isTouched() && checkTurn.getTurnValue() == true){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(click);
+                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
+                int tempX = (int)(click.x/(PPU-1));
+                int tempY = (int)(click.y/(PPU-1));
+                for (int i = 0; i < p2OnFieldXY.size; i++) {
+                    OnField check = p2OnFieldXY.get(i);
+                    if (tempX == check.getX() && tempY == check.getY()){
+                        
+                    }
+             }
+        }
+         if(Gdx.input.isTouched() && checkTurn.getTurnValue() == false){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(click);
+                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
+                int tempX = (int)(click.x/(PPU-1));
+                int tempY = (int)(click.y/(PPU-1));
+                for (int i = 0; i < p2OnFieldXY.size; i++) {
+                    OnField check = p2OnFieldXY.get(i);
+                    if (tempX == check.getX() && tempY == check.getY()){
+                      Card clickedCard = p2OnFieldCards.get(i);
+                      int clickedCardCost = clickedCard.getCost();
+                    }
+                    
+             }
+         }
+        
 
         // finished listing things to draw
         batch.end();
