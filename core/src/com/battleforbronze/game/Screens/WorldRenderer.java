@@ -122,12 +122,16 @@ public class WorldRenderer {
     private Cell placeTile;
     private Minion p1Played;
     private Minion p2Played;
-    private Array<OnField> p1OnField;
-    private Array<OnField> p2OnField;
+    private Array<OnField> p1OnFieldXY;
+    private Array<OnField> p2OnFieldXY;
+    private Array<Card> p1OnFieldCards;
+    private Array<Card> p2OnFieldCards;
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD, HUD turnNew) {
         
-        p1OnField = new Array<OnField>();
-        p2OnField = new Array<OnField>();
+        p1OnFieldCards = new Array<Card>();
+        p2OnFieldCards = new Array<Card>();
+        p1OnFieldXY = new Array<OnField>();
+        p2OnFieldXY = new Array<OnField>();
         playerOneHUD = p1HUD;
         playerTwoHUD = p2HUD;
         checkTurn = turnNew;
@@ -218,14 +222,15 @@ public class WorldRenderer {
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        if(Gdx.input.isTouched()){
-                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-                camera.unproject(click);
-                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
-                if(clicked != null){
-                    clicked.setTile(gameSet.getTile(188));
-                }
-        }
+//        if(Gdx.input.isTouched()){
+//                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+//                camera.unproject(click);
+//                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
+//                if(clicked != null){
+//                    clicked.setTile(gameSet.getTile(188));
+//                }
+//        }
+        
         //gggg
         // update the camera
 
@@ -626,6 +631,8 @@ public class WorldRenderer {
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
+                    p2OnFieldCards.add(playCard);
+                    p1OnFieldXY.add(new OnField (14,3));
                     hand.played(cardSelect-1);
                     cardSelected = false;
                     cardSelect = 0;
@@ -635,10 +642,12 @@ public class WorldRenderer {
                 }
           }
          }
-         if (playerOneHUD.getTurnValue() == false){
+         if (playerTwoHUD.getTurnValue() == false){
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
-                if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
+                if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
+                    p2OnFieldCards.add(playCard);
+                    p2OnFieldXY.add(new OnField (13,34));
                     hand.played(cardSelect-1);
                     cardSelected = false;
                     cardSelect = 0;
@@ -648,6 +657,12 @@ public class WorldRenderer {
                 }
           }
          }
+         if(Gdx.input.isTouched()){
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(click);
+                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
+                
+        }
 
         // finished listing things to draw
         batch.end();

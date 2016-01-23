@@ -67,7 +67,7 @@ public class MainGame implements Screen, InputProcessor {
         deckTwo = new Deck2();
         playerOneHand = new Player1Hand();
         playerTwoHand = new Player2Hand();
-        renderer = new WorldRenderer(playerOneHand, playerTwoHand, playerOneHUD, playerTwoHUD);
+        renderer = new WorldRenderer(playerOneHand, playerTwoHand, playerOneHUD, playerTwoHUD, turnNew);
         Gdx.input.setInputProcessor(this);
         playerTwoHand.shuffleDeck();
         playerOneHand.shuffleDeck();
