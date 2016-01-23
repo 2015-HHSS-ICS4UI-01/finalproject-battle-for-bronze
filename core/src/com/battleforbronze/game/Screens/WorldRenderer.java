@@ -114,6 +114,7 @@ public class WorldRenderer {
     private int cardSelect;
     private HUD playerOneHUD;
     private HUD playerTwoHUD;
+    private HUD checkTurn;
     private Texture buttonNotPressed;
     private Texture buttonPressed;
     private boolean lockin;
@@ -123,12 +124,13 @@ public class WorldRenderer {
     private Minion p2Played;
     private Array<OnField> p1OnField;
     private Array<OnField> p2OnField;
-    public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
+    public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD, HUD turnNew) {
         
         p1OnField = new Array<OnField>();
         p2OnField = new Array<OnField>();
         playerOneHUD = p1HUD;
-        playerTwoHUD = p2HUD; 
+        playerTwoHUD = p2HUD;
+        checkTurn = turnNew;
         cardSelected = false;
         playCard = new Card();
         border = new Texture("border.png");
@@ -646,7 +648,7 @@ public class WorldRenderer {
                 }
           }
          }
-         
+
         // finished listing things to draw
         batch.end();
     }
@@ -678,12 +680,5 @@ public class WorldRenderer {
         camera.unproject(v);
     }
     
-    public void showTurnEndP1(){
-        
-    }
-    public void showTurnEndP2(){
-        
-    }
-    
-    
+
 }
