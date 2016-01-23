@@ -604,7 +604,6 @@ public class WorldRenderer {
          
          
         
-         
         
          for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
             if (playerOneHUD.getTurnNumberP1() < 10){
@@ -628,6 +627,7 @@ public class WorldRenderer {
             
          }
          if (playerOneHUD.getTurnValue() == true){
+             batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
@@ -643,6 +643,7 @@ public class WorldRenderer {
           }
          }
          if (playerTwoHUD.getTurnValue() == false){
+             batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
@@ -661,7 +662,7 @@ public class WorldRenderer {
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
-                
+               
                 
         }
 
