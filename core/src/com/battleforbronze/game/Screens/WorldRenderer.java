@@ -671,13 +671,6 @@ public class WorldRenderer {
                 }
           }
          }
-         if(Gdx.input.isTouched()){
-                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-                camera.unproject(click);
-                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
-               
-                
-        }
          if (playerOneHUD.getTurnValue() == true){
              batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
@@ -716,8 +709,8 @@ public class WorldRenderer {
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 int tempX = (int)(click.x/(PPU-1));
                 int tempY = (int)(click.y/(PPU-1));
-                for (int i = 0; i < p2OnFieldXY.size; i++) {
-                    OnField check = p2OnFieldXY.get(i);
+                for (int i = 0; i < p1OnFieldXY.size; i++) {
+                    OnField check = p1OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()){
                       Card clickedCard = p1OnFieldCards.get(i);
                       int clickedCardCost = clickedCard.getCost(); 
