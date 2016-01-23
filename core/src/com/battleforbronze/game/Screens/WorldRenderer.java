@@ -679,7 +679,7 @@ public class WorldRenderer {
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
-                    p2OnFieldCards.add(playCard);
+                    p1OnFieldCards.add(playCard);
                     p1OnFieldXY.add(new OnField (14,3));
                     hand.played(cardSelect-1);
                     cardSelected = false;
@@ -715,7 +715,8 @@ public class WorldRenderer {
                 for (int i = 0; i < p2OnFieldXY.size; i++) {
                     OnField check = p2OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()){
-                        
+                      Card clickedCard = p1OnFieldCards.get(i);
+                      int clickedCardCost = clickedCard.getCost(); 
                     }
              }
         }
