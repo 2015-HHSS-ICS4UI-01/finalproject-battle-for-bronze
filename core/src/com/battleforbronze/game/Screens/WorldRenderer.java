@@ -90,6 +90,8 @@ public class WorldRenderer {
     private Texture attkNumFinal;
     private Texture defNumFinal;
     private Texture frcNumFinal;
+    private int clickedCardCost;
+    private Card clickedCard;
     private Card playCard;
     private Texture picture;
     private Texture minion;
@@ -128,8 +130,19 @@ public class WorldRenderer {
     private Array<OnField> p2OnFieldXY;
     private Array<Card> p1OnFieldCards;
     private Array<Card> p2OnFieldCards;
+    private boolean highLightP1;
+    private boolean highLightP2;
+    private int highLightX;
+    private int highLightY;
+    private boolean moveMinionP1;
+    private boolean moveMinionP2;
+    private int OnFieldSpotP1;
+    private int OnFieldSpotP2;
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD, HUD turnNew) {
-        
+        moveMinionP1= false;
+        moveMinionP2 = false;
+        highLightP1 = false;
+        highLightP2 = false;
         p1OnFieldCards = new Array<Card>();
         p2OnFieldCards = new Array<Card>();
         p1OnFieldXY = new Array<OnField>();
@@ -225,16 +238,7 @@ public class WorldRenderer {
         // clear the screen with black
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
-//        if(Gdx.input.isTouched()){
-//                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-//                camera.unproject(click);
-//                clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
-//                if(clicked != null){
-//                    clicked.setTile(gameSet.getTile(188));
-//                }
-//        }
-        
+
         //gggg
         // update the camera
 
@@ -501,7 +505,7 @@ public class WorldRenderer {
             cards2++;
         }
               
-             if(Gdx.input.isTouched()){
+             if(Gdx.input.justTouched()){
                  Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                  guiCam.unproject(click);
                  //System.out.println("x: " + click.x + "  Y: " + click.y);
@@ -641,10 +645,9 @@ public class WorldRenderer {
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
                     p1OnFieldCards.add(playCard);
-                    p1OnFieldXY.add(new OnField (14,3));
+                    p1OnFieldXY.add(new OnField (13,2));
                     System.out.println("player 1 played their " + (cardSelect-1));
                     hand.played(cardSelect-1);
-                    
                     cardSelected = false;
                     cardSelect = 0;
                     checkCell = path.getCell(13, 2);
@@ -671,39 +674,7 @@ public class WorldRenderer {
                 }
           }
          }
-         if (playerOneHUD.getTurnValue() == true){
-             batch.draw(buttonNotPressed,325,400,80,80);
-         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
-                batch.draw(buttonPressed,325,400,80,80);
-                if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
-                    p1OnFieldCards.add(playCard);
-                    p1OnFieldXY.add(new OnField (14,3));
-                    hand.played(cardSelect-1);
-                    cardSelected = false;
-                    cardSelect = 0;
-                    checkCell = path.getCell(13, 2);
-                    checkCell.setTile(gameSet.getTile(186));
-                   //14,3 p1 first spot
-                }
-          }
-         }
-         if (playerTwoHUD.getTurnValue() == false){
-             batch.draw(buttonNotPressed,325,400,80,80);
-         if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
-                batch.draw(buttonPressed,325,400,80,80);
-                if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
-                    p2OnFieldCards.add(playCard);
-                    p2OnFieldXY.add(new OnField (13,34));
-                    hand.played(cardSelect-1);
-                    cardSelected = false;
-                    cardSelect = 0;
-                    checkCell = path.getCell(13, 34);
-                    checkCell.setTile(gameSet.getTile(187));
-                   //14,3 p1 first spot
-                }
-          }
-         }
-         if(Gdx.input.isTouched() && checkTurn.getTurnValue() == true){
+         if(Gdx.input.justTouched() && checkTurn.getTurnValue() == true){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
@@ -712,12 +683,16 @@ public class WorldRenderer {
                 for (int i = 0; i < p1OnFieldXY.size; i++) {
                     OnField check = p1OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()){
-                      Card clickedCard = p1OnFieldCards.get(i);
-                      int clickedCardCost = clickedCard.getCost(); 
+                      highLightX = check.getX();
+                      highLightY = check.getY();
+                      clickedCard = p1OnFieldCards.get(i);
+                      clickedCardCost = clickedCard.getCost();
+                      OnFieldSpotP1 = i;
+                      highLightP1 = true;
                     }
              }
         }
-         if(Gdx.input.isTouched() && checkTurn.getTurnValue() == false){
+         if(Gdx.input.justTouched() && checkTurn.getTurnValue() == false){
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
@@ -725,13 +700,114 @@ public class WorldRenderer {
                 int tempY = (int)(click.y/(PPU-1));
                 for (int i = 0; i < p2OnFieldXY.size; i++) {
                     OnField check = p2OnFieldXY.get(i);
+                   
                     if (tempX == check.getX() && tempY == check.getY()){
-                      Card clickedCard = p2OnFieldCards.get(i);
-                      int clickedCardCost = clickedCard.getCost();
+                      highLightX = check.getX();
+                      highLightY = check.getY();
+                      clickedCard = p2OnFieldCards.get(i);
+                      clickedCardCost = clickedCard.getCost();
+                      OnFieldSpotP2 = i;
+                      highLightP2 = true;
+                      
                     }
                     
              }
          }
+         if (highLightP1 == true){
+             int count = 0;
+             boolean blah = false;
+             int tempF = clickedCard.getForce();
+             for (int i = 1; i <= tempF; i++) {
+                 count ++;
+                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 if (temp.getTile().getId() != 186){
+                 temp.setTile(gameSet.getTile(188));
+                 blah = true;
+                 } else {
+                     
+                     highLightP1 = false;
+                 }
+             }
+             if (blah == true){
+                 moveMinionP1 = true;
+             }
+
+         }
+         if (highLightP2 == true){
+             boolean blah = false;
+             int tempF = clickedCard.getForce();
+             for (int i = 1; i <= tempF; i++) {
+                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 if (temp.getTile().getId() != 186){
+                 temp.setTile(gameSet.getTile(188));
+                 blah = true;
+                 } else {
+                     
+                     highLightP2 = false;
+                 }
+             }
+             if (blah == true){
+                 moveMinionP2 = true;
+             }
+             blah = false;
+
+         }
+         
+         if (moveMinionP1 == true && highLightP1 == true){
+             
+             if (Gdx.input.justTouched()){ 
+                Vector3 tempClick = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(tempClick);
+                Cell tempCell = path.getCell((int)(tempClick.x/(PPU-1)), (int)(tempClick.y/(PPU-1)));
+                int tempF = clickedCard.getForce();
+                if (tempCell.getTile().getId() == 188){
+                 for (int i = 1; i <= tempF; i++) {
+                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 
+                 temp.setTile(gameSet.getTile(23));
+                 }
+                 tempCell.setTile(gameSet.getTile(186));
+                 Cell remove = path.getCell(highLightX, highLightY);
+                 remove.setTile(gameSet.getTile(23));
+                 OnField tempXY = p1OnFieldXY.get(OnFieldSpotP1);
+                 int tempX = tempXY.changeX((int) (tempClick.x/(PPU-1)));
+                 int tempY = tempXY.changeY((int) (tempClick.y/(PPU-1)));
+                 p1OnFieldXY.removeIndex(OnFieldSpotP1);
+                 p1OnFieldXY.insert(OnFieldSpotP1, tempXY);
+                 OnFieldSpotP1 = 0;
+                 moveMinionP1 = false;
+                 highLightP1 = false;
+                }
+             }
+         }
+         
+         if (moveMinionP2 == true && highLightP2 == true){
+             
+             if (Gdx.input.justTouched()){ 
+                Vector3 tempClick = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                camera.unproject(tempClick);
+                Cell tempCell = path.getCell((int)(tempClick.x/(PPU-1)), (int)(tempClick.y/(PPU-1)));
+                int tempF = clickedCard.getForce();
+                if (tempCell.getTile().getId() == 188){
+                 for (int i = 1; i <= tempF; i++) {
+                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 temp.setTile(gameSet.getTile(23));
+                 }
+                 tempCell.setTile(gameSet.getTile(186));
+                 Cell remove = path.getCell(highLightX, highLightY);
+                 remove.setTile(gameSet.getTile(23));
+                 OnField tempXY = p2OnFieldXY.get(OnFieldSpotP2);
+                 int tempX = tempXY.changeX((int) (tempClick.x/(PPU-1)));
+                 int tempY = tempXY.changeY((int) (tempClick.y/(PPU-1)));
+                 p2OnFieldXY.removeIndex(OnFieldSpotP2);
+                 p2OnFieldXY.insert(OnFieldSpotP2, tempXY);
+                 OnFieldSpotP2 = 0;
+                 moveMinionP2 = false;
+                 highLightP2 = false;
+                }
+             }
+         }
+
         
 
         // finished listing things to draw

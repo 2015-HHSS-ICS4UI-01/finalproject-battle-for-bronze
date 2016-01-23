@@ -20,10 +20,20 @@ public class OnField {
     }
     
     public int getX(){
-        return this.x;
+        return x;
     }
      public int getY(){
-         return this.y;
+         return y;
+     }
+     
+     public int changeX(int newX){
+         x = newX;
+         return x;
+     }
+     
+     public int changeY(int newY){
+         y = newY;
+         return y;
      }
      
      
