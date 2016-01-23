@@ -58,6 +58,11 @@ public class Player2Hand {
     public Card removeFromHand() {
         return hand.removeIndex(cardPlayed);
     }
+    
+    public void played(int index){
+        hand.removeIndex(index);
+        System.out.println(hand.size);
+    }
 
     public Array<Card> getCards() {
         return hand;

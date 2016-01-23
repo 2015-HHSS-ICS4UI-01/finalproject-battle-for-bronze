@@ -536,27 +536,27 @@ public class WorldRenderer {
                  
                  if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && hand2.handSize()>=1){
                      cardSelect = 6;
-                     playCard = hand.getCard(5);
+                     playCard = hand2.getCard(0);
                      cardSelected = true;
                  }
                  if(click.x>390 && click.x<470 && click.y>550 && click.y<670 && hand2.handSize()>=2){
                      cardSelect = 7;
-                     playCard = hand.getCard(6);
+                     playCard = hand2.getCard(1);
                      cardSelected = true;
                  }
                  if(click.x>470 && click.x<550 && click.y>550 && click.y<670 && hand2.handSize()>=3){
                      cardSelect = 8;
-                     playCard = hand.getCard(7);
+                     playCard = hand2.getCard(2);
                      cardSelected = true;
                  }
                  if(click.x>550 && click.x<630 && click.y>550 && click.y<670 && hand2.handSize()>=4){
                      cardSelect = 9;
-                     playCard = hand.getCard(8);
+                     playCard = hand2.getCard(3);
                      cardSelected = true;
                  }
                  if(click.x>630 && click.x<710 && click.y>550 && click.y<670 && hand2.handSize()>=5){
                      cardSelect = 10;
-                     playCard = hand.getCard(9);
+                     playCard = hand2.getCard(4);
                      cardSelected = true;
                  }
 //                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
@@ -651,14 +651,14 @@ public class WorldRenderer {
                 }
           }
          }
-         if (playerTwoHUD.getTurnValue() == false){
+         if (playerTwoHUD.getTurnValue() == true){
              batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
                     p2OnFieldCards.add(playCard);
                     p2OnFieldXY.add(new OnField (13,34));
-                    hand.played(cardSelect-1);
+                    hand2.played(cardSelect-6);
                     cardSelected = false;
                     cardSelect = 0;
                     checkCell = path.getCell(13, 34);
