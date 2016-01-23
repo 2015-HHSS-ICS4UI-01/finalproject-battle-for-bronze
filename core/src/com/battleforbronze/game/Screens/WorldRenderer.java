@@ -662,6 +662,7 @@ public class WorldRenderer {
                 camera.unproject(click);
                 clicked = path.getCell((int)(click.x/(PPU-1)), (int)(click.y/(PPU-1)));
                 
+                
         }
 
         // finished listing things to draw
