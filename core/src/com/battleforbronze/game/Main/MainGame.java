@@ -101,6 +101,7 @@ public class MainGame implements Screen, InputProcessor {
                 playerTwoHUD.addOneP2();
                 timer = 0;
                 turnNew.changeTurn();
+                
 
             } else if (turnNew.getTurnValue() == false) {
                 if(playerOneHand.handSize()<5){

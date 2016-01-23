@@ -32,6 +32,7 @@ import com.battleforbronze.game.Model.Deck2;
 import com.battleforbronze.game.Model.Deck3;
 import com.battleforbronze.game.Model.HUD;
 import com.battleforbronze.game.Model.Minion;
+import com.battleforbronze.game.Model.OnField;
 import com.battleforbronze.game.Model.Player1Hand;
 import com.battleforbronze.game.Model.Player2Hand;
 
@@ -120,9 +121,12 @@ public class WorldRenderer {
     private Cell placeTile;
     private Minion p1Played;
     private Minion p2Played;
+    private Array<OnField> p1OnField;
+    private Array<OnField> p2OnField;
     public WorldRenderer(Player1Hand h, Player2Hand h2,HUD p1HUD, HUD p2HUD) {
         
-        
+        p1OnField = new Array<OnField>();
+        p2OnField = new Array<OnField>();
         playerOneHUD = p1HUD;
         playerTwoHUD = p2HUD; 
         cardSelected = false;
@@ -673,5 +677,13 @@ public class WorldRenderer {
     public void camConvert(Vector3 v){
         camera.unproject(v);
     }
+    
+    public void showTurnEndP1(){
+        
+    }
+    public void showTurnEndP2(){
+        
+    }
+    
     
 }
