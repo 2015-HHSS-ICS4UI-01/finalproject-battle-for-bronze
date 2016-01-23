@@ -56,6 +56,8 @@ public class WorldRenderer {
     private Texture mana;
     private int p1cMana;
     private int p2cMana;
+    private Texture p1Turn;
+    private Texture p2Turn;
     private Texture border;
     private Texture card;
     private Texture attkNum1;
@@ -137,6 +139,8 @@ public class WorldRenderer {
         checkTurn = turnNew;
         cardSelected = false;
         playCard = new Card();
+        p1Turn = new Texture("turnP1.png");
+        p2Turn = new Texture("turnP2.png");
         border = new Texture("border.png");
         map = new TmxMapLoader().load("map.tmx");
         buttonNotPressed = new Texture("button_notpressed.png");
@@ -603,7 +607,12 @@ public class WorldRenderer {
          }
          
          
-        
+        if(checkTurn.getTurnValue()==true){
+            batch.draw(p1Turn,775,450);
+        }
+        else if(checkTurn.getTurnValue()==false){
+            batch.draw(p2Turn,775,450);
+        }
         
          for(int i = 0; i < playerOneHUD.getTurnNumberP1(); i++){
             if (playerOneHUD.getTurnNumberP1() < 10){
