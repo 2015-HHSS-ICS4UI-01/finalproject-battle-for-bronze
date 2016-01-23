@@ -635,14 +635,16 @@ public class WorldRenderer {
             }
             
          }
-         if (playerOneHUD.getTurnValue() == true){
+         if (checkTurn.getTurnValue() == true){
              batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
                 if(playCard.getCost()<=playerOneHUD.getTurnNumberP1()){
-                    p2OnFieldCards.add(playCard);
+                    p1OnFieldCards.add(playCard);
                     p1OnFieldXY.add(new OnField (14,3));
+                    System.out.println("player 1 played their " + (cardSelect-1));
                     hand.played(cardSelect-1);
+                    
                     cardSelected = false;
                     cardSelect = 0;
                     checkCell = path.getCell(13, 2);
@@ -651,14 +653,16 @@ public class WorldRenderer {
                 }
           }
          }
-         if (playerTwoHUD.getTurnValue() == true){
+         if (checkTurn.getTurnValue() == false){
              batch.draw(buttonNotPressed,325,400,80,80);
          if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true){
                 batch.draw(buttonPressed,325,400,80,80);
-                if(playCard.getCost()<=playerTwoHUD.getTurnNumberP1()){
+                if(playCard.getCost()<=playerTwoHUD.getTurnNumberP2()){
                     p2OnFieldCards.add(playCard);
                     p2OnFieldXY.add(new OnField (13,34));
+                    System.out.println("player 2 played their " + (cardSelect-6));
                     hand2.played(cardSelect-6);
+                    
                     cardSelected = false;
                     cardSelect = 0;
                     checkCell = path.getCell(13, 34);
