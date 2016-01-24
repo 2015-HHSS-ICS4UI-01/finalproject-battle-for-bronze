@@ -509,6 +509,7 @@ public class WorldRenderer {
                  Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                  guiCam.unproject(click);
                  //System.out.println("x: " + click.x + "  Y: " + click.y);
+                 if(checkTurn.getTurnValue()==true){
                  if(click.x>810 && click.x<890 && click.y>230 && click.y<350 && hand.handSize()>=1){
                      cardSelect = 1;
                      playCard = hand.getCard(0);
@@ -534,10 +535,11 @@ public class WorldRenderer {
                      playCard = hand.getCard(4);
                      cardSelected = true;
                  }
+                 }
                  
                  
                  
-                 
+                 else if(checkTurn.getTurnValue()==false){
                  if(click.x>310 && click.x<390 && click.y>550 && click.y<670 && hand2.handSize()>=1){
                      cardSelect = 6;
                      playCard = hand2.getCard(0);
@@ -562,6 +564,7 @@ public class WorldRenderer {
                      cardSelect = 10;
                      playCard = hand2.getCard(4);
                      cardSelected = true;
+                 }
                  }
 //                 if(click.x>325 && click.x<405 && click.y>400 && click.y<480){
 //                     lockin = true;

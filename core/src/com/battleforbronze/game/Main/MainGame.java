@@ -254,8 +254,8 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
 
     @Override
     public void create() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
-        sound = Gdx.audio.newSound(Gdx.files.internal("data/shot.ogg"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/Bronze5.mp3"));
+        sound = Gdx.audio.newSound(Gdx.files.internal("data/Bronze5.mp3"));
         
         music.setLooping(true);
         music.setVolume(0.5f);
