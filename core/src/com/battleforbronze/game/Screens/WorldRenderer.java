@@ -740,7 +740,7 @@ public class WorldRenderer {
              boolean blah = false;
              int tempF = clickedCard.getForce();
              for (int i = 1; i <= tempF; i++) {
-                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 Cell temp = path.getCell(highLightX, highLightY - i);
                  if (temp.getTile().getId() != 186){
                  temp.setTile(gameSet.getTile(188));
                  blah = true;
@@ -793,7 +793,7 @@ public class WorldRenderer {
                 int tempF = clickedCard.getForce();
                 if (tempCell.getTile().getId() == 188){
                  for (int i = 1; i <= tempF; i++) {
-                 Cell temp = path.getCell(highLightX, highLightY + i);
+                 Cell temp = path.getCell(highLightX, highLightY - i);
                  temp.setTile(gameSet.getTile(23));
                  }
                  tempCell.setTile(gameSet.getTile(186));
