@@ -5,11 +5,14 @@
  */
 package com.battleforbronze.game.Main;
 
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -36,8 +39,11 @@ import java.util.List;
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor {
+public class MainGame implements Screen, InputProcessor, ApplicationListener     {
 
+    
+    Music music;
+    Sound sound;
     private Player1Hand playerOneHand;
     private Player2Hand playerTwoHand;
     private Deck1 deckOne;
@@ -78,7 +84,8 @@ public class MainGame implements Screen, InputProcessor {
     @Override
     public void show() {
     }
-
+    
+    @Override
     public void render(float deltaTime) {
         // draw the screen
 //        renderer.render(deltaTime);
@@ -100,6 +107,7 @@ public class MainGame implements Screen, InputProcessor {
                 System.out.println("switched to player two");
                 playerTwoHUD.addOneP2();
                 timer = 0;
+                
                 turnNew.changeTurn();
                 
 
@@ -112,6 +120,7 @@ public class MainGame implements Screen, InputProcessor {
                 System.out.println("switched to player one");
                 playerOneHUD.addOneP1();
                 timer = 0;
+
                 turnNew.changeTurn();
 
             }
@@ -195,6 +204,8 @@ public class MainGame implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
+        music.dispose();
+        sound.dispose();
     }
 
     @Override
@@ -240,5 +251,24 @@ public class MainGame implements Screen, InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         return false;
     }
+
+    @Override
+    public void create() {
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
+        sound = Gdx.audio.newSound(Gdx.files.internal("data/shot.ogg"));
+        
+        music.setLooping(true);
+        music.setVolume(0.5f);
+        music.play();
+    }
+
+    @Override
+    public void render() {
+        if(Gdx.input.justTouched()){
+            sound.play();
+        }
+    }
+    
+
     
 }

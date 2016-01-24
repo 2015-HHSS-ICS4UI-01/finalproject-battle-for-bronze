@@ -2,6 +2,7 @@ package com.battleforbronze.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.battleforbronze.game.Main.MainGame;
 import com.battleforbronze.game.Main.MyGDXGame;
 
 public class DesktopLauncher {
