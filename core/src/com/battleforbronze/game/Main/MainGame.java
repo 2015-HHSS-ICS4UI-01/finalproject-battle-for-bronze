@@ -107,8 +107,10 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
                 System.out.println("switched to player two");
                 playerTwoHUD.addOneP2();
                 timer = 0;
-                
+                renderer.reSetManaP2();
                 turnNew.changeTurn();
+//                renderer.resetP2Moved();
+//                renderer.resetP2CardPlayed();
                 
 
             } else if (turnNew.getTurnValue() == false) {
@@ -120,7 +122,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
                 System.out.println("switched to player one");
                 playerOneHUD.addOneP1();
                 timer = 0;
-
+                renderer.reSetManaP1();
+//                renderer.resetP1CardPlayed();
+//                renderer.resetP1Moved();
                 turnNew.changeTurn();
 
             }
@@ -140,6 +144,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
                 playerOneHUD.addOneP1();
                 System.out.println("added one p1");
                 turnNew.changeTurn();
+                renderer.reSetManaP1();
+//                renderer.resetP1CardPlayed();
+//                renderer.resetP1Moved();
                 timer = 0;
             }
             /* when it is player twos turn and the player hits 1 it starts player ones turn by
@@ -157,6 +164,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
                 playerTwoHUD.addOneP2();
                 System.out.println("added one p2");
                 turnNew.changeTurn();
+                renderer.reSetManaP2();
+//                renderer.resetP2CardPlayed();
+//                renderer.resetP2Moved();
                 timer = 0;
             }
             
