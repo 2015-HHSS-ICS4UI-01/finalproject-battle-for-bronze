@@ -21,6 +21,7 @@ public class AudioManager {
     public static final Music GAME_MUSIC = Gdx.audio.newMusic(Gdx.files.internal("Bronze5.mp3"));
     
     public void play(){
+        
         soundTrack = GAME_MUSIC;
         soundTrack.setLooping(true);
         soundTrack.play();
@@ -36,5 +37,7 @@ public class AudioManager {
         draw.setLooping(false);
         draw.play();
     }
+    
+
     
 }

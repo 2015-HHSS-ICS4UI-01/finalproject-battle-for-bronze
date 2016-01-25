@@ -33,6 +33,7 @@ import java.util.Timer;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.Collections;
 import java.util.List;
+import com.battleforbronze.game.Model.AudioManager;
 
 //String name, int force, int attack, int defense, int cost
 /**
@@ -41,7 +42,7 @@ import java.util.List;
  */
 public class MainGame implements Screen, InputProcessor{
 
-
+    
     private Player1Hand playerOneHand;
     private Player2Hand playerTwoHand;
     private Deck1 deckOne;
@@ -100,6 +101,7 @@ public class MainGame implements Screen, InputProcessor{
             if (turnNew.getTurnValue() == true) {
                 if (playerTwoHand.handSize() < 5) {
                     playerTwoHand.draw();
+                    AudioManager.DRAW.play();
                 }
                 drawn2 = playerTwoHand.cardDrawn();
                 System.out.println("switched to player two");
@@ -112,6 +114,7 @@ public class MainGame implements Screen, InputProcessor{
             } else if (turnNew.getTurnValue() == false) {
                 if (playerOneHand.handSize() < 5) {
                     playerOneHand.draw();
+                    AudioManager.DRAW.play();
                 }
                 drawn1 = playerOneHand.cardDrawn();
                 System.out.println(playerOneHand.currentHandSize());
@@ -134,6 +137,7 @@ public class MainGame implements Screen, InputProcessor{
             System.out.println("player two ended turn");
             if (playerOneHand.handSize() < 5) {
                 playerOneHand.draw();
+                AudioManager.DRAW.play();
             }
             drawn1 = playerOneHand.cardDrawn();
             playerOneHUD.addOneP1();
@@ -151,6 +155,7 @@ public class MainGame implements Screen, InputProcessor{
         if (turnNew.getTurnValue() == true && Gdx.input.isKeyJustPressed(Keys.E)) {
             if (playerTwoHand.handSize() < 5) {
                 playerTwoHand.draw();
+                AudioManager.DRAW.play();
 
             }
             drawn2 = playerTwoHand.cardDrawn();
@@ -245,12 +250,12 @@ public class MainGame implements Screen, InputProcessor{
 
     @Override
     public void hide() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 

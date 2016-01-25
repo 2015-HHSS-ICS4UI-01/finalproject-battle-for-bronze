@@ -266,6 +266,7 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
+        AudioManager.GAME_MUSIC.setVolume(0.2f);
         AudioManager.GAME_MUSIC.play();
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
