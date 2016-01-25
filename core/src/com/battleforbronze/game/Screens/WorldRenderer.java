@@ -160,8 +160,11 @@ public class WorldRenderer {
     private boolean menutime;
     private boolean instructiontime;
     private boolean gametime;
-
+    private int p1Health;
+    private int p2Health;
     public WorldRenderer(Player1Hand h, Player2Hand h2, HUD p1HUD, HUD p2HUD, HUD turnNew) {
+        p1Health = 20;
+        p2Health = 20;
         cardOnFieldP1 = 0;
         RedTilesOnMapP1 = false;
         RedTilesOnMapP2 = false;
@@ -742,11 +745,15 @@ public class WorldRenderer {
                     if (temp != null && temp.getTile().getId() != 186 && temp.getTile().getId() != 187 && temp.getTile().getId() != 205) {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
-                        }
-                     else if (temp.getTile().getId() == 187) {
+                        } 
+                    } else if (temp != null && temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
+                    } else if (temp == null && highLightY <= 8){
+                        p2Health -= clickedCard.getAttack();
+                    } else {
+                        System.out.println("hey");
                     }
-                    }
+                    
                 }
                 RedTilesOnMapP1 = true;
             }
@@ -975,10 +982,10 @@ public class WorldRenderer {
                         if (temp.getTile().getId() != 187) {
                             temp.setTile(gameSet.getTile(188));
                         }
-                    } else if (temp.getTile().getId() == 186) {
+                    } else if (temp != null && temp.getTile().getId() == 186) {
                         temp.setTile(gameSet.getTile(205));
-                    } else if (temp  == null){
-                        
+                    } else if (temp == null && highLightY >= 28){
+                        p1Health -= clickedCard.getAttack();
                     }
                 }
                 RedTilesOnMapP2 = true;
@@ -1002,6 +1009,8 @@ public class WorldRenderer {
                         }
                     } else if (temp2.getTile().getId() == 186) {
                         temp2.setTile(gameSet.getTile(205));
+                    } else if (temp2 == null) {
+                        System.out.println("yo");
                     }
                 }
                 RedTilesOnMapP2 = true;
