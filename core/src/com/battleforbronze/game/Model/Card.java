@@ -50,7 +50,6 @@ public class Card {
         int numSuf = (int) Math.ceil(Math.random() * 6);
 
         //Prefix
-
         if (numPre == 1) {
             pre = "Un";
         } else if (numPre == 2) {
@@ -66,7 +65,6 @@ public class Card {
         }
 
         //Root
-
         if (numRoot == 1) {
             pre = "techno";
         } else if (numRoot == 2) {
@@ -82,7 +80,6 @@ public class Card {
         }
 
         //Sufix
-
         if (numSuf == 1) {
             suf = "able";
         } else if (numSuf == 2) {

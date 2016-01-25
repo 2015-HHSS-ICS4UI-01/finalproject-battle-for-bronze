@@ -7,36 +7,35 @@ package com.battleforbronze.game.Model;
 
 /**
  *
- * 
+ *
  */
 public class OnField {
+
     private int x;
     private int y;
-    
-    public OnField (int x, int y){
+
+    public OnField(int x, int y) {
         this.x = x;
         this.y = y;
-                
+
     }
-    
-    public int getX(){
+
+    public int getX() {
         return x;
     }
-     public int getY(){
-         return y;
-     }
-     
-     public int changeX(int newX){
-         x = newX;
-         return x;
-     }
-     
-     public int changeY(int newY){
-         y = newY;
-         return y;
-     }
-     
-     
-    
-    
+
+    public int getY() {
+        return y;
+    }
+
+    public int changeX(int newX) {
+        x = newX;
+        return x;
+    }
+
+    public int changeY(int newY) {
+        y = newY;
+        return y;
+    }
+
 }

@@ -58,8 +58,8 @@ public class Player2Hand {
     public Card removeFromHand() {
         return hand.removeIndex(cardPlayed);
     }
-    
-    public void played(int index){
+
+    public void played(int index) {
         hand.removeIndex(index);
         System.out.println(hand.size);
     }
@@ -67,9 +67,9 @@ public class Player2Hand {
     public Array<Card> getCards() {
         return hand;
     }
-    
-    public void update(float delta){
-        
+
+    public void update(float delta) {
+
     }
 
     public Card getCard(int pos) {

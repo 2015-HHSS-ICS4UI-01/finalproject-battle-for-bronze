@@ -75,16 +75,16 @@ public class Player1Hand {
     /*
      * removes the card that is played from the array
      */
-    
-    public void update(float delta){
-        
+
+    public void update(float delta) {
+
     }
 
     public Card removeFromHand() {
         return hand.removeIndex(cardPlayed);
     }
-    
-    public void played(int index){
+
+    public void played(int index) {
         hand.removeIndex(index);
         System.out.println(hand.size);
     }

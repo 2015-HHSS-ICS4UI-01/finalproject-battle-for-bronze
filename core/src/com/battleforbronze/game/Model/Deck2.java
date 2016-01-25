@@ -109,13 +109,11 @@ public class Deck2 {
             return true;
         }
     }
-    
+
     public String getName(int pos) {
         Card temp = deckTwo.get(pos);
         String name = temp.getName();
         return name;
-
-
 
     }
 }

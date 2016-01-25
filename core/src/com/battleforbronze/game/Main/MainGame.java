@@ -39,9 +39,8 @@ import java.util.List;
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor, ApplicationListener     {
+public class MainGame implements Screen, InputProcessor, ApplicationListener {
 
-    
     Music music;
     Sound sound;
     private Player1Hand playerOneHand;
@@ -84,14 +83,14 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
     @Override
     public void show() {
     }
-    
+
     @Override
     public void render(float deltaTime) {
         // draw the screen
 //        renderer.render(deltaTime);
 
         timer += deltaTime;
-        
+
         /* TRUE = PLAYER ONE
          * FALSE = PLAYER TWO
          * if the timer hits 1 minute
@@ -100,7 +99,7 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
          */
         if (timer >= (60)) {
             if (turnNew.getTurnValue() == true) {
-                if(playerTwoHand.handSize()<5){
+                if (playerTwoHand.handSize() < 5) {
                     playerTwoHand.draw();
                 }
                 drawn2 = playerTwoHand.cardDrawn();
@@ -111,10 +110,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
                 turnNew.changeTurn();
 //                renderer.resetP2Moved();
 //                renderer.resetP2CardPlayed();
-                
 
             } else if (turnNew.getTurnValue() == false) {
-                if(playerOneHand.handSize()<5){
+                if (playerOneHand.handSize() < 5) {
                     playerOneHand.draw();
                 }
                 drawn1 = playerOneHand.cardDrawn();
@@ -133,62 +131,60 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
              * changes the turn value to switch the current turn
              * re-setting the timer
              */
-            
+
         }
         if (turnNew.getTurnValue() == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
-                System.out.println("player two ended turn");
-                if(playerOneHand.handSize()<5){
-                    playerOneHand.draw();
-                }
-                drawn1 = playerOneHand.cardDrawn();
-                playerOneHUD.addOneP1();
-                System.out.println("added one p1");
-                turnNew.changeTurn();
-                renderer.reSetManaP1();
+            System.out.println("player two ended turn");
+            if (playerOneHand.handSize() < 5) {
+                playerOneHand.draw();
+            }
+            drawn1 = playerOneHand.cardDrawn();
+            playerOneHUD.addOneP1();
+            System.out.println("added one p1");
+            turnNew.changeTurn();
+            renderer.reSetManaP1();
 //                renderer.resetP1CardPlayed();
 //                renderer.resetP1Moved();
-                timer = 0;
+            timer = 0;
+        }
+        /* when it is player twos turn and the player hits 1 it starts player ones turn by
+         * drawing for player one and getting that drawn card
+         * changes the turn value
+         * re-setting the timer
+         */
+        if (turnNew.getTurnValue() == true && Gdx.input.isKeyJustPressed(Keys.E)) {
+            if (playerTwoHand.handSize() < 5) {
+                playerTwoHand.draw();
+
             }
-            /* when it is player twos turn and the player hits 1 it starts player ones turn by
-             * drawing for player one and getting that drawn card
-             * changes the turn value
-             * re-setting the timer
-             */
-            if (turnNew.getTurnValue() == true && Gdx.input.isKeyJustPressed(Keys.E)) {
-                if(playerTwoHand.handSize()<5){
-                    playerTwoHand.draw();
-                    
-                }
-                drawn2 = playerTwoHand.cardDrawn();
-                System.out.println("player one ended turn");
-                playerTwoHUD.addOneP2();
-                System.out.println("added one p2");
-                turnNew.changeTurn();
-                renderer.reSetManaP2();
+            drawn2 = playerTwoHand.cardDrawn();
+            System.out.println("player one ended turn");
+            playerTwoHUD.addOneP2();
+            System.out.println("added one p2");
+            turnNew.changeTurn();
+            renderer.reSetManaP2();
 //                renderer.resetP2CardPlayed();
 //                renderer.resetP2Moved();
-                timer = 0;
-            }
-            
-            if(Gdx.input.isTouched()){
-                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-                renderer.guiConvert(click);
+            timer = 0;
+        }
+
+        if (Gdx.input.isTouched()) {
+            Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            renderer.guiConvert(click);
 //                System.out.println("x: " + click.x + "  Y: " + click.y);
-            }
-            
-            if(Gdx.input.isTouched()){
-                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-                renderer.guiConvert(click);;
-            }
-            
-            if(Gdx.input.isTouched()){
-                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-                renderer.camConvert(click);
+        }
+
+        if (Gdx.input.isTouched()) {
+            Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            renderer.guiConvert(click);;
+        }
+
+        if (Gdx.input.isTouched()) {
+            Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            renderer.camConvert(click);
 //                System.out.println("x: " + click.x + "  Y: " + click.y);
-            }
-            
-            
-            
+        }
+
         playerOneHand.update(deltaTime);
         playerTwoHand.update(deltaTime);
         renderer.render(deltaTime);
@@ -245,11 +241,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
         return false;
     }
 
-   
-
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-       return false;
+        return false;
     }
 
     @Override
@@ -266,7 +260,7 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
     public void create() {
         music = Gdx.audio.newMusic(Gdx.files.internal("data/Bronze5.mp3"));
         sound = Gdx.audio.newSound(Gdx.files.internal("data/Bronze5.mp3"));
-        
+
         music.setLooping(true);
         music.setVolume(0.5f);
         music.play();
@@ -274,11 +268,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener    
 
     @Override
     public void render() {
-        if(Gdx.input.justTouched()){
+        if (Gdx.input.justTouched()) {
             sound.play();
         }
     }
-    
 
-    
 }
