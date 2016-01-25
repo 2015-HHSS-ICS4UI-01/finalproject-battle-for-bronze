@@ -694,6 +694,7 @@ public class WorldRenderer {
                     if (click.x >= 325 && click.x <= 405 && click.y >= 400 && click.y <= 480) {
                         batch.draw(buttonPressed, 325, 400, 80, 80);
                         if ((playCard.getCost() + manaUsedP1) <= playerOneHUD.getTurnNumberP1()) {
+                            AudioManager.DLEGEND.play();
                             p1OnFieldCards.add(playCard);
                             p1OnFieldXY.add(new OnField(13, 2));
                             hand.played(cardSelect - 1);
@@ -719,6 +720,7 @@ public class WorldRenderer {
                 for (int i = 0; i < p1OnFieldXY.size; i++) {
                     OnField check = p1OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()) {
+                        AudioManager.YESSIR.play();
                         highLightX = check.getX();
                         highLightY = check.getY();
                         clickedCard = p1OnFieldCards.get(i);
@@ -961,6 +963,7 @@ public class WorldRenderer {
                     if (click.x >= 325 && click.x <= 405 && click.y >= 400 && click.y <= 480) {
                         batch.draw(buttonPressed, 325, 400, 80, 80);
                         if ((playCard.getCost() + manaUsedP2) <= playerTwoHUD.getTurnNumberP2()) {
+                            AudioManager.DLEGEND.play();
                             p2OnFieldCards.add(playCard);
                             p2OnFieldXY.add(new OnField(13, 18));
                             hand2.played(cardSelect - 6);
@@ -975,7 +978,7 @@ public class WorldRenderer {
                     }
                 }
             }
-            //if they click on a card that is on the field, player one
+            //if they click on a card that is on the field, player two
             if (Gdx.input.justTouched() && checkTurn.getTurnValue() == false && cardOnFieldP2 > 0) {
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 camera.unproject(click);
@@ -985,6 +988,8 @@ public class WorldRenderer {
                 for (int i = 0; i < p2OnFieldXY.size; i++) {
                     OnField check = p2OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()) {
+                        
+                        AudioManager.YESSIR.play();
                         highLightX = check.getX();
                         highLightY = check.getY();
                         clickedCard = p2OnFieldCards.get(i);
