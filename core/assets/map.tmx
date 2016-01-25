@@ -11,6 +11,11 @@
    eJztlsENgCAMRctFmUCZQN1ANtD9J5KDRg6QVktJlB7+reZJ/u9PDQAYFQxBY5BTVhOsLqgnaj9ZGzJnkX8tqdy7L9YaNCPyxNmlgAdcv5R1z6ZymMsel/Uke1xWnEMvzHLM77EuyPUG1iU2wZJS/N4J6B1B7Y0SPkrtYsrHXZhVY5dSPkrtksQutsDCbg/qvUHJbM3bI9chb3oDuz2k/VbWf1lf0QEWByaz
   </data>
  </layer>
+ <layer name="deco" width="27" height="37">
+  <data encoding="base64" compression="zlib">
+   eJzt10dSwzAYhmGZDAvKADtIqFtawgmAE8BZKBegXIByAcoF6LCkhyUdlnRY0mHHmwmeEca2LNmwyPibeRaJful3ZiJbFiKfRjQJ/9ShXtKgqPdKBh2Kmjb0oBO9SHvUzWEeC1jEkmO8C92G1+nMOjawiS1sS2OWJUQREtbveYmA68t1+zjAIY5wLI1V06MGSUtv/VyKv8m5wCWucI0baaydHmlkXH6XSa9HPOEZL3jVXzZwrziFnWWsYBVrBvP70I8BDCpqd7CLLPYMeg1hGCMYVdSe4BRnODfoNYZxTGBSUXuLO9zjwaDXFKYxg1lF7Rve8YFPg15xCiuVqNKco/OskxPkfBM29vMnyPlGFdXvtHuZnG9KUIoyzXkmSSKFWum7v3pWN6MFrRq9TP9PcfLxO/dGHee5N6q43YfCnHv98h/3ITte96Gw+9+5Z3Kfve5Dbvvfa52wcdv/zpSLn++VFRFfg5yw78tfQcE46A==
+  </data>
+ </layer>
  <layer name="path" width="27" height="37">
   <data encoding="base64" compression="zlib">
    eJzt1kEKACAIBEC/4Kn//7RTN6MVM0h3wWOMQSyJMCtKi1aSNYBRx5wsNDfuRauuZb3TLCtyvqrl6QTvoLH2jZ7vaFl9n2FZodXXQroA+Z94+3+3y6vQovVzJqeJCbQ=
