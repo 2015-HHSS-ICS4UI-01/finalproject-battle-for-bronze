@@ -26,6 +26,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
+import com.battleforbronze.game.Model.AudioManager;
 import com.battleforbronze.game.Model.Card;
 import com.battleforbronze.game.Model.Deck1;
 import com.battleforbronze.game.Model.Deck2;
@@ -265,6 +266,7 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
+        AudioManager.GAME_MUSIC.play();
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 

@@ -39,7 +39,7 @@ import java.util.List;
  *
  * @author Leo Yao
  */
-public class MainGame implements Screen, InputProcessor, ApplicationListener {
+public class MainGame implements Screen, InputProcessor{
 
     Music music;
     Sound sound;
@@ -198,17 +198,9 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener {
     public void resume() {
     }
 
-    @Override
-    public void hide() {
-        dispose();
 
-    }
 
-    @Override
-    public void dispose() {
-        music.dispose();
-        sound.dispose();
-    }
+
 
     @Override
     public boolean keyDown(int keycode) {
@@ -253,20 +245,15 @@ public class MainGame implements Screen, InputProcessor, ApplicationListener {
     }
 
     @Override
-    public void create() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("data/Bronze5.mp3"));
-        sound = Gdx.audio.newSound(Gdx.files.internal("data/Bronze5.mp3"));
-
-        music.setLooping(true);
-        music.setVolume(0.5f);
-        music.play();
+    public void hide() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void render() {
-        if (Gdx.input.justTouched()) {
-            sound.play();
-        }
+    public void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }
