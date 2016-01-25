@@ -725,20 +725,26 @@ public class WorldRenderer {
                         if (highLightY == 28 || highLightY == 18 || highLightY == 8 || (highLightY == 22 && highLightX >= 13) || (highLightY == 14 && highLightX <= 13)) {
                             horizontal = true;
                         }
-
+                        
                     }
                 }
-                //draw card
-//            batch.draw(card, 510, 350, 80, 120);
-//            batch.draw(attkNumFinal, 510, 350, 80, 120);
-//            batch.draw(defNumFinal, 510, 350, 80, 120);
-//            batch.draw(frcNumFinal, 510, 350, 80, 120);
-////            batch.draw(picture, 740, 305, 60, 60);
-//            font.draw(batch, name, 320, 663);
-//            font.draw(batch, "" + cost, 360 , 610);
+                
             }
+            
             //draw highLighted tiles
             if (vertical == true) {
+                    //draw card
+                attk = clickedCard.getAttack();
+                dfns = clickedCard.getDefense();
+                frc = clickedCard.getForce();
+                name = clickedCard.getName();
+                cost = clickedCard.getCost();
+                batch.draw(card, 430, 370, 80, 120);
+                batch.draw(attkNumFinal, 430, 370, 80, 120);
+                batch.draw(defNumFinal, 430, 370, 80, 120);
+                batch.draw(frcNumFinal, 430, 370, 80, 120);
+                font.draw(batch, name, 440, 483);
+                font.draw(batch, "" + cost, 480 , 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX, highLightY + i);
@@ -975,6 +981,17 @@ public class WorldRenderer {
                 }
             }
             if (vertical2 == true) {
+                attk = clickedCard.getAttack();
+                dfns = clickedCard.getDefense();
+                frc = clickedCard.getForce();
+                name = clickedCard.getName();
+                cost = clickedCard.getCost();
+                batch.draw(card, 430, 370, 80, 120);
+                batch.draw(attkNumFinal, 430, 370, 80, 120);
+                batch.draw(defNumFinal, 430, 370, 80, 120);
+                batch.draw(frcNumFinal, 430, 370, 80, 120);
+                font.draw(batch, name, 440, 483);
+                font.draw(batch, "" + cost, 480 , 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX, highLightY - i);
