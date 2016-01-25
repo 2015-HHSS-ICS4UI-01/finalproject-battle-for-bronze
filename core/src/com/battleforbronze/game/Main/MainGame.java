@@ -41,8 +41,7 @@ import java.util.List;
  */
 public class MainGame implements Screen, InputProcessor{
 
-    Music music;
-    Sound sound;
+
     private Player1Hand playerOneHand;
     private Player2Hand playerTwoHand;
     private Deck1 deckOne;

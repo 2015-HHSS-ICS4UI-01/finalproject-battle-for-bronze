@@ -322,6 +322,7 @@ public class WorldRenderer {
         if (menutime) {
             batch.draw(menu, 375, 224, 450, 450);
             if (Gdx.input.justTouched()) {
+                AudioManager.HIT.play();
                 instructiontime = true;
                 menutime = false;
             }
@@ -329,6 +330,7 @@ public class WorldRenderer {
         if (instructiontime) {
             batch.draw(instructions, 375, 224, 450, 450);
             if (Gdx.input.isKeyJustPressed(Keys.ENTER)) {
+                AudioManager.HIT.play();
                 gametime = true;
                 instructiontime = false;
             }
@@ -550,6 +552,7 @@ public class WorldRenderer {
             }
 
             if (Gdx.input.justTouched()) {
+                AudioManager.HIT.play();
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 guiCam.unproject(click);
                 //System.out.println("x: " + click.x + "  Y: " + click.y);
