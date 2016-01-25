@@ -266,6 +266,7 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
+        AudioManager.GAME_MUSIC.setVolume(0.1f);
         AudioManager.GAME_MUSIC.play();
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -838,6 +839,8 @@ public class WorldRenderer {
                             int tempX = tempXY.changeX((int) (tempClick.x / (PPU - 1)));
                             int tempY = tempXY.changeY((int) (tempClick.y / (PPU - 1)));
                             p1OnFieldXY.removeIndex(ClickMinionOnFieldArraySpotP1);
+                            tempXY.changeX(tempX);
+                            tempXY.changeY(tempY);
                             p1OnFieldXY.insert(ClickMinionOnFieldArraySpotP1, tempXY);
                             ClickMinionOnFieldArraySpotP1 = 0;
                             horizontal = false;
@@ -873,6 +876,8 @@ public class WorldRenderer {
                                 int tempX2 = tempXY.changeX((int) (tempClick.x / (PPU - 1)));
                                 int tempY2 = tempXY.changeY((int) (tempClick.y / (PPU - 1)));
                                 p1OnFieldXY.removeIndex(ClickMinionOnFieldArraySpotP1);
+                                tempXY.changeX(tempX2);
+                                tempXY.changeY(tempY2);
                                 p1OnFieldXY.insert(ClickMinionOnFieldArraySpotP1, tempXY);
                                 ClickMinionOnFieldArraySpotP1 = 0;
                                 horizontal = false;
@@ -1090,6 +1095,8 @@ public class WorldRenderer {
                             int tempX = tempXY.changeX((int) (tempClick.x / (PPU - 1)));
                             int tempY = tempXY.changeY((int) (tempClick.y / (PPU - 1)));
                             p2OnFieldXY.removeIndex(ClickMinionOnFieldArraySpotP2);
+                            tempXY.changeX(tempX);
+                            tempXY.changeY(tempY);
                             p2OnFieldXY.insert(ClickMinionOnFieldArraySpotP2, tempXY);
                             ClickMinionOnFieldArraySpotP2 = 0;
                             horizontal2 = false;
@@ -1118,6 +1125,8 @@ public class WorldRenderer {
                                 int tempX2 = tempXY.changeX((int) (tempClick.x / (PPU - 1)));
                                 int tempY2 = tempXY.changeY((int) (tempClick.y / (PPU - 1)));
                                 p2OnFieldXY.removeIndex(ClickMinionOnFieldArraySpotP2);
+                                tempXY.changeX(tempX2);
+                                tempXY.changeY(tempY2);
                                 p2OnFieldXY.insert(ClickMinionOnFieldArraySpotP2, tempXY);
                                 ClickMinionOnFieldArraySpotP2 = 0;
                                 horizontal2 = false;
