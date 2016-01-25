@@ -743,8 +743,9 @@ public class WorldRenderer {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
                         }
-                    } else if (temp.getTile().getId() == 187) {
+                     else if (temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
+                    }
                     }
                 }
                 RedTilesOnMapP1 = true;
@@ -758,15 +759,21 @@ public class WorldRenderer {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
                         }
-                    } else if (temp.getTile().getId() == 187) {
+                     else if (temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
+                    } else if (temp != null){
+                        System.out.println("yo");
                     }
-                    if (temp2 != null && temp.getTile().getId() != 187 && temp.getTile().getId() != 205) {
+                    }
+                    if (temp2 != null && temp2.getTile().getId() != 187 && temp2.getTile().getId() != 205) {
                         if (temp2.getTile().getId() != 186) {
                             temp2.setTile(gameSet.getTile(188));
                         }
-                    } else if (temp2.getTile().getId() == 187) {
+                     else if (temp2.getTile().getId() == 187) {
                         temp2.setTile(gameSet.getTile(205));
+                    } else if (temp != null){
+                        System.out.println("yo");
+                    }
                     }
                 }
                 RedTilesOnMapP1 = true;
