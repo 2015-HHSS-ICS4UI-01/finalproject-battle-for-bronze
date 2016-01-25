@@ -60,6 +60,8 @@ public class WorldRenderer {
     private Texture p2Turn;
     private Texture border;
     private Texture card;
+    private Texture menu;
+    private Texture instructions;
     private Texture attkNum1;
     private Texture attkNum2;
     private Texture attkNum3;
@@ -155,6 +157,9 @@ public class WorldRenderer {
     private int manaUsedP2;
      private int cardDestroyedP2;
     private  int cardDestroyedP1;
+    private boolean menutime;
+    private boolean instructiontime;
+    private boolean gametime;
 
     public WorldRenderer(Player1Hand h, Player2Hand h2, HUD p1HUD, HUD p2HUD, HUD turnNew) {
         cardOnFieldP1 = 0;
@@ -170,7 +175,12 @@ public class WorldRenderer {
         playerTwoHUD = p2HUD;
         checkTurn = turnNew;
         cardSelected = false;
+        menutime = true;
+        instructiontime = false;
+        gametime = false;
         playCard = new Card();
+        instructions = new Texture("instructions.png");
+        menu = new Texture("menu.png");
         p1Turn = new Texture("turnP1.png");
         p2Turn = new Texture("turnP2.png");
         border = new Texture("border.png");
@@ -257,6 +267,7 @@ public class WorldRenderer {
 
         //gggg
         // update the camera
+        if(gametime){
         if (Gdx.input.isKeyPressed(Keys.A)) {
             if (camera.position.x >= 100) {
                 camera.position.x = camera.position.x - 5;
@@ -291,6 +302,7 @@ public class WorldRenderer {
                 hand.removeFromHand();
             }
         }
+        
 
         camera.update();
         guiCam.update();
@@ -298,11 +310,27 @@ public class WorldRenderer {
         batch.setProjectionMatrix(camera.combined);
         render.setView(camera);
         render.render();
-
+        }
         batch.setProjectionMatrix(guiCam.combined);
         // tells the renderer this is the list
         batch.begin();
         // list of things to draw
+        if(menutime){
+            batch.draw(menu,375,224,450,450);
+            if(Gdx.input.justTouched()){
+                instructiontime = true;
+                menutime = false;
+            }
+        }
+        if(instructiontime){
+            batch.draw(instructions, 375, 224,450,450);
+            if(Gdx.input.isKeyJustPressed(Keys.ENTER)){
+                gametime = true;
+                instructiontime = false;
+            }
+        }
+        if(gametime){
+        
         int cards = 0;
         int cards2 = 0;
 
@@ -652,7 +680,10 @@ public class WorldRenderer {
         //playing cards
         if (checkTurn.getTurnValue() == true) {
             batch.draw(buttonNotPressed, 325, 400, 80, 80);
-            if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true) {
+            if (Gdx.input.justTouched() && cardSelected == true) {
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                guiCam.unproject(click);
+                if(click.x>=325&&click.x<=405&&click.y>=400&&click.y<=480){
                 batch.draw(buttonPressed, 325, 400, 80, 80);
                 if ((playCard.getCost()+manaUsedP1) <= playerOneHUD.getTurnNumberP1()) {
                     p1OnFieldCards.add(playCard);
@@ -668,6 +699,7 @@ public class WorldRenderer {
                     //14,3 p1 first spot
                 }
             }
+        }
         }
         //if they click on a card that is on the field player one
         if (Gdx.input.justTouched() && checkTurn.getTurnValue() == true && cardOnFieldP1 > 0){
@@ -694,6 +726,14 @@ public class WorldRenderer {
                     
                  } 
             }
+            //draw card
+//            batch.draw(card, 510, 350, 80, 120);
+//            batch.draw(attkNumFinal, 510, 350, 80, 120);
+//            batch.draw(defNumFinal, 510, 350, 80, 120);
+//            batch.draw(frcNumFinal, 510, 350, 80, 120);
+////            batch.draw(picture, 740, 305, 60, 60);
+//            font.draw(batch, name, 320, 663);
+//            font.draw(batch, "" + cost, 360 , 610);
         }
         //draw highLighted tiles
         if (vertical == true){ 
@@ -858,7 +898,10 @@ public class WorldRenderer {
         
         if (checkTurn.getTurnValue() == false) {
             batch.draw(buttonNotPressed, 325, 400, 80, 80);
-            if (Gdx.input.isKeyJustPressed(Keys.ENTER) && cardSelected == true) {
+            if (Gdx.input.justTouched() && cardSelected == true) {
+                Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+                guiCam.unproject(click);
+                if(click.x>=325&&click.x<=405&&click.y>=400&&click.y<=480){
                 batch.draw(buttonPressed, 325, 400, 80, 80);
                 if ((playCard.getCost()+manaUsedP2) <= playerTwoHUD.getTurnNumberP2()) {
                     p2OnFieldCards.add(playCard);
@@ -873,6 +916,7 @@ public class WorldRenderer {
                     //14,3 p1 first spot
                 }
             }
+        }
         }
         //if they click on a card that is on the field, player one
         if (Gdx.input.justTouched() && checkTurn.getTurnValue() == false && cardOnFieldP2 > 0){
@@ -978,7 +1022,7 @@ public class WorldRenderer {
             }
             
         }
-        
+        }
     
         // finished listing things to draw
         batch.end();
