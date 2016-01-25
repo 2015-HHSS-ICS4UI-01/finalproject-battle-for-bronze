@@ -764,6 +764,17 @@ public class WorldRenderer {
                 RedTilesOnMapP1 = true;
             }
             if (horizontal == true) {
+                attk = clickedCard.getAttack();
+                dfns = clickedCard.getDefense();
+                frc = clickedCard.getForce();
+                name = clickedCard.getName();
+                cost = clickedCard.getCost();
+                batch.draw(card, 430, 370, 80, 120);
+                batch.draw(attkNumFinal, 430, 370, 80, 120);
+                batch.draw(defNumFinal, 430, 370, 80, 120);
+                batch.draw(frcNumFinal, 430, 370, 80, 120);
+                font.draw(batch, name, 440, 483);
+                font.draw(batch, "" + cost, 480 , 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX + i, highLightY);
@@ -1009,6 +1020,17 @@ public class WorldRenderer {
             }
             //draw highLighted tiles
             if (horizontal2 == true) {
+                attk = clickedCard.getAttack();
+                dfns = clickedCard.getDefense();
+                frc = clickedCard.getForce();
+                name = clickedCard.getName();
+                cost = clickedCard.getCost();
+                batch.draw(card, 430, 370, 80, 120);
+                batch.draw(attkNumFinal, 430, 370, 80, 120);
+                batch.draw(defNumFinal, 430, 370, 80, 120);
+                batch.draw(frcNumFinal, 430, 370, 80, 120);
+                font.draw(batch, name, 440, 483);
+                font.draw(batch, "" + cost, 480 , 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX + i, highLightY);
