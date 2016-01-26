@@ -271,7 +271,9 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
-        AudioManager.GAME_MUSIC.setVolume(0.05f);
+        AudioManager.GAME_MUSIC.setVolume(0.5f);
+        AudioManager.YESSIR.setVolume(0.5f);
+        AudioManager.DLEGEND.setVolume(0.5f);
         AudioManager.GAME_MUSIC.play();
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -728,6 +730,7 @@ public class WorldRenderer {
                 for (int i = 0; i < p1OnFieldXY.size; i++) {
                     OnField check = p1OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()) {
+                        
                         AudioManager.YESSIR.play();
                         highLightX = check.getX();
                         highLightY = check.getY();
