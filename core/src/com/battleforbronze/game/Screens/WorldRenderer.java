@@ -769,13 +769,10 @@ public class WorldRenderer {
                         } 
                     } else if (temp != null && temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
+                    } else if (temp == null && highLightY <= 8){
+                        p2Health -= clickedCard.getAttack();
                     } else {
                         System.out.println("hey");
-                        System.out.println(p2Health);
-                    }
-                    if (temp == null && highLightY <= 8){
-                        p2Health -= clickedCard.getAttack();
-                        System.out.println(p1Health);
                     }
                     
                 }
@@ -1037,13 +1034,8 @@ public class WorldRenderer {
                         }
                     } else if (temp != null && temp.getTile().getId() == 186) {
                         temp.setTile(gameSet.getTile(205));
-                    } else {
-                        System.out.println("hey");
-                        System.out.println(p1Health);
-                    }
-                    if (temp == null && highLightY >= 28){
+                    } else if (temp == null && highLightY >= 28){
                         p1Health -= clickedCard.getAttack();
-                        System.out.println(p1Health);
                     }
                 }
                 RedTilesOnMapP2 = true;
