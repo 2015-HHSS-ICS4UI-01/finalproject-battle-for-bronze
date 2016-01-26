@@ -100,6 +100,8 @@ public class WorldRenderer {
     private Texture picture;
     private Texture minion;
     private BitmapFont font;
+    private BitmapFont HealthP1;
+    private BitmapFont HealthP2;
     private Deck1 deckOne;
     private Deck2 deckTwo;
     private Deck3 deckThree;
@@ -208,6 +210,8 @@ public class WorldRenderer {
         base = (TiledMapTileLayer) map.getLayers().get("base");
         card = new Texture("Card.png");
         font = new BitmapFont();
+        HealthP1 = new BitmapFont();
+        HealthP2 = new BitmapFont();
         int mapWidth = map.getProperties().get("width", Integer.class);
         int mapHeight = map.getProperties().get("height", Integer.class);
 
@@ -266,7 +270,7 @@ public class WorldRenderer {
 
     public void render(float delta) {
         // clear the screen with black
-        AudioManager.GAME_MUSIC.setVolume(0.2f);
+        AudioManager.GAME_MUSIC.setVolume(0.05f);
         AudioManager.GAME_MUSIC.play();
         Gdx.gl20.glClearColor(0, 2, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -435,12 +439,15 @@ public class WorldRenderer {
                 if (frc == 9) {
                     frcNumFinal = frcNum9;
                 }
-
+                HealthP1.setColor(Color.BLACK);
+                HealthP2.setColor(Color.BLACK);
+                HealthP1.draw(batch, "Player One Health : " + p1Health, 320, 280);
+                HealthP1.draw(batch, "Player Two Health : " + p2Health, 735, 630);
                 batch.draw(card, 810 - cards * 80, 230, 80, 120);
                 batch.draw(attkNumFinal, 810 - cards * 80, 230, 80, 120);
                 batch.draw(defNumFinal, 810 - cards * 80, 230, 80, 120);
                 batch.draw(frcNumFinal, 810 - cards * 80, 230, 80, 120);
-
+                
 //            batch.draw(picture, 740, 305, 60, 60);
                 font.draw(batch, name, 820 - cards * 80, 343);
                 font.draw(batch, "" + cost, 850 - cards * 80, 290);
@@ -762,10 +769,13 @@ public class WorldRenderer {
                         } 
                     } else if (temp != null && temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
-                    } else if (temp == null && highLightY <= 8){
-                        p2Health -= clickedCard.getAttack();
                     } else {
                         System.out.println("hey");
+                        System.out.println(p2Health);
+                    }
+                    if (temp == null && highLightY <= 8){
+                        p2Health -= clickedCard.getAttack();
+                        System.out.println(p1Health);
                     }
                     
                 }
@@ -1027,8 +1037,13 @@ public class WorldRenderer {
                         }
                     } else if (temp != null && temp.getTile().getId() == 186) {
                         temp.setTile(gameSet.getTile(205));
-                    } else if (temp == null && highLightY >= 28){
+                    } else {
+                        System.out.println("hey");
+                        System.out.println(p1Health);
+                    }
+                    if (temp == null && highLightY >= 28){
                         p1Health -= clickedCard.getAttack();
+                        System.out.println(p1Health);
                     }
                 }
                 RedTilesOnMapP2 = true;
