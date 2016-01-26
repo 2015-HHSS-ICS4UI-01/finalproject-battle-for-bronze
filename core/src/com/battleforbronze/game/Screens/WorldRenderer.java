@@ -165,6 +165,7 @@ public class WorldRenderer {
     private boolean gametime;
     private int p1Health;
     private int p2Health;
+
     public WorldRenderer(Player1Hand h, Player2Hand h2, HUD p1HUD, HUD p2HUD, HUD turnNew) {
         p1Health = 20;
         p2Health = 20;
@@ -447,7 +448,7 @@ public class WorldRenderer {
                 batch.draw(attkNumFinal, 810 - cards * 80, 230, 80, 120);
                 batch.draw(defNumFinal, 810 - cards * 80, 230, 80, 120);
                 batch.draw(frcNumFinal, 810 - cards * 80, 230, 80, 120);
-                
+
 //            batch.draw(picture, 740, 305, 60, 60);
                 font.draw(batch, name, 820 - cards * 80, 343);
                 font.draw(batch, "" + cost, 850 - cards * 80, 290);
@@ -740,15 +741,15 @@ public class WorldRenderer {
                         if (highLightY == 28 || highLightY == 18 || highLightY == 8 || (highLightY == 22 && highLightX >= 13) || (highLightY == 14 && highLightX <= 13)) {
                             horizontal = true;
                         }
-                        
+
                     }
                 }
-                
+
             }
-            
+
             //draw highLighted tiles
             if (vertical == true) {
-                    //draw card
+                //draw card
                 attk = clickedCard.getAttack();
                 dfns = clickedCard.getDefense();
                 frc = clickedCard.getForce();
@@ -759,22 +760,22 @@ public class WorldRenderer {
                 batch.draw(defNumFinal, 430, 370, 80, 120);
                 batch.draw(frcNumFinal, 430, 370, 80, 120);
                 font.draw(batch, name, 440, 483);
-                font.draw(batch, "" + cost, 480 , 430);
+                font.draw(batch, "" + cost, 480, 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX, highLightY + i);
                     if (temp != null && temp.getTile().getId() != 186 && temp.getTile().getId() != 187 && temp.getTile().getId() != 205) {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
-                        } 
+                        }
                     } else if (temp != null && temp.getTile().getId() == 187) {
                         temp.setTile(gameSet.getTile(205));
-                    } else if (temp == null && highLightY <= 8){
+                    } else if (temp == null && highLightY <= 8) {
                         p2Health -= clickedCard.getAttack();
                     } else {
                         System.out.println("hey");
                     }
-                    
+
                 }
                 RedTilesOnMapP1 = true;
             }
@@ -789,7 +790,7 @@ public class WorldRenderer {
                 batch.draw(defNumFinal, 430, 370, 80, 120);
                 batch.draw(frcNumFinal, 430, 370, 80, 120);
                 font.draw(batch, name, 440, 483);
-                font.draw(batch, "" + cost, 480 , 430);
+                font.draw(batch, "" + cost, 480, 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX + i, highLightY);
@@ -797,21 +798,20 @@ public class WorldRenderer {
                     if (temp != null && temp.getTile().getId() != 186 && temp.getTile().getId() != 187 && temp.getTile().getId() != 205) {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
+                        } else if (temp.getTile().getId() == 187) {
+                            temp.setTile(gameSet.getTile(205));
+                        } else if (temp != null) {
+                            System.out.println("yo");
                         }
-                     else if (temp.getTile().getId() == 187) {
-                        temp.setTile(gameSet.getTile(205));
-                    } else if (temp != null){
-                        System.out.println("yo");
-                    }
                     }
                     if (temp2 != null && temp2.getTile().getId() != 187 && temp2.getTile().getId() != 205) {
                         if (temp2.getTile().getId() != 186) {
                             temp2.setTile(gameSet.getTile(188));
                         } else if (temp2.getTile().getId() == 187) {
-                        temp2.setTile(gameSet.getTile(205));
-                        } else if (temp != null){
-                        System.out.println("yo");
-                    }
+                            temp2.setTile(gameSet.getTile(205));
+                        } else if (temp != null) {
+                            System.out.println("yo");
+                        }
                     }
                 }
                 RedTilesOnMapP1 = true;
@@ -995,7 +995,7 @@ public class WorldRenderer {
                 for (int i = 0; i < p2OnFieldXY.size; i++) {
                     OnField check = p2OnFieldXY.get(i);
                     if (tempX == check.getX() && tempY == check.getY()) {
-                        
+
                         AudioManager.YESSIR.play();
                         highLightX = check.getX();
                         highLightY = check.getY();
@@ -1024,7 +1024,7 @@ public class WorldRenderer {
                 batch.draw(defNumFinal, 430, 370, 80, 120);
                 batch.draw(frcNumFinal, 430, 370, 80, 120);
                 font.draw(batch, name, 440, 483);
-                font.draw(batch, "" + cost, 480 , 430);
+                font.draw(batch, "" + cost, 480, 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX, highLightY - i);
@@ -1034,7 +1034,7 @@ public class WorldRenderer {
                         }
                     } else if (temp != null && temp.getTile().getId() == 186) {
                         temp.setTile(gameSet.getTile(205));
-                    } else if (temp == null && highLightY >= 28){
+                    } else if (temp == null && highLightY >= 28) {
                         p1Health -= clickedCard.getAttack();
                     }
                 }
@@ -1052,7 +1052,7 @@ public class WorldRenderer {
                 batch.draw(defNumFinal, 430, 370, 80, 120);
                 batch.draw(frcNumFinal, 430, 370, 80, 120);
                 font.draw(batch, name, 440, 483);
-                font.draw(batch, "" + cost, 480 , 430);
+                font.draw(batch, "" + cost, 480, 430);
                 int tempF = clickedCard.getForce();
                 for (int i = 1; i <= tempF; i++) {
                     Cell temp = path.getCell(highLightX + i, highLightY);
@@ -1061,17 +1061,15 @@ public class WorldRenderer {
                         if (temp.getTile().getId() != 186) {
                             temp.setTile(gameSet.getTile(188));
                         } else if (temp.getTile().getId() == 186) {
-                        temp.setTile(gameSet.getTile(205));
+                            temp.setTile(gameSet.getTile(205));
                         }
                     }
                     if (temp2 != null && temp2.getTile().getId() != 187 && temp2.getTile().getId() != 205) {
                         if (temp2.getTile().getId() != 186) {
                             temp2.setTile(gameSet.getTile(188));
+                        } else if (temp2.getTile().getId() == 186) {
+                            temp2.setTile(gameSet.getTile(205));
                         }
-                    } else if (temp2.getTile().getId() == 186) {
-                        temp2.setTile(gameSet.getTile(205));
-                    } else if (temp2 == null) {
-                        System.out.println("yo");
                     }
                 }
                 RedTilesOnMapP2 = true;
