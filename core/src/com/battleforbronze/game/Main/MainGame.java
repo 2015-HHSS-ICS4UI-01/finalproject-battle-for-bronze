@@ -104,7 +104,6 @@ public class MainGame implements Screen, InputProcessor{
                     AudioManager.DRAW.play();
                 }
                 drawn2 = playerTwoHand.cardDrawn();
-                System.out.println("switched to player two");
                 playerTwoHUD.addOneP2();
                 timer = 0;
                 renderer.reSetManaP2();
@@ -117,8 +116,6 @@ public class MainGame implements Screen, InputProcessor{
                     AudioManager.DRAW.play();
                 }
                 drawn1 = playerOneHand.cardDrawn();
-                System.out.println(playerOneHand.currentHandSize());
-                System.out.println("switched to player one");
                 playerOneHUD.addOneP1();
                 timer = 0;
                 renderer.reSetManaP1();
@@ -134,14 +131,12 @@ public class MainGame implements Screen, InputProcessor{
 
         }
         if (turnNew.getTurnValue() == false && Gdx.input.isKeyJustPressed(Keys.Q)) {
-            System.out.println("player two ended turn");
             if (playerOneHand.handSize() < 5) {
                 playerOneHand.draw();
                 AudioManager.DRAW.play();
             }
             drawn1 = playerOneHand.cardDrawn();
             playerOneHUD.addOneP1();
-            System.out.println("added one p1");
             turnNew.changeTurn();
             renderer.reSetManaP1();
             renderer.resetP1Moved();
@@ -159,9 +154,7 @@ public class MainGame implements Screen, InputProcessor{
 
             }
             drawn2 = playerTwoHand.cardDrawn();
-            System.out.println("player one ended turn");
             playerTwoHUD.addOneP2();
-            System.out.println("added one p2");
             turnNew.changeTurn();
             renderer.reSetManaP2();
             renderer.resetP2Moved();
@@ -171,7 +164,6 @@ public class MainGame implements Screen, InputProcessor{
         if (Gdx.input.isTouched()) {
             Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             renderer.guiConvert(click);
-//                System.out.println("x: " + click.x + "  Y: " + click.y);
         }
 
         if (Gdx.input.isTouched()) {
@@ -182,7 +174,6 @@ public class MainGame implements Screen, InputProcessor{
         if (Gdx.input.isTouched()) {
             Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             renderer.camConvert(click);
-//                System.out.println("x: " + click.x + "  Y: " + click.y);
         }
 
         playerOneHand.update(deltaTime);

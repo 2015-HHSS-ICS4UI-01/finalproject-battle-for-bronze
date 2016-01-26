@@ -566,7 +566,6 @@ public class WorldRenderer {
                 AudioManager.HIT.play();
                 Vector3 click = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
                 guiCam.unproject(click);
-                //System.out.println("x: " + click.x + "  Y: " + click.y);
                 if (checkTurn.getTurnValue() == true) {
                     if (click.x > 810 && click.x < 890 && click.y > 230 && click.y < 350 && hand.handSize() >= 1) {
                         cardSelect = 1;
@@ -775,8 +774,6 @@ public class WorldRenderer {
                         temp.setTile(gameSet.getTile(205));
                     } else if (temp == null && highLightY <= 8) {
                         p2Health -= clickedCard.getAttack();
-                    } else {
-                        System.out.println("hey");
                     }
 
                 }
@@ -804,7 +801,7 @@ public class WorldRenderer {
                         } else if (temp.getTile().getId() == 187) {
                             temp.setTile(gameSet.getTile(205));
                         } else if (temp != null) {
-                            System.out.println("yo");
+                            System.out.println("");
                         }
                     }
                     if (temp2 != null && temp2.getTile().getId() != 187 && temp2.getTile().getId() != 205) {
@@ -813,7 +810,7 @@ public class WorldRenderer {
                         } else if (temp2.getTile().getId() == 187) {
                             temp2.setTile(gameSet.getTile(205));
                         } else if (temp != null) {
-                            System.out.println("yo");
+                            System.out.println("");
                         }
                     }
                 }
